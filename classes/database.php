@@ -3,7 +3,7 @@
 
 class Db
 {
-    protected $connection;
+    public $db;
 
     function __construct()
     {
@@ -12,15 +12,22 @@ class Db
 
     private function start_db()
     {
-        $this->connection = mysqli_connect("localhost:8889", "root", "root", "party_lovers");
-        if (!$this->connection) {
-            echo "failed to connect";
-        }
+        $this->db = mysqli_connect("localhost:8889", "root", "root", "party_lovers");
+        $this->confirm_query($this->db);
     }
 
     public function query($sql)
     {
-        return mysqli_query($sql ,$this->connection);
+        $res = mysqli_query($this->db, $sql);
+        $this->confirm_query($res);
+        return $res;
+    }
+
+    protected function confirm_query($result)
+    {
+        if (!$result) {
+            return die(mysqli_error($this->db));
+        }
     }
 } // end of  class
 
