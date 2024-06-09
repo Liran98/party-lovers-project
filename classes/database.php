@@ -26,7 +26,7 @@ class Db
     protected function confirm_query($result)
     {
         if (!$result) {
-            return die(mysqli_error($this->db));
+             die(mysqli_error($this->db) . strtoupper(" <strong>💥Something went wrong in your code , try again💥</strong>"));
         }
     }
 } // end of  class

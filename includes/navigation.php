@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg ">
+<nav class="navbar navbar-expand-lg bg-light ">
     <div class="container-fluid">
         <a class="navbar-brand" href="./index.php">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,11 +14,13 @@
                     <a class="nav-link" href="./events.php">Events🎊</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="./pricing.php">Pricing</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href='#'>Contact</a>
+                    <a class="nav-link" href='./contact.php'>Contact</a>
                 </li>
+               
+               
             </ul>
         </div>
     </div>
