@@ -69,13 +69,10 @@
                         <div>
                           <h4 class="mb-3 text-light">Opening Hours</h4>
                           <div class="d-flex mb-1">
-                            <p class="text-light fw-bold mb-0 me-5">Mon - Fri</p>
-                            <p class="text-light opacity-75 mb-0">9am - 5pm</p>
+                            <p class="text-light fw-bold mb-0 me-5">Everyday</p>
+                            
                           </div>
-                          <div class="d-flex">
-                            <p class="text-light fw-bold mb-0 me-5">Sat - Sun</p>
-                            <p class="text-light opacity-75 mb-0">9am - 2pm</p>
-                          </div>
+                          
                         </div>
                       </div>
                     </div>

@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/utilities/background/background.css">
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/utilities/margin/margin.css">
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/utilities/padding/padding.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+
 
 
 
@@ -21,6 +23,6 @@
 
 </head>
 
-<body>
+<body style="background-image: url(../images/background.jpg);">
     <?php include("includes/navigation.php"); ?>
     <?php include("includes/sidebar.php"); ?>

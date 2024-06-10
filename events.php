@@ -1,8 +1,7 @@
 <?php include("includes/header.php"); ?>
 
-<div class="row row-cols-md-3 g-4 ">
+<div class="row row-cols-md-3 g-4 p-3 m-2">
     <?php
-
     $events = $event->find_all();
 
     foreach ($events as $event) {
@@ -10,7 +9,7 @@
 
         <div class="col-sm-6 col-xs-6">
             <div class="card">
-                <img src="<?php echo $event->event_image; ?>" class="card-img-top" alt="" />
+                <img  src="<?php echo $event->event_image; ?>" class="card-img-top" alt="" />
                 <div class="card-body">
                     <span>
                         <?php echo $event->theme_type; ?>
@@ -19,7 +18,7 @@
                     <p class="card-text">
                         <?php echo $event->description; ?>
                     </p>
-                    <a href="pricing.php">
+                    <a href="packages.php?pack=<?php echo $event->package_id; ?>">
                         <input class="btn btn-outline-dark" type="submit" value="Check The Package" />
                     </a>
                 </div>

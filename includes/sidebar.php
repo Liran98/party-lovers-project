@@ -1,6 +1,3 @@
-<button class="btn m-1 p-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-    <img style="width: 40px;" class="img-fluid" src="images/menu.png" />
-</button>
 <!-- class=👇offcanvas offcanvas-start👇 -->
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
     <div class="offcanvas-header">
@@ -11,22 +8,35 @@
 
 
         <form method="post" action="">
-
-            <div class="mb-3">
-
-                <label class="form-label"></label>
-
-                <input type="text" name="search" class="form-control search-input" placeholder="Search...">
-
-                <input type="submit" name="submit" value="Search" class="btn btn-info">
-
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search...">
+                <div class="input-group-append">
+                    <input type="submit" value="Search" name="search" class="btn btn-light btn-outline-dark">
+                </div>
             </div>
         </form>
-
-        <div class="container">
-            <img class="bottom-right" style="width: 60px;" src="images/shopping-cart.png" alt="">
-        </div>
-
     </div>
 
+    <?php
+
+$cart= new Cart();
+
+$carts = $cart->find_all();
+
+foreach ($carts as $items){
+
+    echo $items->total_price;
+}
+
+?>
+
+
+
+
 </div>
+<!-- end of canvas -->
+
+
+
+
+
