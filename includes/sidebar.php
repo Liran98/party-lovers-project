@@ -17,21 +17,33 @@
         </form>
     </div>
 
-    <?php
+   
 
-$cart= new Cart();
+<?php
+$cart = new Cart();
 
 $carts = $cart->find_all();
 
-foreach ($carts as $items){
-
-    echo $items->total_price;
-}
-
+foreach ($carts as $items) {
 ?>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <?php echo $items->total_price . "₱"; ?>
+            <?php echo $items->description; ?>
+            <?php echo $items->name; ?>
+           
+            <img style="width: 80px;" src="<?php echo $items->cart_image; ?>" alt="">
+            <a class="btn btn-danger"  href="index.php?del=<?php echo $items->id; ?>">x</a>
+        </li>
+        
+    </ul>
+<?php
 
-
-
+}
+if (isset($_GET['del'])) {
+    $cart->delete($_GET['del']);
+}
+?>
 
 </div>
 <!-- end of canvas -->

@@ -23,6 +23,6 @@
 
 </head>
 
-<body style="background-image: url(../images/background.jpg);">
+<body>
     <?php include("includes/navigation.php"); ?>
     <?php include("includes/sidebar.php"); ?>

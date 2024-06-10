@@ -62,7 +62,7 @@ class Db_object
 
     public function redirect($file_name)
     {
-        return header('Location : ' . $file_name . '.php');
+        return header("Location : " . $file_name . ".php");
     }
 
 
@@ -71,6 +71,10 @@ public function count_all(){
 $res =  $this->find_all();
 
 return count($res);
+}
+
+public function delete($id){
+    return static::find_query("DELETE FROM " . static::$table . " WHERE id = " . $id);
 }
 
 

@@ -31,8 +31,12 @@
                     >&#xf07a;
                 </i>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href='admin'>ADMIN</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+
+ 
