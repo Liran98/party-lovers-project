@@ -28,12 +28,12 @@ foreach ($carts as $items) {
 ?>
     <ul class="list-group">
         <li class="list-group-item">
-            <?php echo $items->total_price . "₱"; ?>
+        <img style="width: 80px;" src="<?php echo $items->cart_image; ?>" alt="">
             <?php echo $items->description; ?>
             <?php echo $items->name; ?>
+            <?php echo $items->total_price . "₱"; ?>
            
-            <img style="width: 80px;" src="<?php echo $items->cart_image; ?>" alt="">
-            <a class="btn btn-danger"  href="index.php?del=<?php echo $items->id; ?>">x</a>
+            <a class="btn btn-light btn-outline-dark"  href="index.php?del=<?php echo $items->id; ?>">x</a>
         </li>
         
     </ul>

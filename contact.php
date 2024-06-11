@@ -1,7 +1,10 @@
 <?php include("includes/header.php"); ?>
 
 <!-- Contact 6 - Bootstrap Brain Component -->
-<section class="py-3 py-md-5 py-xl-8">
+<section  style="
+background-image: url('images/contact_wallpaper.jpg');
+background-size: cover;
+" class="py-3 py-md-5 py-xl-8">
 
   <div class="container">
     <div class="row">

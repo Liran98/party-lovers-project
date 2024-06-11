@@ -1,42 +1,49 @@
-<nav class="navbar navbar-expand-lg bg-secondary ">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="./index.php">Home</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg  bg-dark ">
+    <div class="container px-4 px-lg-5">
+    <a class="navbar-brand text-light" href="./index.php"><img style="width: 30px;" src="images/party_logo.png"></a>
+        <a class="navbar-brand text-light" href="./index.php">Home</a>
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
         </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="./events.php">Events🎊</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" aria-current="page" href="./about_us.php">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href='./contact.php'>Contact</a>
+                </li>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="./about_us.php">About us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./events.php">Events🎊</a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="./packages.php">Packages</a>
-                </li> -->
-                <li class="nav-item">
-                    <a class="nav-link" href='./contact.php'>Contact</a>
-                </li>
-                <li class="nav-item">
-                    <i class="fa badge fa-lg" 
-                    data-bs-toggle="offcanvas" 
-                    data-bs-target="#offcanvasWithBothOptions" 
-                    aria-controls="offcanvasWithBothOptions" 
-                    value=<?php 
-                    $cart = new Cart(); 
-                    echo $cart->count_all();
-                    ?>
-                    >&#xf07a;
-                </i>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href='admin'>ADMIN</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">All Products</a></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                        <li> <a class="dropdown-item" href='admin'>Admin</a> </li>
+                    </ul>
                 </li>
             </ul>
+            <form class="d-flex">
+             
+                    <i class="fa badge bg-primary btn  fa-lg" 
+                    data-bs-toggle="offcanvas" 
+                    data-bs-target="#offcanvasWithBothOptions" 
+                    aria-controls="offcanvasWithBothOptions">
+                    &#xf07a;
+                    <span class="badge   ms-1 rounded-pill">
+                        <?php 
+                    $cart = new Cart(); 
+                    echo $cart->count_all();
+                    ?></span>
+                </i>
+            </form>
         </div>
     </div>
 </nav>
-
- 
