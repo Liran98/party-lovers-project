@@ -1,9 +1,6 @@
 <?php include("includes/header.php"); ?>
 
-<header style="
-background-image: url('images/wallpaper.jpg');
-background-size: cover;
-" class="py-5">
+<header class="py-5">
     <div class="  container px-4 px-lg-5 my-5">
         <div class=" text-center">
             <h1 class="display-4 fw-bolder  text-light">Welcome to Party Lovers Offical inc Since 2009 <img style="width: 90px;" src="images/party_logo.png"></h1>

@@ -1,9 +1,6 @@
 <?php include("includes/header.php"); ?>
 
-<section style="
-background-image: url('images/background_events.jpg');
-background-size: cover;
-" class="py-5">
+<section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <?php
@@ -16,7 +13,7 @@ background-size: cover;
                     <div class="card h-100">
 
                         <!-- Product image-->
-                        <img class="card-img-top" src="<?php echo $event->event_image; ?>" alt="..." />
+                        <img class="card-img-top img-fluid" src="<?php echo $event->event_image; ?>" alt="..." />
                         <p class="text-center"><?php echo $event->title; ?></p>
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -24,7 +21,7 @@ background-size: cover;
                                 <h5 class="fw-bolder"><?php echo $event->theme_type; ?></h5>
                                 <h6 class="fw-bolder">
                                     <?php
-                                    echo strlen($event->description) > 50 ? substr($event->description, 50) : $event->description;
+                                    echo strlen($event->description) > 50 ? substr($event->description, 72) : $event->description;
 
 
                                     ?>

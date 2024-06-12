@@ -1,15 +1,12 @@
 <?php include("includes/header.php"); ?>
 
 <!-- Contact 6 - Bootstrap Brain Component -->
-<section  style="
-background-image: url('images/contact_wallpaper.jpg');
-background-size: cover;
-" class="py-3 py-md-5 py-xl-8">
+<section class="py-3 py-md-5 py-xl-8">
 
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <div class="card border border-dark rounded shadow-sm overflow-hidden">
+        <div class="rounded shadow-sm overflow-hidden text-light">
           <div class="card-body p-0">
             <div class="row gy-3 gy-md-4 gy-lg-0">
               <div class="col-12 col-lg-6 bsb-overlay background-position-center background-size-cover" style="--bsb-overlay-opacity: 0.7; background-image: url('./assets/img/contact-img-1.webp');">

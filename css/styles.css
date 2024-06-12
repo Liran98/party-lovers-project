@@ -1,6 +1,6 @@
 .card:hover {
   transform: scale(1.1);
-  transition: transform .2s;
+  transition: transform .3s;
   background-image: linear-gradient(rgb(24, 104, 118),rgb(0, 174, 255));
   color: #fff;
 }
@@ -9,10 +9,11 @@
   transition: all .2s ease-in-out;
 }
 
-
-
-
-
+body, html {
+  background-image: url("../images/body-wallpaper.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 /* ////////////////////////////////////////////////////////////////// */
 @charset "UTF-8";
 

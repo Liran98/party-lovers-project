@@ -17,38 +17,40 @@
         </form>
     </div>
 
-   
 
-<?php
-$cart = new Cart();
+    <section>
+    <div class="container px-2 px-lg-5">
+        <div class="row gx-2 gx-lg-2">
+    <?php
+    $cart = new Cart();
 
-$carts = $cart->find_all();
+    $carts = $cart->find_all();
 
-foreach ($carts as $items) {
-?>
-    <ul class="list-group">
-        <li class="list-group-item">
-        <img style="width: 80px;" src="<?php echo $items->cart_image; ?>" alt="">
+    foreach ($carts as $items) {
+    ?>
+
+        <div class="col-lg-8">
+            <img style="width: 80px;" src="<?php echo $items->cart_image; ?>" alt="">
             <?php echo $items->description; ?>
-            <?php echo $items->name; ?>
             <?php echo $items->total_price . "₱"; ?>
-           
-            <a class="btn btn-light btn-outline-dark"  href="index.php?del=<?php echo $items->id; ?>">x</a>
-        </li>
+
+
+        </div>
+        <div class="col-lg-4">
+            <a href="<?php echo $_SERVER['PHP_SELF']; ?>?del=<?php echo $items->id; ?>">Remove</a>
+        </div>
+
+    <?php
+
+    }
+    if (isset($_GET['del'])) {
+        $cart->delete($_GET['del']);
         
-    </ul>
-<?php
-
-}
-if (isset($_GET['del'])) {
-    $cart->delete($_GET['del']);
-}
-?>
-
+        $database->redirect($_SERVER['PHP_SELF']);
+    }
+    ?>
+  </div>
+    </div>
+</section>
 </div>
 <!-- end of canvas -->
-
-
-
-
-

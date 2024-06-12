@@ -16,7 +16,7 @@ class Db_object
         return  static::find_query($sql);
     }
 
-    
+
 
     public static function find_query($sql)
     {
@@ -66,16 +66,29 @@ class Db_object
     }
 
 
-public function count_all(){
+    public function count_all()
+    {
 
-$res =  $this->find_all();
+        $res =  $this->find_all();
 
-return count($res);
-}
+        return count($res);
+    }
 
-public function delete($id){
-    return static::find_query("DELETE FROM " . static::$table . " WHERE id = " . $id);
-}
+    public function delete($id)
+    {
+        return static::find_query("DELETE FROM " . static::$table . " WHERE id = " . $id);
+    }
+
+    public function create()
+    {
+        global $database;
+        $props = $this->properties();
+
+        $sql = "INSERT INTO " . static::$table . "(" . implode(",", array_keys($props)) . ")";
+        $sql .= " VALUES('" . implode("','", array_values($props)) . "')";
+
+        return $database->query($sql);
+    }
 
 
 
@@ -83,6 +96,20 @@ public function delete($id){
 
 
 
-}//end of class db_object
+
+
+
+    public function properties()
+    {
+        $props = array();
+
+        foreach (static::$db_fields as $db_field) {
+            if (property_exists($this, $db_field)) {
+                $props[$db_field] = $this->$db_field;
+            }
+        }
+        return $props;
+    }
+} //end of class db_object
 
 $db = new Db_object();
