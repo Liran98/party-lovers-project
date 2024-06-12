@@ -19,38 +19,38 @@
 
 
     <section>
-    <div class="container px-2 px-lg-5">
-        <div class="row gx-2 gx-lg-2">
-    <?php
-    $cart = new Cart();
+        <div class="container px-2 px-lg-5">
+            <div class="row gx-2 gx-lg-2">
+                <?php
+                $cart = new Cart();
 
-    $carts = $cart->find_all();
+                $carts = $cart->find_all();
 
-    foreach ($carts as $items) {
-    ?>
+                foreach ($carts as $items) {
+                ?>
 
-        <div class="col-lg-8">
-            <img style="width: 80px;" src="<?php echo $items->cart_image; ?>" alt="">
-            <?php echo $items->description; ?>
-            <?php echo $items->total_price . "₱"; ?>
+                    <div class="col-lg-8">
+                        <img style="width: 80px;" src="<?php echo $items->cart_image; ?>" alt="">
+                        <?php echo $items->description; ?>
+                        <?php echo $items->total_price . "₱"; ?>
 
 
+                    </div>
+                    <div class="col-lg-4">
+                        <a href="sidebar.php?del=<?php echo $items->id; ?>">Remove</a>
+                    </div>
+
+                <?php
+
+                }
+
+                if (isset($_GET['del'])) {
+                    $cart->delete($_GET['del']);
+                    redirect('index');
+                }
+                ?>
+            </div>
         </div>
-        <div class="col-lg-4">
-            <a href="<?php echo $_SERVER['PHP_SELF']; ?>?del=<?php echo $items->id; ?>">Remove</a>
-        </div>
-
-    <?php
-
-    }
-    if (isset($_GET['del'])) {
-        $cart->delete($_GET['del']);
-        
-        $database->redirect($_SERVER['PHP_SELF']);
-    }
-    ?>
-  </div>
-    </div>
-</section>
+    </section>
 </div>
 <!-- end of canvas -->

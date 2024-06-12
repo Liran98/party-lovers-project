@@ -64,7 +64,7 @@ if (isset($_POST['add-to-cart'])) {
 
    $cart->create();
 
-       
+   redirect("events");
     
 };
 

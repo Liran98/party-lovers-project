@@ -16,7 +16,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-light" href='./contact.php'>Contact</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link text-light" href='./login.php'>Login</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

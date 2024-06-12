@@ -60,12 +60,6 @@ class Db_object
     }
 
 
-    public function redirect($file_name)
-    {
-        return header("Location : " . $file_name . ".php");
-    }
-
-
     public function count_all()
     {
 
