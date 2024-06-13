@@ -7481,7 +7481,7 @@ fieldset:disabled .btn {
   max-width: 100%;
   color: var(--bs-offcanvas-color);
   visibility: hidden;
-  background-color: var(--bs-offcanvas-bg);
+  background-image: url("../images/body-wallpaper.jpg");
   background-clip: padding-box;
   outline: 0;
   transition: transform 0.3s ease-in-out;
@@ -7547,6 +7547,7 @@ fieldset:disabled .btn {
   width: 100vw;
   height: 100vh;
   background-color: #000;
+ 
 }
 
 .offcanvas-backdrop.fade {

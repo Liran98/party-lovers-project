@@ -6,7 +6,7 @@
 
     <div  class="jumbotron m-2 p-3  text-center ">
         <h1 class="display-4  p-2 text-light">Welcome to Party Lovers Officals <img class="img-fluid" style="width: 70px;" src="images/party_logo.png"></h1>
-        <p class="card lead  p-3 bg-dark text-white mb-0">
+        <p class=" lead  p-3  text-white mb-0">
 
             we believe every moment is an opportunity to create magic.
             From electrifying birthday bashes and themed extravaganzas,

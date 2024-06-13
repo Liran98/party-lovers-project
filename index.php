@@ -3,17 +3,17 @@
 <header class="py-5">
     <div class="  container px-4 px-lg-5 my-5">
         <div class=" text-center">
-            <h1 class="display-4 fw-bolder  text-light">Welcome to Party Lovers Offical inc Since 2009 <img style="width: 90px;" src="images/party_logo.png"></h1>
-            <p class="card lead fw-normal mb-0 bg-dark text-light m-2 p-3">Founded by <strong class="text-light">Aleah and Michelle</strong>. planners with a passion for creating memorable moments,<br> Event Enchantment started as a small boutique agency.<br> Over the years, we have grown into a trusted name in the event planning industry, known for
+            <h1 class="display-4 fw-bolder  text-light">Welcome to Party Lovers <img style="width: 90px;" src="images/party_logo.png"> Offical inc Since 2009 </h1>
+            <p class="lead fw-normal mb-0 text-light m-2 p-3">Founded by <strong class="text-light">Aleah and Michelle.</strong> <br>planners with a passion for creating memorable moments,<br> Event Enchantment started as a small boutique agency.<br> Over the years, we have grown into a trusted name in the event planning industry,<br> known for
                 our creativity, professionalism, and unwavering commitment to client satisfaction.</p>
         </div>
     </div>
-    <div class="container px-4 px-lg-5 my-5">
+    <div class="container px-4 px-lg-5 my-5 ">
 
-        <ul class="card text-light bg-dark  list-group m-4 p-3">
+        <ul class="card text-light bg-dark  list-group m-4 p-3 ">
             <p class="text-light m-4 p-3 lead mb-0">
                 What We Do ?<br>
-                At Event Enchantment, we handle every aspect<br> of event planning so
+                At Party Lovers, we handle every aspect<br> of event planning so
                 you can enjoy your special occasion stress-free.
 
             </p>

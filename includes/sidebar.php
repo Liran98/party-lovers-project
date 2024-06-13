@@ -1,4 +1,3 @@
-<!-- class=👇offcanvas offcanvas-start👇 -->
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Party Lovers <img style="width: 70px;" src="images/party_logo.png"></h5>
@@ -15,11 +14,10 @@
                 </div>
             </div>
         </form>
-    </div>
 
 
-    <section>
-        <div class="container px-2 px-lg-5">
+
+        <div class="container text-bg-light p-3">
             <div class="row gx-2 gx-lg-2">
                 <?php
                 $cart = new Cart();
@@ -29,28 +27,28 @@
                 foreach ($carts as $items) {
                 ?>
 
-                    <div class="col-lg-8">
-                        <img style="width: 80px;" src="<?php echo $items->cart_image; ?>" alt="">
-                        <?php echo $items->description; ?>
-                        <?php echo $items->total_price . "₱"; ?>
-
-
+                    <div class="col-lg-12 div-data-sidebar">
+                        <ul class="list-group-item">
+                            <img style="width: 80px;" src="<?php echo $items->cart_image; ?>" alt="">
+                            <?php echo $items->description; ?>
+                            <?php echo "₱" . $items->total_price; ?>
+                            <a class="btn btn-danger btn_remove_cart" href="<?php echo $_SERVER['PHP_SELF']; ?>?del=<?php echo $items->id; ?>">Remove</a>
+                        </ul>
                     </div>
-                    <div class="col-lg-4">
-                        <a href="sidebar.php?del=<?php echo $items->id; ?>">Remove</a>
-                    </div>
-
+                    <hr>
+            
                 <?php
 
                 }
 
-                if (isset($_GET['del'])) {
-                    $cart->delete($_GET['del']);
-                    redirect('index');
-                }
+
                 ?>
             </div>
+            <p>Total Price: <span class="total"></span> </p>
         </div>
-    </section>
+
+    </div>
+
 </div>
+
 <!-- end of canvas -->

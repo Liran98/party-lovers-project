@@ -70,7 +70,8 @@ class Db_object
 
     public function delete($id)
     {
-        return static::find_query("DELETE FROM " . static::$table . " WHERE id = " . $id);
+        global $database;
+        return $database->query("DELETE FROM " . static::$table . " WHERE id = " . $id);
     }
 
     public function create()

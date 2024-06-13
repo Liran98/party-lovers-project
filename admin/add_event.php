@@ -1,77 +1,83 @@
 <?php include("includes/header.php"); ?>
-
-<div class="form-body">
+<section class="py-3 py-md-5 py-xl-8 m-4 p-4">
+    <div class="container d-flex justify-content-center">
         <div class="row">
-            <div class="form-holder">
-                <div class="form-content">
-                    <div class="form-items">
-                        <h3>Register Today</h3>
-                        <p>Fill in the data below.</p>
-                        <form class="requires-validation" novalidate>
-
-                            <div class="col-md-12">
-                               <input class="form-control" type="text" name="name" placeholder="Full Name" required>
-                               <div class="valid-feedback">Username field is valid!</div>
-                               <div class="invalid-feedback">Username field cannot be blank!</div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
-                                 <div class="valid-feedback">Email field is valid!</div>
-                                 <div class="invalid-feedback">Email field cannot be blank!</div>
-                            </div>
-
-                           <div class="col-md-12">
-                                <select class="form-select mt-3" required>
-                                      <option selected disabled value="">Position</option>
-                                      <option value="jweb">Junior Web Developer</option>
-                                      <option value="sweb">Senior Web Developer</option>
-                                      <option value="pmanager">Project Manager</option>
-                               </select>
-                                <div class="valid-feedback">You selected a position!</div>
-                                <div class="invalid-feedback">Please select a position!</div>
-                           </div>
+            <div class="col-12">
+                <div class="rounded shadow-sm overflow-hidden text-light">
+                    <h3 class="text-center m-3">Add Event</h3>
+                    <div class="row align-items-lg-center h-100 ">
+                        <div class="col-12 ">
 
 
-                           <div class="col-md-12">
-                              <input class="form-control" type="password" name="password" placeholder="Password" required>
-                               <div class="valid-feedback">Password field is valid!</div>
-                               <div class="invalid-feedback">Password field cannot be blank!</div>
-                           </div>
+                            <form action="" method="post">
+                                <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
+
+                                    <div class="col-6">
+                                        <label for="title" class="form-label">Title </label>
+                                        <input type="text" class="form-control" id="title" name="title" value="" required>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <label for="Themetype" class="form-label">Theme type </label>
+                                        <input type="text" class="form-control" id="Themetype" name="Themetype" value="" required>
+                                    </div>
+                                 
+                                    <div class="col-6">
+                                        <label for="PackageId" class="form-label">Package Id</label>
+                                        <select class="form-select" name="package_id" id="">
+                                            <!-- add for each here php ids -->
+                                             <?php ?>
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="image" class="form-label">Event Image</label>
+                                        <input class="form-control" type="file" name="event_image">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="Description" class="form-label">Description</label>
+                                        <textarea  class="form-control" name="description" rows="10" cols="10" ></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-grid">
+                                            <button name="add_event" class="btn btn-primary btn-lg" type="submit">Add Event</button>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </form>
 
 
-                           <div class="col-md-12 mt-3">
-                            <label class="mb-3 mr-1" for="gender">Gender: </label>
-
-                            <input type="radio" class="btn-check" name="gender" id="male" autocomplete="off" required>
-                            <label class="btn btn-sm btn-outline-secondary" for="male">Male</label>
-
-                            <input type="radio" class="btn-check" name="gender" id="female" autocomplete="off" required>
-                            <label class="btn btn-sm btn-outline-secondary" for="female">Female</label>
-
-                            <input type="radio" class="btn-check" name="gender" id="secret" autocomplete="off" required>
-                            <label class="btn btn-sm btn-outline-secondary" for="secret">Secret</label>
-                               <div class="valid-feedback mv-up">You selected a gender!</div>
-                                <div class="invalid-feedback mv-up">Please select a gender!</div>
-                            </div>
-
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                          <label class="form-check-label">I confirm that all data are correct</label>
-                         <div class="invalid-feedback">Please confirm that the entered data are all correct!</div>
                         </div>
-                  
-
-                            <div class="form-button mt-3">
-                                <button id="submit" type="submit" class="btn btn-primary">Register</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+    </div>
+</section>
+<br>
+
+<?php
+if(isset($_POST['add_event'])){
+    $event = new Event();
+
+    $event->title = $_POST['title'];
+    $event->description = $_POST['description']; 
+    $event->theme_type = $_POST['theme_type']; 
+    $event->package_id = $_POST['package_id']; 
+
+    $event->event_image = $_FILES['event_image']; 
+ 
+
+}
 
 
+
+?>
 
 <?php include("includes/footer.php"); ?>

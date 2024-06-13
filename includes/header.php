@@ -27,3 +27,14 @@
 <body class="bg-dark">
     <?php include("navigation.php"); ?>
     <?php include("sidebar.php"); ?>
+    <?php
+    if (isset($_GET['del'])) {
+        $cart = new Cart();
+        $cart->delete($_GET['del']);
+        redirect(substr(basename($_SERVER['PHP_SELF']), 0, -4));
+
+    } 
+
+
+
+    ?>
