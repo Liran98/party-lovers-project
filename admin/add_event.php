@@ -1,48 +1,61 @@
 <?php include("includes/header.php"); ?>
 <section class="py-3 py-md-5 py-xl-8 m-4 p-4">
-    <div class="container d-flex justify-content-center">
+    <div class="container-fluid d-flex justify-content-center">
         <div class="row">
-            <div class="col-12">
+            <div class="col-2">
+            </div>
+            <div class="col-10">
                 <div class="rounded shadow-sm overflow-hidden text-light">
                     <h3 class="text-center m-3">Add Event</h3>
                     <div class="row align-items-lg-center h-100 ">
                         <div class="col-12 ">
 
-                        <?php
 
-$package = new Package();
-$package->find_by_id(1);
-
-echo "<p>$package->package_theme</p>";
-
-?>
-                            <form action="" method="post">
+                            <form action="" method="post" enctype="multipart/form-data">
                                 <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
 
                                     <div class="col-6">
                                         <label for="title" class="form-label">Title </label>
                                         <input type="text" class="form-control" id="title" name="title" value="" required>
                                     </div>
-
+                                    <div class="col-6">
+                                        <label for="image" class="form-label">Event Image</label>
+                                        <input class="form-control" type="file" name="event_image">
+                                    </div>
                                     <div class="col-6">
                                         <label for="Themetype" class="form-label">Theme type </label>
-                                        <input type="text" class="form-control" id="Themetype" name="Themetype" value="" required>
+                                        <select class="form-select" name="Themetype" id="">
+                                        <option selected>Theme Type Selection</option>
+
+                                            <option value="Adventure">Adventure</option>
+                                            <option value="Super heros">Super heros</option>
+                                            <option value="Anime">Anime</option>
+                                        </select>
                                     </div>
 
                                     <div class="col-6">
                                         <label for="PackageId" class="form-label">Package Id</label>
                                         <select class="form-select" name="package_id" id="">
                                             <!-- add for each here php ids -->
-                                            <option selected>Open this select menu</option>
-                                         
-                                           
+                                            <option selected>Package Selection</option>
+                                            <?php
+
+                                            $packages = $package->find_all();
+
+                                            foreach ($packages as $item) {
+                                            ?>
+                                                <option value='<?php echo $item->id; ?>'>
+                                                    <?php echo $item->package_theme; ?>
+                                                </option>";
+                                            <?php
+                                            }
+
+                                            ?>
+
                                         </select>
 
                                     </div>
-                                    <div class="col-6">
-                                        <label for="image" class="form-label">Event Image</label>
-                                        <input class="form-control" type="file" name="event_image">
-                                    </div>
+                                  
                                     <div class="col-12">
                                         <label for="Description" class="form-label">Description</label>
                                         <textarea class="form-control" name="description" rows="10" cols="10"></textarea>
@@ -69,16 +82,17 @@ echo "<p>$package->package_theme</p>";
 <br>
 
 <?php
-// if (isset($_POST['add_event'])) {
-//     $event = new Event();
+if (isset($_POST['add_event'])) {
 
-//     $event->title = $_POST['title'];
-//     $event->description = $_POST['description'];
-//     $event->theme_type = $_POST['theme_type'];
-//     $event->package_id = $_POST['package_id'];
+    $event->title = $_POST['title'];
+    $event->description = $_POST['description'];
+    $event->theme_type = $_POST['Themetype'];
+    $event->package_id = $_POST['package_id'];
 
-//     $event->event_image = $_FILES['event_image'];
-// }
+   $event->set_file($_FILES['event_image']);
+
+    $event->create();
+}
 
 
 
