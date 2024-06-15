@@ -34,7 +34,7 @@
                     <th scope="row">
                       <div class="media align-items-center">
                         <a href="#" class="avatar rounded-circle mr-3">
-                          <img  src="<?php echo $event->img_path(); ?>">
+                          <img  src="<?php //echo $event->img_path(); ?>">
                         </a>
                         <div class="media-body">
                           <span class="mb-0 text-sm"><?php echo $event->title; ?></span>

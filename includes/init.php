@@ -1,25 +1,25 @@
 
 <?php
 
-defined("DS") ? null : define('DS',DIRECTORY_SEPARATOR);
+defined("DS") ? null : define("DS",DIRECTORY_SEPARATOR);
 
-defined("SITE_ROOT") ? null : define('SITE_ROOT',DS."MAMP\htdocs\party%20lovers%20project".DS);
+defined("SITE_ROOT") ? null : define("SITE_ROOT","C:\MAMP\htdocs\party lovers project");
 
 
-// defined("PATH") ? null : define('PATH',SITE_ROOT.DS."images".DS);
+//for classes
+defined("PATH") ? null : define('PATH',SITE_ROOT.DS."classes");
 
-//path = /MAMP\htdocs\party%20lovers%20project/images/
 
 ?>
 
 
 <?php require_once("includes/functions.php"); ?>
-<?php require_once("classes/database.php"); ?>
-<?php require_once("classes/db_object.php"); ?>
-<?php require_once("classes/Event.php"); ?>
-<?php require_once("classes/package.php"); ?>
-<?php require_once("classes/cart.php"); ?>
-<?php require_once("classes/users.php"); ?>
+<?php require_once(PATH.DS."database.php"); ?>
+<?php require_once(PATH.DS."db_object.php"); ?>
+<?php require_once(PATH.DS."Event.php"); ?>
+<?php require_once(PATH.DS."package.php"); ?>
+<?php require_once(PATH.DS."cart.php"); ?>
+<?php require_once(PATH.DS."users.php"); ?>
 
 
 

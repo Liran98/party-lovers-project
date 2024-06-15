@@ -20,17 +20,19 @@ class Event extends Db_object
         return static::find_query("SELECT theme FROM " . static::$table . " WHERE theme LIKE '%$search%' LIMIT 1");
     }
 
-
+    // define('SITE_ROOT',"\MAMP\htdocs\party lovers project");
     public function set_file($file)
     {
             $this->event_image = $file['name'];
             $this->tmp_path = $file['tmp_name'];
-            move_uploaded_file($this->tmp_path, SITE_ROOT.$this->file_directory.DS.$this->event_image);
+            $path_for_img = SITE_ROOT.DS.$this->file_directory.DS.$this->event_image;
+
+            move_uploaded_file($this->tmp_path, $path_for_img);
             unset($this->tmp_path);
     }
 
     public function img_path(){
-        return SITE_ROOT.$this->file_directory.DS.$this->event_image;
+        return $this->file_directory.DS.$this->event_image;
     }
 
     // public function delete_img(){
