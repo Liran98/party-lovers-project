@@ -23,22 +23,37 @@ class Event extends Db_object
     // define('SITE_ROOT',"\MAMP\htdocs\party lovers project");
     public function set_file($file)
     {
-            $this->event_image = $file['name'];
-            $this->tmp_path = $file['tmp_name'];
-            $path_for_img = SITE_ROOT.DS.$this->file_directory.DS.$this->event_image;
+        $this->event_image = $file['name'];
+        $this->tmp_path = $file['tmp_name'];
+        $path_for_img = SITE_ROOT . DS . $this->file_directory . DS . $this->event_image;
 
-            move_uploaded_file($this->tmp_path, $path_for_img);
-            unset($this->tmp_path);
+        move_uploaded_file($this->tmp_path, $path_for_img);
+        unset($this->tmp_path);
     }
 
-    public function img_path(){
-        return $this->file_directory.DS.$this->event_image;
+    public function img_path()
+    {
+        return $this->file_directory . DS . $this->event_image;
     }
 
-    // public function delete_img(){
-    //     $img_path = 
-    //     return unlink($img_path);
-    // }
+    public function delete_img()
+    {
+        $img_path = IMG_PATH.DS. $this->event_image;
+
+        if (file_exists($img_path)) {
+            echo "<h1 class='text-light text-center'>image exists</h1>";
+
+            if (unlink($img_path)) {
+                echo "<h1 class='text-light text-center'>Image deleted</h1>";
+            } else {
+                echo "<h1 class='text-light text-center'>error deleting image</h1>";
+            }
+        } else {
+            echo "<h1 class='text-light text-center'>image does not exist </h1>";
+        }
+
+     
+    }
 } //end of class Event
 
 

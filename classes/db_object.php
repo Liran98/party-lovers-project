@@ -71,7 +71,8 @@ class Db_object
     public function delete($id)
     {
         global $database;
-        return $database->query("DELETE FROM " . static::$table . " WHERE id = " . $id);
+        $sql = "DELETE FROM " . static::$table ." WHERE id =".$id;
+        return $database->query($sql);
     }
 
     public function create()
@@ -84,13 +85,6 @@ class Db_object
 
         return $database->query($sql);
     }
-
-
-
-
-
-
-
 
 
 

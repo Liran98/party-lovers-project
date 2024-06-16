@@ -92,6 +92,8 @@ if (isset($_POST['add_event'])) {
    $event->set_file($_FILES['event_image']);
 
     $event->create();
+
+    redirect("all_events");
 }
 
 
