@@ -20,12 +20,11 @@ class Event extends Db_object
         return static::find_query("SELECT theme FROM " . static::$table . " WHERE theme LIKE '%$search%' LIMIT 1");
     }
 
-    // define('SITE_ROOT',"\MAMP\htdocs\party lovers project");
     public function set_file($file)
     {
         $this->event_image = $file['name'];
         $this->tmp_path = $file['tmp_name'];
-        $path_for_img = SITE_ROOT . DS . $this->file_directory . DS . $this->event_image;
+        $path_for_img = IMG_PATH . DS . $this->event_image;
 
         move_uploaded_file($this->tmp_path, $path_for_img);
         unset($this->tmp_path);
@@ -38,7 +37,7 @@ class Event extends Db_object
 
     public function delete_img()
     {
-        $img_path = IMG_PATH.DS. $this->event_image;
+        $img_path = $this->file_directory . DS. $this->event_image;
 
         if (file_exists($img_path)) {
             echo "<h1 class='text-light text-center'>image exists</h1>";
