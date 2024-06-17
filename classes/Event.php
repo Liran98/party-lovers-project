@@ -22,7 +22,7 @@ class Event extends Db_object
 
     public function set_file($file)
     {
-        $this->event_image = $file['name'];
+        $this->event_image = basename($file['name']);
         $this->tmp_path = $file['tmp_name'];
         $path_for_img = IMG_PATH . DS . $this->event_image;
 
@@ -37,21 +37,14 @@ class Event extends Db_object
 
     public function delete_img()
     {
-        $img_path = $this->file_directory . DS. $this->event_image;
+        $imgpath = "../".$this->img_path();
 
-        if (file_exists($img_path)) {
-            echo "<h1 class='text-light text-center'>image exists</h1>";
-
-            if (unlink($img_path)) {
-                echo "<h1 class='text-light text-center'>Image deleted</h1>";
-            } else {
-                echo "<h1 class='text-light text-center'>error deleting image</h1>";
+            if (file_exists($imgpath)) {
+                echo "<h1 class='text-light text-center'>image exists</h1>";
+    
+                unlink($imgpath);
             }
-        } else {
-            echo "<h1 class='text-light text-center'>image does not exist </h1>";
-        }
-
-     
+  
     }
 } //end of class Event
 

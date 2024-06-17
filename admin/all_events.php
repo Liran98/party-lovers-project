@@ -74,8 +74,16 @@
 if (isset($_GET['del'])) {
 
   $event->find_by_id($_GET['del']);
-  $event->delete($_GET['del']);
-  $event->delete_img();
+
+  if($event){
+    $event->delete_img();
+    $event->delete($_GET['del']);
+
+  }
+   
+
+
+  // redirect("all_events");
 }
 
 

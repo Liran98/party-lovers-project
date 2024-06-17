@@ -4,6 +4,8 @@
 defined("DS") ? null : define('DS',DIRECTORY_SEPARATOR);
 
 defined("SITE_ROOT") ? null : define('SITE_ROOT',DS."MAMP\htdocs\party_lovers_project");
+
+
 //for images
 defined("IMG_PATH") ? null : define('IMG_PATH',SITE_ROOT.DS."images");
 
