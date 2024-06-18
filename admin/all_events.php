@@ -4,16 +4,7 @@
 <div class="main-content col-10">
   <div class="container-fluid mt-7">
     <!-- Table -->
-    <?php
 
-    if (isset($_GET['del'])) {
-      $event->delete_img();
-      $event->delete($_GET['del']);
-      
-    }
-
-
-    ?>
     <!-- Dark table -->
     <div class="col">
       <div class="bg-default shadow">
@@ -42,9 +33,9 @@
                 <tr>
                   <th scope="row">
                     <div class="media align-items-center">
-                   
-                        <img class="avatar rounded-circle mr-3 bg-dark"  src="<?php echo  "../" . $events->img_path(); ?>">
-                    
+
+                      <img class="avatar rounded-circle mr-3 bg-dark" src="<?php echo  "../" . $events->img_path(); ?>">
+
                       <div class="media-body">
                         <span class="mb-0 text-sm"><?php echo $events->title; ?></span>
                       </div>
@@ -67,7 +58,7 @@
                     </div>
                   </td>
                   <td>
-                  <a href="all_events.php?del=<?php echo $events->id; ?>" > 🗑️ </a>
+                    <a href="all_events.php?del=<?php echo $events->id; ?>"> 🗑️ </a>
                   </td>
                 </tr>
               <?php
@@ -81,7 +72,23 @@
   </div>
 </div>
 </div>
+<?php
 
+
+
+
+if (isset($_GET['del'])) {
+  if ($event->delete_img()) {
+    if ($event->delete($_GET['del'])) {
+
+      redirect("all_events");
+    };
+  };
+}
+
+
+
+?>
 
 
 <?php include("includes/footer.php"); ?>

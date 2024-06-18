@@ -23,7 +23,7 @@ class Event extends Db_object
 
     public function set_file($file)
     {
-        $this->event_image = basename($file['name']);
+        $this->event_image = $file['name'];
 
         $this->tmp_path = $file['tmp_name'];
 
@@ -33,7 +33,7 @@ class Event extends Db_object
             echo "<p class='bg-danger text-center'>image already exists</p>";
         return false;
         }
-        else if (move_uploaded_file($this->tmp_path, $path_for_img)) {
+       if (move_uploaded_file($this->tmp_path, $path_for_img)) {
             unset($this->tmp_path);
             return true;
         };
@@ -48,13 +48,25 @@ class Event extends Db_object
 
     public function delete_img()
     {
+     
+        // Construct the full image path
         $imgpath = IMG_PATH . DS . $this->event_image;
-        if (!unlink($imgpath)) {
-            echo "failed to unlink";
-        }else{
-            unlink($imgpath);
-            echo "unlinked photo successfully";
-        };
+        
+        // Check if the file exists before attempting to delete
+        if (file_exists($imgpath)) {
+            // Attempt to delete the file and return the result
+            if (unlink($imgpath)) {
+                return true;
+            } else {
+                // Log the error if unlink fails
+                error_log("Error: Failed to delete the image at path: $imgpath");
+                return false;
+            }
+        } else {
+            // Log the error if the file does not exist
+            error_log("Error: Image not found at path: $imgpath");
+            return false;
+        }
     }
 } //end of class Event
 
