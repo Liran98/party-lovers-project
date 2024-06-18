@@ -37,7 +37,7 @@ class Event extends Db_object
 
     public function delete_img()
     {
-        $imgpath = "../".$this->img_path();
+        $imgpath = IMG_PATH . DS . $this->event_image;
 
             if (file_exists($imgpath)) {
                 echo "<h1 class='text-light text-center'>image exists</h1>";

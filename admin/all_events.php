@@ -2,7 +2,7 @@
 
 <div class="col-2"></div>
 <div class="main-content col-10">
-  <div class="container mt-7">
+  <div class="container-fluid mt-7">
     <!-- Table -->
 
     <!-- Dark table -->
@@ -33,7 +33,7 @@
                   <th scope="row">
                     <div class="media align-items-center">
                       <a href="all_events.php?del=<?php echo $events->id; ?>" class="avatar rounded-circle mr-3 bg-dark">
-                        <img src="<?php echo "../" . $events->img_path(); ?>">
+                        <img src="<?php echo  "../".$events->img_path(); ?>">
                       </a>
                       <div class="media-body">
                         <span class="mb-0 text-sm"><?php echo $events->title; ?></span>
