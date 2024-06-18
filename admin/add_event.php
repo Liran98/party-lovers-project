@@ -9,7 +9,24 @@
                     <h3 class="text-center m-3">Add Event</h3>
                     <div class="row align-items-lg-center h-100 ">
                         <div class="col-12 ">
+                            <?php
+                            if (isset($_POST['add_event'])) {
 
+                                $event->title = $_POST['title'];
+                                $event->description = $_POST['description'];
+                                $event->theme_type = $_POST['Themetype'];
+                                $event->package_id = $_POST['package_id'];
+
+                                $event->set_file($_FILES['event_image']);
+
+                                $event->create();
+
+                                echo "<p class='bg-success text-center'>event added successfully</p>";
+                            }
+
+
+
+                            ?>
 
                             <form action="" method="post" enctype="multipart/form-data">
                                 <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
@@ -25,7 +42,7 @@
                                     <div class="col-6">
                                         <label for="Themetype" class="form-label">Theme type </label>
                                         <select class="form-select" name="Themetype" id="">
-                                        <option selected>Theme Type Selection</option>
+                                            <option selected>Theme Type Selection</option>
 
                                             <option value="Adventure">Adventure</option>
                                             <option value="Super heros">Super heros</option>
@@ -55,7 +72,7 @@
                                         </select>
 
                                     </div>
-                                  
+
                                     <div class="col-12">
                                         <label for="Description" class="form-label">Description</label>
                                         <textarea class="form-control" name="description" rows="10" cols="10"></textarea>
@@ -81,23 +98,6 @@
 </section>
 <br>
 
-<?php
-if (isset($_POST['add_event'])) {
 
-    $event->title = $_POST['title'];
-    $event->description = $_POST['description'];
-    $event->theme_type = $_POST['Themetype'];
-    $event->package_id = $_POST['package_id'];
-
-   $event->set_file($_FILES['event_image']);
-
-    $event->create();
-
-    redirect("all_events");
-}
-
-
-
-?>
 
 <?php include("includes/footer.php"); ?>
