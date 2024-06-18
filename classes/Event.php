@@ -15,6 +15,7 @@ class Event extends Db_object
     public $file_directory = "images";
     public $tmp_path = "";
 
+    
     public function find_by_search($search)
     {
         return static::find_query("SELECT theme FROM " . static::$table . " WHERE theme LIKE '%$search%' LIMIT 1");
@@ -28,7 +29,11 @@ class Event extends Db_object
 
         $path_for_img = IMG_PATH . DS . $this->event_image;
 
-        if (move_uploaded_file($this->tmp_path, $path_for_img)) {
+        if(file_exists($path_for_img)){
+            echo "<p class='bg-danger text-center'>image already exists</p>";
+        return false;
+        }
+        else if (move_uploaded_file($this->tmp_path, $path_for_img)) {
             unset($this->tmp_path);
             return true;
         };
@@ -41,14 +46,15 @@ class Event extends Db_object
 
 
 
-    public function delete_img($e_img)
+    public function delete_img()
     {
-        $imgpath = IMG_PATH . DS . $e_img;
-        if (file_exists($imgpath)) {
-            echo "<h1 class='text-light text-center'>image exists</h1>";
-            echo $imgpath;
+        $imgpath = IMG_PATH . DS . $this->event_image;
+        if (!unlink($imgpath)) {
+            echo "failed to unlink";
+        }else{
             unlink($imgpath);
-        }
+            echo "unlinked photo successfully";
+        };
     }
 } //end of class Event
 

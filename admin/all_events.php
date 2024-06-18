@@ -6,16 +6,14 @@
     <!-- Table -->
     <?php
 
-              $event->find_by_id($_GET['del']);
-
-              if ($event) {
-                $event->delete_img($event->event_image);
-                // $event->delete($_GET['del']);
-
-              }
+    if (isset($_GET['del'])) {
+      $event->delete_img();
+      $event->delete($_GET['del']);
+      
+    }
 
 
-              ?>
+    ?>
     <!-- Dark table -->
     <div class="col">
       <div class="bg-default shadow">
@@ -34,7 +32,7 @@
               </tr>
             </thead>
             <tbody>
-          
+
               <?php
               $all_events = $event->find_all();
 
@@ -44,9 +42,9 @@
                 <tr>
                   <th scope="row">
                     <div class="media align-items-center">
-                      <a href="all_events.php?del=<?php echo $events->id; ?>" class="avatar rounded-circle mr-3 bg-dark">
-                        <img name="file" src="<?php echo  "../" . $events->img_path(); ?>">
-                      </a>
+                   
+                        <img class="avatar rounded-circle mr-3 bg-dark"  src="<?php echo  "../" . $events->img_path(); ?>">
+                    
                       <div class="media-body">
                         <span class="mb-0 text-sm"><?php echo $events->title; ?></span>
                       </div>
@@ -56,7 +54,6 @@
                     <?php echo $events->theme_type; ?>
                   </td>
                   <td>
-                    <h6><?php echo $events->description; ?></h6>
                   </td>
                   <td>
                     <?php echo $events->package_id; ?>
@@ -68,6 +65,9 @@
 
                       </div>
                     </div>
+                  </td>
+                  <td>
+                  <a href="all_events.php?del=<?php echo $events->id; ?>" > 🗑️ </a>
                   </td>
                 </tr>
               <?php
