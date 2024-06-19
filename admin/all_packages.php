@@ -33,7 +33,15 @@
                                     <th scope="row">
                                         <div class="media align-items-center">
 
-                                            <img class="avatar rounded-circle mr-3 bg-dark" src="<?php echo  "../" . $packages->img_path(); ?>">
+                                            <img class="avatar rounded-circle mr-3 bg-dark" src="
+                                            <?php
+                                            if (!$packages) {
+                                                echo "../".$packages->img_path();
+                                            } else {
+                                                echo $packages->package_image;
+                                            };
+                                            ?>
+                                            ">
 
 
                                         </div>

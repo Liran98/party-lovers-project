@@ -34,7 +34,14 @@
                   <th scope="row">
                     <div class="media align-items-center">
 
-                      <img class="avatar rounded-circle mr-3 bg-dark" src="<?php echo  "../" . $events->img_path(); ?>">
+                      <img class="avatar rounded-circle mr-3 bg-dark" src="   
+                      <?php
+                                            if (!$events) {
+                                                echo "../".$events->img_path();
+                                            } else {
+                                                echo $events->event_image;
+                                            };
+                                            ?>">
 
                       <div class="media-body">
                         <span class="mb-0 text-sm"><?php echo $events->title; ?></span>
@@ -78,9 +85,8 @@
 
 
 if (isset($_GET['del'])) {
-  if ($event->delete_img()) {
+  if ($event->delete_img($event->event_image)) {
     if ($event->delete($_GET['del'])) {
-
       redirect("all_events");
     };
   };
