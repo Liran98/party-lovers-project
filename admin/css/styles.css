@@ -64,6 +64,10 @@ body {
   background-color: #f8f9fe;
 }
 
+.fas{
+padding: 3px;
+}
+
 [tabindex='-1']:focus {
   outline: 0 !important;
 }

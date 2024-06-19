@@ -12,6 +12,7 @@ class Package extends Db_object
     public $package_theme;
     public $package_price;
 
+    
 }//end of class Package
 
 $package = new Package();

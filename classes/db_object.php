@@ -2,6 +2,8 @@
 
 class Db_object
 {
+    public $file_directory = "images";
+    public $tmp_path = "";
 
     public function find_all()
     {
@@ -98,6 +100,54 @@ class Db_object
             }
         }
         return $props;
+    }
+
+    public function set_file($file,$col)
+    {
+        $col = $file['name'];
+
+        $this->tmp_path = $file['tmp_name'];
+
+        $path_for_img = IMG_PATH . DS . $col;
+
+        if(file_exists($path_for_img)){
+            echo "<p class='bg-danger text-center'>image already exists</p>";
+        return false;
+        }
+       if (move_uploaded_file($this->tmp_path, $path_for_img)) {
+            unset($this->tmp_path);
+            return true;
+        };
+    }
+
+    public function img_path($img_data)
+    {
+        return $this->file_directory . DS . $img_data;
+    }
+
+
+
+    public function delete_img($img_data)
+    {
+     
+        // Construct the full image path
+        $imgpath = IMG_PATH . DS . $img_data;
+        
+        // Check if the file exists before attempting to delete
+        if (file_exists($imgpath)) {
+            // Attempt to delete the file and return the result
+            if (unlink($imgpath)) {
+                return true;
+            } else {
+                // Log the error if unlink fails
+                error_log("Error: Failed to delete the image at path: $imgpath");
+                return false;
+            }
+        } else {
+            // Log the error if the file does not exist
+            error_log("Error: Image not found at path: $imgpath");
+            return false;
+        }
     }
 } //end of class db_object
 

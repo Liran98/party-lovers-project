@@ -28,20 +28,23 @@
 
 
                             <div class="sb-sidenav-menu-heading">Add/Edit Event</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Actions
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="add_event.php">Add Event</a>
-                                    <a class="nav-link" href="edit_event.php">Edit Event</a>
-                                    <a class="nav-link" href="all_events.php">All Events</a>
 
-                                </nav>
+                                    <a class="nav-link" href="add_event.php"><i class="fas fa-plus p-2"></i> Add Event</a>
+                                  
+                                    <a class="nav-link" href="edit_event.php">  <i class="fas fa-edit p-2"></i>  Edit Event </a>
+                                    <a class="nav-link" href="all_events.php">  <i class="fas fa-box p-2"></i> All Events</a>
+
+
+
+                            
+                            <div class="sb-sidenav-menu-heading">Add/Edit Package</div>
+                           
+                        
+                                    <a class="nav-link" href="add_package.php"> <i class="fas fa-plus p-2"></i>Add Package</a>
+                                    <a class="nav-link" href="edit_package.php"> <i class="fas fa-edit p-2"></i> Edit Package</a>
+                                    <a class="nav-link" href="all_packages.php"> <i class="fas fa-box p-2"></i> All Packages</a>
+
                             </div>
-
                     
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
