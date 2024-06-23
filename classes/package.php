@@ -12,6 +12,9 @@ class Package extends Db_object
     public $package_theme;
     public $package_price;
 
+    public $file_directory = "images";
+    public $tmp_path = "";
+
     public function set_file($file)
     {
         $this->package_image = $file['name'];
@@ -37,29 +40,17 @@ class Package extends Db_object
 
 
 
-    public function delete_img()
+    public function delete_img($id)
     {
      
-        // Construct the full image path
-        $imgpath = $imgpath = SITE_ROOT . DS .$this->img_path();
+        if($this->delete($id)){
+            
+ $imgpath = IMG_PATH . DS . $this->package_image;
         
-        // Check if the file exists before attempting to delete
-        if (file_exists($imgpath)) {
-            // Attempt to delete the file and return the result
-            if (unlink($imgpath)) {
-                return true;
-            } else {
-                // Log the error if unlink fails
-                error_log("Error: Failed to delete the image at path: $imgpath");
-                return false;
-            }
-        } else {
-            // Log the error if the file does not exist
-            error_log("Error: Image not found at path: $imgpath");
-            return false;
-        }
+return unlink($imgpath);
     }
-    
+
+}
 }//end of class Package
 
 $package = new Package();

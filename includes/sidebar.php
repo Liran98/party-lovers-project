@@ -1,6 +1,6 @@
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Party Lovers <img style="width: 70px;" src="images/party_logo.png"></h5>
+        <h5 class="offcanvas-title text-light" id="offcanvasWithBothOptionsLabel">Party Lovers <img style="width: 70px;" src="images/party_logo.png"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -25,18 +25,19 @@
                 $carts = $cart->find_all();
 
                 foreach ($carts as $items) {
+
                 ?>
 
                     <div class="col-lg-12 div-data-sidebar">
                         <ul class="list-group-item">
-                            <img style="width: 80px;" src="<?php echo $items->cart_image; ?>" alt="">
+                            <img style="width: 80px;" src="<?php echo "images/".$items->cart_image; ?>" alt="">
                             <?php echo $items->description; ?>
                             <?php echo "₱" . $items->total_price; ?>
-                            <a class="btn btn-danger btn_remove_cart" href="<?php echo $_SERVER['PHP_SELF']; ?>?del=<?php echo $items->id; ?>">Remove</a>
+                            <a class="btn_remove_cart" href="<?php echo $_SERVER['PHP_SELF']; ?>?del=<?php echo $items->id; ?>"> <i class="fas fa-trash p-2"></i></a>
                         </ul>
                     </div>
                     <hr>
-            
+
                 <?php
 
                 }
@@ -50,5 +51,6 @@
     </div>
 
 </div>
+
 
 <!-- end of canvas -->

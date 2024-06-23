@@ -29,6 +29,10 @@ class Db
              die(mysqli_error($this->db) . strtoupper(" <strong>💥Something went wrong in your code , try again💥</strong>"));
         }
     }
+
+    public function inserted_id(){
+        return mysqli_insert_id($this->db);
+    }
 } // end of  class
 
 $database = new Db();

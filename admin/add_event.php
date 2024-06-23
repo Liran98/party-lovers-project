@@ -5,8 +5,8 @@
             <div class="col-2">
             </div>
             <div class="col-10">
-                <div class="rounded shadow-sm overflow-hidden text-light">
-                    <h3 class="text-center m-3">Add Event</h3>
+                <div class="rounded shadow-sm overflow-hidden text-light m-3">
+                    <h3 class="text-center m-3 text-light">Add Event</h3>
                     <div class="row align-items-lg-center h-100 ">
                         <div class="col-12 ">
                             <?php
@@ -22,6 +22,9 @@
                                 $event->create();
 
                                 echo "<p class='bg-success text-center'>event added successfully</p>";
+
+                                redirect("all_events");
+
                             }
 
 
@@ -85,7 +88,6 @@
                                     </div>
                                 </div>
                             </form>
-
 
                         </div>
                     </div>

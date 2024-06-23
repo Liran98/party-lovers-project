@@ -4,13 +4,25 @@
 class User extends Db_object
 {
     static $table = 'users';
-    static $db_fields = ['username', 'email', 'password'];
+    static $db_fields = ['username', 'email', 'password'.'user_role'];
 
+    public $id;
     public $username;
     public $password;
     public $email;
+    public $user_role;
 
-    public $loggedIn = false;
+
+    public $LoggedIn = false;
+
+
+    function __construct(){
+
+        session_start();
+        $this->session();
+
+    }
+
 
     public function login()
     {
@@ -18,15 +30,19 @@ class User extends Db_object
         $res = static::find_query($sql);
 
         if ($res) {
-            $this->loggedIn = true;
+            $this->LoggedIn = true;
             redirect("admin/index");
-        }else{
+        } else {
             return false;
         }
     }
 
-
-
+    public function session(){
+        if($this->LoggedIn){
+           $_SESSION['username'] = $this->username;
+        }
+    }
+  
 } // end of class user
 
 

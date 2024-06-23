@@ -23,7 +23,7 @@
                         </div>
                         <div>
                           <h4 class="mb-3 text-light">Address</h4>
-                          <address class="mb-0 text-light opacity-75">8014 Edith Blvd NE, Albuquerque, New York, United States</address>
+                          <address class="mb-0 text-light opacity-75">Sampaloc, Manila, Philippines</address>
                         </div>
                       </div>
                       <div class="row mb-4 mb-xxl-5">
@@ -37,7 +37,7 @@
                             <div>
                               <h4 class="mb-3 text-light">Phone</h4>
                               <p class="mb-0">
-                                <a class="link-light link-opacity-75 link-opacity-100-hover text-decoration-none" href="tel:+972549148433">(505) 792-2430</a>
+                                <a class="link-light link-opacity-75 link-opacity-100-hover text-decoration-none" href="tel:+639062712481">+63 906 271 2481</a>
                               </p>
                             </div>
                           </div>
@@ -53,7 +53,7 @@
                             <div>
                               <h4 class="mb-3 text-light">E-Mail</h4>
                               <p class="mb-0">
-                                <a class="link-light link-opacity-75 link-opacity-100-hover text-decoration-none" href="mailto:demo@yourdomain.com">demo@yourdomain.com</a>
+                                <a class="link-light link-opacity-75 link-opacity-100-hover text-decoration-none" href="mailto:party_lovers1@yahoo.com">party_lovers1@yahoo.com</a>
                               </p>
                             </div>
                           </div>
@@ -69,7 +69,7 @@
                         <div>
                           <h4 class="mb-3 text-light">Opening Hours</h4>
                           <div class="d-flex mb-1">
-                            <p class="text-light fw-bold mb-0 me-5">Everyday</p>
+                            <p class="text-success fw-bold mb-0 me-5">Always open</p>
                             
                           </div>
                           

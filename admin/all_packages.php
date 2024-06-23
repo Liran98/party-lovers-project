@@ -16,9 +16,13 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Image</th>
+                                <th scope="col">Package Id</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Theme</th>
                                 <th scope="col">Price</th>
+                                <th scope="col">Delete</th>
+                                <th scope="col">Edit</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -35,18 +39,17 @@
 
                                             <img class="avatar rounded-circle mr-3 bg-dark" src="
                                             <?php
-                                            if (!$packages) {
-                                                echo "../".$packages->img_path();
-                                            } else {
-                                                echo $packages->package_image;
-                                            };
+                                            echo "../" . $packages->img_path();
                                             ?>
                                             ">
 
 
                                         </div>
                                     </th>
-
+                                    <td>
+                                        <div class="media-body">
+                                            <span class="mb-0 text-sm"><?php echo $packages->id; ?></span>
+                                        </div>
                                     <td>
                                         <div class="media-body">
                                             <span class="mb-0 text-sm"><?php echo $packages->package_name; ?></span>
@@ -64,7 +67,10 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a href="all_packages.php?del=<?php echo $packages->id; ?>"> 🗑️ </a>
+                                        <a href="all_packages.php?del=<?php echo $packages->id; ?>"> <i class="fas fa-trash p-2"></i>  </a>
+                                    </td>
+                                    <td>
+                                        <a href="edit_package.php?edit=<?php echo $packages->id; ?>"><i class="fas fa-edit p-2"></i> </a>
                                     </td>
                                 </tr>
                             <?php
@@ -84,11 +90,8 @@
 
 
 if (isset($_GET['del'])) {
-    if ($package->delete_img()) {
-        if ($package->delete($_GET['del'])) {
-
-            redirect("all_packages");
-        };
+    if ($package->delete_img($_GET['del'])) {
+        redirect("all_packages");
     };
 }
 

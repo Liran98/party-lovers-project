@@ -50,11 +50,11 @@
 <?php
 if (isset($_POST['register'])) {
     $user->find_all();
-    
+
     $user->username = $_POST['user'];
     $user->password = $_POST['password'];
     $user->email = $_POST['email'];
-
+    $user->user_role = "subscriber";
     if ($user->create()) {
         $user->login();
     };

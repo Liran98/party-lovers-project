@@ -1,6 +1,6 @@
 <?php include("includes/header.php"); ?>
 
-<header class="py-5">
+<header class="py-5 info">
     <div class="  container px-4 px-lg-5 my-5">
         <div class=" text-center">
             <h1 class="display-4 fw-bolder  text-light">Welcome to Party Lovers <img style="width: 90px;" src="images/party_logo.png"> Offical inc Since 2009 </h1>

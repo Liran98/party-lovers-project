@@ -2,8 +2,7 @@
 
 class Db_object
 {
-    public $file_directory = "images";
-    public $tmp_path = "";
+
 
     public function find_all()
     {
@@ -64,18 +63,17 @@ class Db_object
 
     public function count_all()
     {
-
-        $res =  $this->find_all();
-
-        return count($res);
-    }
-
-    public function delete($id)
-    {
         global $database;
-        $sql = "DELETE FROM " . static::$table ." WHERE id =".$id;
-        return $database->query($sql);
+        $sql = "SELECT COUNT(*) FROM " . static::$table;
+
+        $res =  $database->query($sql);
+
+        $row =  mysqli_fetch_array($res);
+
+        return array_shift($row);
     }
+
+
 
     public function create()
     {
@@ -87,7 +85,30 @@ class Db_object
 
         return $database->query($sql);
     }
+    public function delete($id)
+    {
+        global $database;
+        $sql = "DELETE FROM " . static::$table . " WHERE id = " . $id;
+        return $database->query($sql);
+    }
+    public function update($id)
+    {
+        global $database;
+        $obj = $this->properties();
+        $obj_pairs = [];
 
+
+        foreach ($obj as $key => $val) {
+            $obj_pairs[] = "{$key} ='{$val}'";
+        }
+
+        $sql = "UPDATE " . static::$table . " SET ";
+        $sql .= implode(",", $obj_pairs);
+        $sql .= " WHERE id = '$id'";
+
+
+        return $database->query($sql);
+    }
 
 
     public function properties()
@@ -102,7 +123,7 @@ class Db_object
         return $props;
     }
 
-  
+    
 } //end of class db_object
 
 $db = new Db_object();

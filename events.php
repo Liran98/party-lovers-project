@@ -1,8 +1,21 @@
 <?php include("includes/header.php"); ?>
+<header>
+    <div class="  container px-4 px-lg-5 my-3">
+        <div class=" text-center">
+            <p class="lead fw-normal mb-0 text-light">
 
+           Every celebration is transformed into an unforgettable experience!<br> With years of expertise in the event planning industry,<br>
+             we specialize in creating unique, vibrant,<br>
+              and seamlessly executed events tailored to your vision. <br>
+                a milestone birthday bash, Cool Event Parties brings a touch of magic to every occasion.
+            </p>
+        </div>
+    </div>
+
+</header>
 <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    <div class="container px-4 px-lg-5 ">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center ">
             <?php
             $events = $event->find_all();
 

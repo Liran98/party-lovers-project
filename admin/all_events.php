@@ -15,11 +15,13 @@
           <table class="table align-items-center table-dark table-flush">
             <thead class="thead-dark">
               <tr>
+                <th scope="col">IMG</th>
                 <th scope="col">Title</th>
                 <th scope="col">Theme</th>
-                <th scope="col">Description</th>
                 <th scope="col">Package Id</th>
                 <th scope="col">Event Id</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Edit</th>
               </tr>
             </thead>
             <tbody>
@@ -36,47 +38,42 @@
 
                       <img class="avatar rounded-circle mr-3 bg-dark" src="   
                       <?php
-                                            if (!$events) {
-                                                echo "../".$events->img_path();
-                                            } else {
-                                                echo $events->event_image;
-                                            };
-                                            ?>">
-
-                      <div class="media-body">
-                        <span class="mb-0 text-sm"><?php echo $events->title; ?></span>
-                      </div>
+                      echo "../" . $events->img_path();
+                      ?>">
                     </div>
                   </th>
                   <td>
-                    <?php echo $events->theme_type; ?>
+                    <?php echo $events->title; ?>
                   </td>
                   <td>
+                    <?php echo $events->theme_type; ?>
                   </td>
+
                   <td>
                     <?php echo $events->package_id; ?>
                   </td>
                   <td>
-                    <div class="d-flex align-items-center">
-                      <?php echo $events->id; ?>
-                      <div>
+                    <?php echo $events->id; ?>
 
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <a href="all_events.php?del=<?php echo $events->id; ?>"> 🗑️ </a>
-                  </td>
-                </tr>
-              <?php
-              }
-              ?>
-            </tbody>
-          </table>
         </div>
       </div>
+      </td>
+      <td>
+        <a href="all_events.php?del=<?php echo $events->id; ?>"> <i class="fas fa-trash p-2"></i></a>
+      </td>
+      <td>
+        <a href="edit_event.php?edit=<?php echo $events->id; ?>"><i class="fas fa-edit p-2"></i> </a>
+      </td>
+      </tr>
+    <?php
+              }
+    ?>
+    </tbody>
+    </table>
     </div>
   </div>
+</div>
+</div>
 </div>
 </div>
 <?php
@@ -85,12 +82,11 @@
 
 
 if (isset($_GET['del'])) {
-  if ($event->delete_img($event->event_image)) {
-    if ($event->delete($_GET['del'])) {
-      redirect("all_events");
-    };
+  if ($event->delete_img($_GET['del'])) {
+    redirect("all_events");
   };
-}
+};
+// }
 
 
 

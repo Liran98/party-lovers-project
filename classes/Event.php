@@ -12,9 +12,10 @@ class Event extends Db_object
     public $description;
 
     public $event_image;
-   
 
-    
+    public $file_directory = "images";
+    public $tmp_path = "";
+
     public function find_by_search($search)
     {
         return static::find_query("SELECT theme FROM " . static::$table . " WHERE theme LIKE '%$search%' LIMIT 1");
@@ -28,11 +29,11 @@ class Event extends Db_object
 
         $path_for_img = IMG_PATH . DS . $this->event_image;
 
-        if(file_exists($path_for_img)){
+        if (file_exists($path_for_img)) {
             echo "<p class='bg-danger text-center'>image already exists</p>";
-        return false;
+            return false;
         }
-       if (move_uploaded_file($this->tmp_path, $path_for_img)) {
+        if (move_uploaded_file($this->tmp_path, $path_for_img)) {
             unset($this->tmp_path);
             return true;
         };
@@ -45,26 +46,13 @@ class Event extends Db_object
 
 
 
-    public function delete_img()
+    public function delete_img($id)
     {
-     
-        // Construct the full image path
-        $imgpath = SITE_ROOT . DS .$this->img_path();
-        
-        // Check if the file exists before attempting to delete
-        if (file_exists($imgpath)) {
-            // Attempt to delete the file and return the result
-            if (unlink($imgpath)) {
-                return true;
-            } else {
-                // Log the error if unlink fails
-                error_log("Error: Failed to delete the image at path: $imgpath");
-                return false;
-            }
-        } else {
-            // Log the error if the file does not exist
-            error_log("Error: Image not found at path: $imgpath");
-            return false;
+
+        if ($this->delete($id)) {
+            $imgpath = SITE_ROOT . DS . $this->img_path();
+
+            return unlink($imgpath);
         }
     }
 } //end of class Event

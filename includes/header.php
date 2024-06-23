@@ -10,6 +10,7 @@
 
 
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/utilities/bsb-overlay/bsb-overlay.css">
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/utilities/background/background.css">
@@ -29,8 +30,9 @@
     <?php include("sidebar.php"); ?>
     <?php
     if (isset($_GET['del'])) {
-        $cart = new Cart();
+        $cart->find_by_id($_GET['del']);
         $cart->delete($_GET['del']);
+
         redirect(substr(basename($_SERVER['PHP_SELF']), 0, -4));
 
     } 
