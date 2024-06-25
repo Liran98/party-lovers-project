@@ -1,10 +1,11 @@
 <?php include("includes/header.php"); ?>
 
+<?php (!isset($_SESSION['username']) && redirect("../index")); ?>
+
 <div id="layoutSidenav_content">
     <main class="text-light">
         <div class="container-fluid px-4">
             <h1 class="mt-4 text-center">Dashboard</h1>
-
             <div class="row">
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">
@@ -54,7 +55,8 @@
         <?php
         $all_events = $event->count_all();
         $all_packages = $package->count_all();
-        $all_users = $user->count_all();
+        $all_users =$user->count_users_role('subscriber');
+        $all_admins = $user->count_users_role('admin');
         ?>
 
         new Chart(ctx, {
@@ -66,8 +68,8 @@
                     data: [
                         <?php echo $all_events; ?>,
                         <?php echo $all_packages; ?>,
-                        <?php echo $all_users; ?>
-                        ,0
+                        <?php echo $all_users; ?>,
+                        <?php echo $all_admins; ?>
 
 
                     ],

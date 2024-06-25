@@ -56,7 +56,7 @@ if (isset($_POST['register'])) {
     $user->email = $_POST['email'];
     $user->user_role = "subscriber";
     if ($user->create()) {
-        $user->login();
+        $user->verify_user();
     };
 }
 

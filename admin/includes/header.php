@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php include("../includes/init.php"); ?>
 
 <!DOCTYPE html>
@@ -10,14 +12,19 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Dashboard - SB Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+
     <link href="css/styles.css" rel="stylesheet" />
 
- 
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
 </head>
 
+
 <body class="sb-nav-fixed">
+
     <?php include("navigation.php"); ?>
+
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark text-light" id="sidenavAccordion">
@@ -42,9 +49,21 @@
                         <a class="nav-link" href="all_packages.php"> <i class="fas fa-box p-2"></i> All Packages</a>
                     </div>
 
+
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        "place holder for user"
+                        <div class="row">
+                            <div class="col-8">
+                                <p>Logged in as:</p>
+                            </div>
+                            <div class="col-4">
+                                <?php
+                                if (isset($_SESSION['username'])) {
+                                    echo $_SESSION['username'] . " <i class='fas fa-user'></i>";
+                                };
+                                ?>
+                               
+                            </div>
+                        </div>
                     </div>
             </nav>
         </div>

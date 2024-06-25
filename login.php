@@ -1,4 +1,5 @@
 <?php include("includes/header.php"); ?>
+
 <section class="py-3 py-md-5 py-xl-8">
 
   <div class="container d-flex justify-content-center">
@@ -50,12 +51,11 @@
 
 if (isset($_POST['login'])) {
 
-  $user->find_all();
-
   $user->username = $_POST['user'];
   $user->password = $_POST['password'];
 
-  $user->login();
+    $user->verify_user();
+ 
 }
 
 

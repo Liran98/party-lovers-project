@@ -16,6 +16,32 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
-});
 
+// ! <SHOW AND HIDE PASSWORD FOR EDIT_USER.PHP>
+const show_pass = document.querySelector('.show-password');
+const password = document.querySelector('.password');
+
+let visible = false;
+
+show_pass.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    show_pass.innerHTML = "";
+
+    if (visible) {
+        password.type = 'text';
+        show_pass.insertAdjacentHTML('afterbegin', "<i class='fa fa-eye display-6 my-4'></i>");
+    } else {
+        password.type = 'password';
+        show_pass.insertAdjacentHTML('afterbegin', "<i class='fa fa-eye-slash display-6 my-4'></i>");
+    }
+
+    visible = !visible;
+
+});
+// ! </SHOW AND HIDE PASSWORD FOR EDIT_USER.PHP>
+
+
+
+});
 

@@ -16,27 +16,32 @@
                 <li class="nav-item">
                     <a class="nav-link text-light home-nav-link" href='./contact.php'>Contact</a>
                 </li>
+
                 <?php
-                if ($user->LoggedIn) {
+
+                if (isset($_SESSION['username'])) {
                 ?>
                     <li class="nav-item">
-                        <a class="nav-link text-light home-nav-link" href='./logout.php'>Logout</a>
+                        <a  class="nav-link text-light home-nav-link" href='./logout.php'>Logout</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link text-light home-nav-link" href='admin'>Admin</a>
-                </li>
+                        <a class="nav-link text-light home-nav-link" href='admin'>Admin</a>
+                    </li>
+
                 <?php
+
                 } else {
                 ?>
+
                     <li class="nav-item">
                         <a class="nav-link text-light home-nav-link" href='./login.php'>Login</a>
                     </li>
-
                 <?php
                 }
                 ?>
 
-              
+
+
 
             </ul>
             <form class="d-flex">
