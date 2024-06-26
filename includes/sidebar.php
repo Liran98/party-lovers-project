@@ -30,9 +30,9 @@
 
                     <div class="col-lg-12 div-data-sidebar">
                         <ul class="list-group-item">
-                            <img style="width: 80px;" src="<?php echo "images/".$items->cart_image; ?>" alt="">
+                            <img style="width: 80px;" src="<?php echo "images/" . $items->cart_image; ?>" alt="">
                             <?php echo $items->description; ?>
-                            <?php echo "₱" . $items->total_price; ?>
+                          <?php echo "₱" . $items->total_price; ?>
                             <a class="btn_remove_cart" href="<?php echo $_SERVER['PHP_SELF']; ?>?del=<?php echo $items->id; ?>"> <i class="fas fa-trash p-2"></i></a>
                         </ul>
                     </div>

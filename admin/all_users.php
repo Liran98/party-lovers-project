@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include("includes/header.php"); ?>
 
 <div class="col-2"></div>
@@ -73,7 +74,10 @@
 if (isset($_GET['del'])) {
     if ($user->delete($_GET['del'])) {
         redirect("all_users");
-    };
+    }else if($user->username == $_SESSION['username']){
+        $user->delete($_GET['del']);
+        $user->logout();
+    }
 }
 
 

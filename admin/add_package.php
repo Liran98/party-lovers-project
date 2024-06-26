@@ -43,27 +43,38 @@
                                         <label for="package image" class="form-label">Package Image</label>
                                         <input class="form-control" type="file" name="package_image">
                                     </div>
-  
+
                                     <div class="col-6">
                                         <label for="theme" class="form-label">Package theme</label>
                                         <input class="form-control" type="text" name="package_theme">
                                     </div>
-                               
+
                                     <div class="col-6">
                                         <label for="price" class="form-label">Package price</label>
                                         <input class="form-control" type="text" name="package_price">
                                     </div>
+
+
+
+
                                     <div class="col-12">
                                         <label for="package_items" class="form-label">Package items</label>
-                                        <textarea class="form-control" name="package_items" rows="10" cols="10"></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="d-grid">
-                                            <button name="add_package" class="btn btn-primary btn-lg" type="submit">Add package</button>
+
+                                        <div class="container px-4 m-2 px-lg-5 ">
+                                            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center  packages ">
+
+
+                                            </div>
+                                            <textarea rows="10" class="form-control all_selected_packages m-3" name="" id=""></textarea>
                                         </div>
                                         <br>
+                                        <div class="col-12">
+                                            <div class="d-grid">
+                                                <button name="add_package" class="btn btn-primary btn-lg" type="submit">Add package</button>
+                                            </div>
+                                            <br>
+                                        </div>
                                     </div>
-                                </div>
                             </form>
 
 
@@ -77,9 +88,9 @@
     </div>
 </section>
 <br>
-  <script>
- 
-  </script>
+<script>
+
+</script>
 
 
 <?php include("includes/footer.php"); ?>

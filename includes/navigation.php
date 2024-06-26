@@ -53,7 +53,7 @@
                     $active_class = 'info';
                 }
                 ?>
-                <i class="fa badge bg-<?php echo $active_class; ?> btn  fa-lg" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                <i class="fa badge bg-<?php echo $active_class; ?> btn  fa-lg cart-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                     &#xf07a;
                     <span class="badge   ms-1 rounded-pill">
                         <?php

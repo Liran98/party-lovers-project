@@ -33,7 +33,7 @@
 
                         <form action="" method="post" enctype="multipart/form-data">
 
-                            <input name="add-to-cart" class="btn btn-outline-light" type="submit" value="Add to Cart" />
+                            <input data-price="<?php echo $items->package_price; ?>"  name="add-to-cart" class="btn btn-outline-light add-package" type="submit" value="Add to Cart" />
 
                             <a class="btn btn-outline-light" href="admin/edit_package.php?edit=<?php echo $items->id; ?>">
                                 Edit
