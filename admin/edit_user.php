@@ -31,7 +31,7 @@
                                             </div>
 
                                             <div class="col-1 my-6">
-                                                <a class="show-password" href="#"><i class="fa fa-eye-slash display-6 my-4"></i></a>
+                                                <a class="show-password" href=""><i class="fa fa-eye-slash display-6 my-4"></i></a>
                                             </div>
                                             <div class="col-6">
                                                 <label for="email" class="form-label">Email</label>
