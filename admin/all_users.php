@@ -48,12 +48,19 @@
                                     <td>
                                         <?php echo $users->user_role; ?>
                                     </td>
+                                    <?php
+                                    
+                                    if(isset($_SESSION['username']) && $_SESSION['username'] == $users->username){
+                                    ?>
                                     <td>
                                         <a href="all_users.php?del=<?php echo $users->id; ?>" class="del-btn"> <i class="fas fa-trash p-2"></i> </a>
                                     </td>
                                     <td>
                                         <a href="edit_user.php?edit=<?php echo $users->id; ?>"> <i class="fas fa-edit p-2"></i> </a>
                                     </td>
+                                    <?php
+                                    }
+                                    ?>
                                 </tr>
                             <?php
                             }
@@ -77,8 +84,6 @@ if (isset($_GET['del'])) {
         if ($theuser->username == $_SESSION['username']) {
             $user->delete($_GET['del']);
             $user->logout();
-        } else {
-            echo " cannot delete an account thats not urs";
         }
     }
 }

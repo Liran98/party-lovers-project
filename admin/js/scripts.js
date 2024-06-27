@@ -16,33 +16,33 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
-// ! <SHOW AND HIDE PASSWORD FOR EDIT_USER.PHP>
-const show_pass = document.querySelector('.show-password');
-const password = document.querySelector('.password');
+    // ! <SHOW AND HIDE PASSWORD FOR EDIT_USER.PHP>
+    const show_pass = document.querySelector('.show-password');
+    const password = document.querySelector('.password');
 
-let visible = false;
+    let visible = false;
 
-show_pass.addEventListener('click', function (e) {
-    e.preventDefault();
+    show_pass.addEventListener('click', function (e) {
+        e.preventDefault();
 
-    show_pass.innerHTML = "";
+        show_pass.innerHTML = "";
 
-    if (visible) {
-        password.type = 'text';
-        show_pass.insertAdjacentHTML('afterbegin', "<i class='fa fa-eye display-6 my-4'></i>");
-    } else {
-        password.type = 'password';
-        show_pass.insertAdjacentHTML('afterbegin', "<i class='fa fa-eye-slash display-6 my-4'></i>");
-    }
+        if (visible) {
+            password.type = 'text';
+            show_pass.insertAdjacentHTML('afterbegin', "<i class='fa fa-eye display-6 my-4'></i>");
+        } else {
+            password.type = 'password';
+            show_pass.insertAdjacentHTML('afterbegin', "<i class='fa fa-eye-slash display-6 my-4'></i>");
+        }
 
-    visible = !visible;
+        visible = !visible;
 
-});
-// ! </SHOW AND HIDE PASSWORD FOR EDIT_USER.PHP>
-
-
+    });
+    // ! </SHOW AND HIDE PASSWORD FOR EDIT_USER.PHP>
 
 
+
+});// end of js
 
 
 // ?</package selection for add_package.php>
@@ -61,66 +61,50 @@ const package_items = [
 
 
 const packages = document.querySelector('.packages');
-
 let item_data;
+
+
+
 const getitems = function (arr) {
     arr.forEach(function (data) {
         item_data = `
-         <div class="col m-2">
+         <div class="col m-2 pack-card">
         <div class="card h-100 w-100  packge_acc ">
-       <p class="text-center" data-target='${data.item}'>${data.item}</p>
+       <p class="text-center" data-item="${data.item}">${data.item}</p>
        <div class="card-body p-4">
         <img style="width:115px;" class="card-img-top img-fluid " src="../package items/${data.img}" alt="..." />
        </div>
        </div>
         `;
         packages.insertAdjacentHTML('afterbegin', item_data);
-    }); // end for each
+    }); // end for each array
 
 }//end of getitems function
 
 getitems(package_items);
 
-
 const package = document.querySelectorAll('.packge_acc');
+const items_for_textarea = [];
+const text_area = document.getElementById('all_selected_packages');
+
+
 package.forEach(function (btn) {
+
     btn.addEventListener('click', function (e) {
-        const data = e.target.dataset.target;
-        alert(data);
+   const data = e.target.dataset.item;
+
+        items_for_textarea.push(data);
+
+        text_area.value = items_for_textarea.join('&');
+
     });
-});
+});//end of foreach package
+
+
+
+
 
 // ? </package selection for add_package.php>
-
-
-
- const bin = document.querySelector('.del-btn');
-
- bin.addEventListener('click', function (e){
-
-     alert("clicked");
-    
-    });
-
-
-
-
-
-
-
-});// end of js
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

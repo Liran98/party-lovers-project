@@ -65,7 +65,8 @@
 
 
                                             </div>
-                                            <textarea rows="10" class="form-control all_selected_packages m-3" name="" id=""></textarea>
+                                            <textarea rows="10" class="form-control  m-3" name="package_items" id="all_selected_packages">
+                                            </textarea>
                                         </div>
                                         <br>
                                         <div class="col-12">
@@ -88,9 +89,6 @@
     </div>
 </section>
 <br>
-<script>
-
-</script>
 
 
 <?php include("includes/footer.php"); ?>

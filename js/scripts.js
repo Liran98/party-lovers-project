@@ -5,7 +5,7 @@
 selector.addEventListener('change', function (e){
    e.preventDefault();
    email.focus();
-   email.value = selector.value;
+   email.value =  selector.value;
   
     
     });

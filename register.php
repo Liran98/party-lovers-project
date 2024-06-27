@@ -1,4 +1,17 @@
 <?php include("includes/header.php"); ?>
+
+<?php
+$msg = "";
+if (isset($_POST['register'])) {
+
+            $user->username = $_POST['user'];
+            $user->password = $_POST['password'];
+            $user->email = $_POST['email'];
+            $user->user_role = "subscriber";
+           
+        }
+   
+?>
 <section class="py-3 py-md-5 py-xl-8">
 
     <div class="container d-flex justify-content-center">
@@ -11,23 +24,24 @@
 
                             <form action="" method="post">
                                 <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
-
+                                <?php   echo $msg;  ?>
                                     <div class="col-8">
                                         <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                                         <input type="email" class="form-control email" id="email" name="email" value="" required>
                                     </div>
                                     <div class="col-4">
                                         <label for="email" class="form-label">Selection <span class="text-danger">*</span></label>
-                                     <select class="form-select" name="" id="email_selection">
-                                        <option value="">Select Email Type</option>
-                                        <hr>
-                                        <option value="@yahoo.com">Yahoo</option>
-                                        <option value="@mail.com">Mail</option>
-                                        <option value="@hotmail.com">Hotmail</option>
-                                        <option value="@gmail.com">Gmail</option>
-                                     </select>
+                                        <select class="form-select" name="" id="email_selection">
+                                            <option value="">Select Email Type</option>
+                                            <hr>
+                                            <option value="@yahoo.com">Yahoo</option>
+                                            <option value="@mail.com">Mail</option>
+                                            <option value="@hotmail.com">Hotmail</option>
+                                            <option value="@gmail.com">Gmail</option>
+                                        </select>
                                     </div>
                                     <div class="col-12">
+                                       
                                         <label for="fullname" class="form-label">User Name <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="fullname" name="user" value="" required>
                                     </div>
@@ -57,21 +71,5 @@
     </div>
 </section>
 <br>
-<?php
-if (isset($_POST['register'])) {
-    $user->find_all();
 
-    $user->username = $_POST['user'];
-    $user->password = $_POST['password'];
-    $user->email = $_POST['email'];
-    $user->user_role = "subscriber";
-    if ($user->create()) {
-        $user->verify_user();
-    };
-}
-
-
-
-
-?>
 <?php include("includes/footer.php"); ?>

@@ -15,18 +15,20 @@ class User extends Db_object
 
     public function verify_user()
     {
-       
+
 
         $sql = "SELECT * FROM " . self::$table . " WHERE username = '$this->username' AND password = '$this->password'";
         $res = static::find_query($sql);
 
         if ($res) {
             $_SESSION['id'] = $this->id;
-            $_SESSION['username'] = $this->username;
             $_SESSION['email'] = $this->email;
             $_SESSION['user_role'] = $this->user_role;
+            $_SESSION['username'] = $this->username;
 
             redirect("admin/index");
+        }else{
+            echo "<p class='text-center bg-danger' >Invalid Credentials</p>";
         }
     }
 
@@ -50,7 +52,7 @@ class User extends Db_object
         return mysqli_num_rows($res);
     }
 
-   
+ 
 } // end of class user
 
 
