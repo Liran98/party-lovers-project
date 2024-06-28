@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php include("includes/header.php"); ?>
 
 <div class="col-2"></div>
@@ -50,7 +49,7 @@
                                     </td>
                                     <?php
                                     
-                                    if(isset($_SESSION['username']) && $_SESSION['username'] == $users->username){
+                                    if(isset($_SESSION['id']) && $_SESSION['id'] == $users->id){
                                     ?>
                                     <td>
                                         <a href="all_users.php?del=<?php echo $users->id; ?>" class="del-btn"> <i class="fas fa-trash p-2"></i> </a>
@@ -81,10 +80,9 @@
 if (isset($_GET['del'])) {
     $uid = $user->find_by_id($_GET['del']);
     foreach ($uid as $theuser) {
-        if ($theuser->username == $_SESSION['username']) {
-            $user->delete($_GET['del']);
-            $user->logout();
-        }
+        // if ($theuser->username == $_SESSION['username']) {
+        //     $user->delete($_GET['del']);
+        // }
     }
 }
 

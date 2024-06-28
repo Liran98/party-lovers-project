@@ -20,15 +20,19 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <div class="text-center">
             <?php
-          
-            echo "Hello <p class='text-success'>  ". $_SESSION['username']."</p>";
+            echo "Hello <p class='text-success'>  ". " user here  " ."</p>";
             ?>
             </div>
                 <hr>
                 <form action="" method="post">
                     <li>
                         <button name='logout-btn' class="dropdown-item">
-                        <i class="fas fa-sign-out"></i> Logout from <?php echo $_SESSION['username']; ?><i class="fas fa-user"></i>  </button>
+                            <?php
+                            
+                            
+                            
+                            ?>
+                        <i class="fas fa-sign-out"></i> Logout from <?php echo $_SESSION['id']; ?><i class="fas fa-user"></i>  </button>
                     </li>
                 </form>
             </ul>
@@ -38,7 +42,6 @@
 
 <?php
 if (isset($_POST['logout-btn'])) {
-    $user->logout();
 }
 
 

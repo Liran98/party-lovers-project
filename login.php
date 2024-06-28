@@ -50,9 +50,16 @@
 <?php
 
 if (isset($_POST['login'])) {
-    $user->username = $_POST['user'];
-    $user->password = $_POST['password'];
-    $user->verify_user();
+
+  $user->username = $_POST['user'];
+  $user->password = $_POST['password'];
+  $user_id =  $user->verify_user($_POST['user'], $_POST['password']);
+
+if($user_id){
+  $session->login($user_id);
+  redirect("admin/index");
+}
+ 
 }
 
 

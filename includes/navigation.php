@@ -19,7 +19,7 @@
 
                 <?php
 
-                if (isset($_SESSION['username'])) {
+                if (isset($_SESSION['id'])) {
                 ?>
                     <li class="nav-item">
                         <a  class="nav-link text-light home-nav-link" href='./logout.php'>Logout</a>

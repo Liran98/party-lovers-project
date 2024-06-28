@@ -13,33 +13,14 @@ class User extends Db_object
     public $user_role;
 
 
-    public function verify_user()
+    public function verify_user($username,$password)
     {
 
-
-        $sql = "SELECT * FROM " . self::$table . " WHERE username = '$this->username' AND password = '$this->password'";
-        $res = static::find_query($sql);
-
-        if ($res) {
-            $_SESSION['id'] = $this->id;
-            $_SESSION['email'] = $this->email;
-            $_SESSION['user_role'] = $this->user_role;
-            $_SESSION['username'] = $this->username;
-
-            redirect("admin/index");
-        }else{
-            echo "<p class='text-center bg-danger' >Invalid Credentials</p>";
-        }
+        $sql = "SELECT * FROM " . self::$table . " WHERE username = '$username' AND password = '$password'";
+       return  static::find_query($sql);
+   
     }
 
-    public function logout()
-    {
-        unset($_SESSION['email']);
-        unset($_SESSION['username']);
-        unset($_SESSION['user_role']);
-        unset($_SESSION['id']);
-        redirect("../index");
-    }
 
 
     public function count_users_role($role)

@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 
 <?php include("../includes/init.php"); ?>
 
@@ -57,8 +56,8 @@
                             </div>
                             <div class="col-4">
                                 <?php
-                                if (isset($_SESSION['username'])) {
-                                    echo $_SESSION['username']. " <i class='fas fa-user'></i>";
+                                if (isset($_SESSION['id'])) {
+                                    echo $_SESSION['id']. " <i class='fas fa-user'></i>";
                                 };
                                 ?>
                                
