@@ -56,9 +56,7 @@
                             </div>
                             <div class="col-4">
                                 <?php
-                                if (isset($_SESSION['id'])) {
-                                    echo $_SESSION['id']. " <i class='fas fa-user'></i>";
-                                };
+                               
                                 ?>
                                
                             </div>

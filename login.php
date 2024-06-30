@@ -1,7 +1,7 @@
 <?php include("includes/header.php"); ?>
 
 <section class="py-3 py-md-5 py-xl-8">
-  <?php $msg = ""; ?>
+
   <div class="container d-flex justify-content-center">
     <div class="row">
       <div class="col-12">
@@ -13,7 +13,7 @@
 
               <form action="" method="post">
                 <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
-                  <?php echo $msg; ?>
+
                   <div class="col-12">
                     <label for="user" class="form-label">User Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="user" name="user" value="" required>
@@ -47,24 +47,30 @@
 </section>
 <br>
 
+
 <?php
+
+if ($session->is_signed_in()) {
+  redirect("admin/index");
+}
+
 
 if (isset($_POST['login'])) {
 
-  $user->username = $_POST['user'];
-  $user->password = $_POST['password'];
-  $user_id =  $user->verify_user($_POST['user'], $_POST['password']);
+  $username =  $_POST['user'];
+  $password = $_POST['password'];
 
-if($user_id){
-  $session->login($user_id);
-  redirect("admin/index");
+  $user_found = $user->verify_user($username, $password);
+
+
+  if ($user_found) {
+    if (password_verify($password,  $user_found->password)) {
+      $session->login($user_found);
+      redirect("admin/index");
+    }
+  }
 }
- 
-}
-
-
 ?>
-
 
 
 

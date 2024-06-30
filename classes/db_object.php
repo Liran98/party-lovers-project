@@ -14,7 +14,7 @@ class Db_object
     public function find_by_id($id)
     {
         $sql = "SELECT * FROM " . static::$table . " WHERE id = $id LIMIT 1";
-        return  static::find_query($sql);
+        return static::find_query($sql);
     }
 
 
@@ -24,6 +24,8 @@ class Db_object
         global $database;
 
         $res = $database->query($sql);
+
+      
 
         $arr = [];
 
@@ -67,6 +69,8 @@ class Db_object
         $sql = "SELECT COUNT(*) FROM " . static::$table;
 
         $res =  $database->query($sql);
+
+        
 
         $row =  mysqli_fetch_array($res);
 
@@ -122,8 +126,6 @@ class Db_object
         }
         return $props;
     }
-
-    
 } //end of class db_object
 
 $db = new Db_object();

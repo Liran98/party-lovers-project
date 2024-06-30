@@ -12,7 +12,7 @@ class User extends Db_object
     public $email;
     public $user_role;
 
-
+    
     public function verify_user($username,$password)
     {
 

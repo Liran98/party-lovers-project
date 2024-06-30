@@ -1,6 +1,5 @@
 <?php include("includes/header.php"); ?>
 
-<?php (!isset($session->signed_in) && redirect("../login")); ?>
 
 <div id="layoutSidenav_content">
     <main class="text-light">

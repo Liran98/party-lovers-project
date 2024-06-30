@@ -1,8 +1,6 @@
 <?php include("includes/header.php"); ?>
 <?php
-
-unset($_SESSION['id']);
-
-redirect("index");
+$session->logout();
+redirect("login");
 ?>
 <?php include("includes/footer.php"); ?>

@@ -16,23 +16,20 @@
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-            
+
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <div class="text-center">
-            <?php
-            echo "Hello <p class='text-success'>  ". " user here  " ."</p>";
-            ?>
-            </div>
+                    <?php
+                    echo "Hello <p class='text-success'>  " . " user here  " . "</p>";
+                    ?>
+                </div>
                 <hr>
                 <form action="" method="post">
                     <li>
                         <button name='logout-btn' class="dropdown-item">
-                            <?php
-                            
-                            
-                            
-                            ?>
-                        <i class="fas fa-sign-out"></i> Logout from <?php echo $_SESSION['id']; ?><i class="fas fa-user"></i>  </button>
+                            <i class="fas fa-sign-out"></i> Logout from <?php echo "<user here>"; ?><i class="fas fa-user"></i>
+                        </button>
+
                     </li>
                 </form>
             </ul>
@@ -42,7 +39,8 @@
 
 <?php
 if (isset($_POST['logout-btn'])) {
+    $session->logout();
+    redirect("../login");
 }
-
 
 ?>

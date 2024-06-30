@@ -4,13 +4,22 @@
 $msg = "";
 if (isset($_POST['register'])) {
 
-            $user->username = $_POST['user'];
-            $user->password = $_POST['password'];
-            $user->email = $_POST['email'];
-            $user->user_role = "subscriber";
-           
-        }
-   
+    $user->username = $_POST['user'];
+    $user->email = $_POST['email'];
+    $user->user_role = "subscriber";
+
+
+    $password = $_POST['password'];
+
+    $options = array("cost" => 12);
+    $password =  password_hash($password, PASSWORD_BCRYPT, $options);
+    $user->password = $password;
+
+    $user->create();
+    $session->signed_in = true;
+    redirect("admin/index");
+}
+
 ?>
 <section class="py-3 py-md-5 py-xl-8">
 
@@ -24,7 +33,6 @@ if (isset($_POST['register'])) {
 
                             <form action="" method="post">
                                 <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
-                                <?php   echo $msg;  ?>
                                     <div class="col-8">
                                         <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                                         <input type="email" class="form-control email" id="email" name="email" value="" required>
@@ -41,7 +49,7 @@ if (isset($_POST['register'])) {
                                         </select>
                                     </div>
                                     <div class="col-12">
-                                       
+
                                         <label for="fullname" class="form-label">User Name <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="fullname" name="user" value="" required>
                                     </div>

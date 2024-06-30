@@ -15,10 +15,9 @@ defined("PATH") ? null : define('PATH',SITE_ROOT.DS."classes");
 
 
  require_once("functions.php"); 
- require_once(PATH.DS."database.php"); 
-
- require_once(PATH.DS."db_object.php"); 
  require_once(PATH.DS."sessions.php"); 
+ require_once(PATH.DS."database.php"); 
+ require_once(PATH.DS."db_object.php"); 
  require_once(PATH.DS."Event.php"); 
  require_once(PATH.DS."package.php"); 
  require_once(PATH.DS."cart.php"); 
