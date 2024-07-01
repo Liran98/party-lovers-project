@@ -17,8 +17,7 @@ class Session
     public function login($user)
     {
         if ($user) {
-            // Regenerate session ID to prevent session fixation
-            session_regenerate_id(true);
+        
             $this->user_id = $_SESSION['user_id'] = $user->id;
             $this->signed_in = true;
         }
@@ -30,7 +29,6 @@ class Session
         unset($_SESSION['user_id']);
         unset($this->user_id);
         $this->signed_in = false;
-        session_destroy();
     }
 
     private function check_login()

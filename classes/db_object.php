@@ -25,8 +25,6 @@ class Db_object
 
         $res = $database->query($sql);
 
-      
-
         $arr = [];
 
         while ($row = mysqli_fetch_assoc($res)) {

@@ -1,5 +1,29 @@
 <?php include("includes/header.php"); ?>
 
+<?php
+$msg = "";
+
+
+if (isset($_POST['login'])) {
+
+  $username =  trim($_POST['user']);
+  $password = trim($_POST['password']);
+
+  $user_found = $user->verify_user($username, $password);
+
+foreach($user_found as $uid){
+ echo var_dump($uid);
+
+    // if (password_verify($password,$uid->password)) {
+    //   $msg = "password valid";
+    //   $session->login($user_found);
+    //   redirect("admin/index");
+    // }else{
+    // $msg = "password not valid";
+    // }
+  }
+}
+?>
 <section class="py-3 py-md-5 py-xl-8">
 
   <div class="container d-flex justify-content-center">
@@ -21,6 +45,7 @@
 
 
                   <div class="col-12">
+                    <p class="bg-danger"><?php echo $msg; ?></p>
                     <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
                     <input type="password" class="form-control" id="password" name="password" value="" required>
                   </div>
@@ -48,29 +73,7 @@
 <br>
 
 
-<?php
 
-if ($session->is_signed_in()) {
-  redirect("admin/index");
-}
-
-
-if (isset($_POST['login'])) {
-
-  $username =  $_POST['user'];
-  $password = $_POST['password'];
-
-  $user_found = $user->verify_user($username, $password);
-
-
-  if ($user_found) {
-    if (password_verify($password,  $user_found->password)) {
-      $session->login($user_found);
-      redirect("admin/index");
-    }
-  }
-}
-?>
 
 
 
