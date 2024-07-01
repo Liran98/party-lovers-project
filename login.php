@@ -11,16 +11,16 @@ if (isset($_POST['login'])) {
 
   $user_found = $user->verify_user($username, $password);
 
-foreach($user_found as $uid){
- echo var_dump($uid);
+  foreach ($user_found as $uid) {
+    echo var_dump($uid);
 
-    // if (password_verify($password,$uid->password)) {
-    //   $msg = "password valid";
-    //   $session->login($user_found);
-    //   redirect("admin/index");
-    // }else{
-    // $msg = "password not valid";
-    // }
+    if (password_verify($password, $uid->password)) {
+      $msg = "password valid";
+      $session->login($user_found);
+      redirect("admin/index");
+    } else {
+      $msg = "password not valid";
+    }
   }
 }
 ?>

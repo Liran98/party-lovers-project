@@ -1,6 +1,6 @@
 <?php include("includes/header.php"); ?>
 
-
+<?php if(!$session->is_signed_in()) redirect("../index"); ?>
 <div id="layoutSidenav_content">
     <main class="text-light">
         <div class="container-fluid px-4">
