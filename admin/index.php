@@ -1,6 +1,7 @@
 <?php include("includes/header.php"); ?>
 
-<?php if(!$session->is_signed_in()) redirect("../index"); ?>
+<?php if (!$session->is_signed_in()) redirect("../index"); ?>
+
 <div id="layoutSidenav_content">
     <main class="text-light">
         <div class="container-fluid px-4">
@@ -35,7 +36,7 @@
                         <div class="card-footer d-flex align-items-center justify-content-between">
                             <a class="small text-white stretched-link" href="all_users.php">View Details</a>
                             <h4 class="text-right p-3">
-                            <?php echo $user->count_all(); ?>
+                                <?php echo $user->count_all(); ?>
                             </h4>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
@@ -43,7 +44,7 @@
                 </div>
 
     </main>
-  
+
     <div>
         <canvas style="width: auto; background-color:aliceblue; margin:80px;" id="myChart"></canvas>
     </div>
@@ -54,7 +55,7 @@
         <?php
         $all_events = $event->count_all();
         $all_packages = $package->count_all();
-        $all_users =$user->count_users_role('subscriber');
+        $all_users = $user->count_users_role('subscriber');
         $all_admins = $user->count_users_role('admin');
         ?>
 

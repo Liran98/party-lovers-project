@@ -30,10 +30,9 @@
                     </li>
                     <?php endif; ?>
 
-
-
-
             </ul>
+            <?php if($session->is_signed_in()): ?>
+
             <form class="d-flex">
                 <?php
                 $active_class = '';
@@ -53,6 +52,7 @@
                         ?></span>
                 </i>
             </form>
+            <?php endif; ?>
         </div>
     </div>
 </nav>

@@ -1,7 +1,7 @@
 <?php include("includes/header.php"); ?>
 
 <?php
-$msg = "";
+
 if (isset($_POST['register'])) {
 
     $user->username = $_POST['user'];
@@ -15,9 +15,9 @@ if (isset($_POST['register'])) {
     $password =  password_hash($password, PASSWORD_BCRYPT, $options);
     $user->password = $password;
 
-    $user->create();
-    $session->signed_in = true;
-    redirect("admin/index");
+    if ($user->create()) {
+        redirect("login");
+    };
 }
 
 ?>

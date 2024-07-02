@@ -6,7 +6,7 @@ class Session
 {
 
     public $user_id;
-    public $signed_in = false;
+    private $signed_in = false;
 
     function __construct()
     {
@@ -17,7 +17,6 @@ class Session
     public function login($user)
     {
         if ($user) {
-        
             $this->user_id = $_SESSION['user_id'] = $user->id;
             $this->signed_in = true;
         }
@@ -43,7 +42,8 @@ class Session
         }
     }
 
-    public function is_signed_in(){
+    public function is_signed_in()
+    {
         return $this->signed_in;
     }
 } //end of Session class

@@ -12,13 +12,13 @@ class User extends Db_object
     public $email;
     public $user_role;
 
-    
-    public function verify_user($username,$password)
+
+    public function verify_user($username)
     {
 
-        $sql = "SELECT * FROM " . self::$table . " WHERE username = '$username' AND password = '$password'";
-       return  static::find_query($sql);
-   
+        $sql = "SELECT * FROM " . self::$table . " WHERE username = '$username'";
+        $res_array = static::find_query($sql);
+        return  !empty($res_array) ? array_shift($res_array) : false;
     }
 
 
@@ -32,8 +32,6 @@ class User extends Db_object
 
         return mysqli_num_rows($res);
     }
-
- 
 } // end of class user
 
 

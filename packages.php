@@ -30,6 +30,7 @@
                             </span>
                         </p>
                         <p>Items: <?php echo $items->package_items; ?></p>
+                        <?php if($session->is_signed_in()): ?>
 
                         <form action="" method="post" enctype="multipart/form-data">
 
@@ -39,6 +40,8 @@
                                 Edit
                             </a>
                         </form>
+            <?php endif; ?>
+
                     </div>
 
             <?php

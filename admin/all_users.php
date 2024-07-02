@@ -1,5 +1,5 @@
 <?php include("includes/header.php"); ?>
-
+<?php if (!$session->is_signed_in()) redirect("../index"); ?>
 <div class="col-2"></div>
 <div class="main-content col-10">
     <div class="container-fluid mt-7">
@@ -47,16 +47,21 @@
                                     <td>
                                         <?php echo $users->user_role; ?>
                                     </td>
-                                
-                                    
-                                  
-                                    <td>
-                                        <a href="all_users.php?del=<?php echo $users->id; ?>" class="del-btn"> <i class="fas fa-trash p-2"></i> </a>
-                                    </td>
-                                    <td>
-                                        <a href="edit_user.php?edit=<?php echo $users->id; ?>"> <i class="fas fa-edit p-2"></i> </a>
-                                    </td>
-                                 
+
+
+                                    <?php
+
+                                    if ($session->user_id == $users->id) {
+                                    ?>
+                                        <td>
+                                            <a href="all_users.php?del=<?php echo $users->id; ?>" class="del-btn"> <i class="fas fa-trash p-2"></i> </a>
+                                        </td>
+                                        <td>
+                                            <a href="edit_user.php?edit=<?php echo $users->id; ?>"> <i class="fas fa-edit p-2"></i> </a>
+                                        </td>
+                                    <?php
+                                    }
+                                    ?>
                                 </tr>
                             <?php
                             }
@@ -71,8 +76,14 @@
 </div>
 <?php
 
-
-
+if (isset($_GET['del'])) {
+    $user->delete($_GET['del']);
+    $session->logout();
+    redirect("../index");
+}
+if (isset($_GET['edit'])) {
+    $user->find_by_id($_GET['edit']);
+}
 
 
 
