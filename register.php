@@ -26,7 +26,7 @@ if (isset($_POST['register'])) {
     <div class="container d-flex justify-content-center">
         <div class="row">
             <div class="col-12">
-                <div class="rounded shadow-sm overflow-hidden text-light">
+                <div class="rounded shadow-sm overflow-hidden text-light  bg-dark">
                     <h1 class="text-center">Register</h1>
                     <div class="row align-items-lg-center h-100 ">
                         <div class="col-12 ">

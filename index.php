@@ -8,24 +8,42 @@
                 our creativity, professionalism, and unwavering commitment to client satisfaction.</p>
         </div>
     </div>
-    <div class="container px-4 px-lg-5 my-5 ">
+    <div class="container px-4 px-lg-5">
+        <div class="row">
+            <div class="col-6 ">
+                <ul class="card text-light bg-dark  list-group m-4 p-3 ">
+                    <p class="text-light m-4 p-3 lead mb-0">
+                        What We Do ?<br>
+                        At Party Lovers, we handle every aspect<br> of event planning so
+                        you can enjoy your special occasion stress-free.
+                    </p>
+                    <p>Our comprehensive services include:</p>
+                    <li class="p-3  list-group-item">Concept Development: We work closely with you to understand your vision and bring it to life with innovative ideas and unique themes.</li>
+                    <li class="p-3  list-group-item">Venue Selection: From intimate settings to grand venues, we find the perfect location to match the ambiance of your event.</li>
+                    <li class="p-3  list-group-item">Vendor Coordination: Our extensive network of trusted vendors ensures you get the best services, from catering and entertainment to décor and photography.</li>
+                    <li class="p-3 list-group-item">Budget Management: We plan meticulously to ensure your event stays within budget without compromising on quality.</li>
+                    <li class="p-3  list-group-item">On-site Management: Our team is on-site during the event, handling all logistics and ensuring everything runs smoothly.</li>
+                </ul>
+            </div>
 
-        <ul class="card text-light bg-dark  list-group m-4 p-3 ">
-            <p class="text-light m-4 p-3 lead mb-0">
-                What We Do ?<br>
-                At Party Lovers, we handle every aspect<br> of event planning so
-                you can enjoy your special occasion stress-free.
+            <div class="col-6">
+                <ul class="card text-light bg-dark  list-group m-4 p-3 ">
+                    <p class="text-light m-4 p-3 lead mb-0">
+                        What We Do ?<br>
+                        At Party Lovers, we handle every aspect<br> of event planning so
+                        you can enjoy your special occasion stress-free.
+                    </p>
+                    <p>Our comprehensive services include:</p>
+                    <li class="p-3  list-group-item">Concept Development: We work closely with you to understand your vision and bring it to life with innovative ideas and unique themes.</li>
+                    <li class="p-3  list-group-item">Venue Selection: From intimate settings to grand venues, we find the perfect location to match the ambiance of your event.</li>
+                    <li class="p-3  list-group-item">Vendor Coordination: Our extensive network of trusted vendors ensures you get the best services, from catering and entertainment to décor and photography.</li>
+                    <li class="p-3 list-group-item">Budget Management: We plan meticulously to ensure your event stays within budget without compromising on quality.</li>
+                    <li class="p-3  list-group-item">On-site Management: Our team is on-site during the event, handling all logistics and ensuring everything runs smoothly.</li>
+                </ul>
+            </div>
+        </div>
 
-            </p>
-            <p>Our comprehensive services include:</p>
-            <li class="p-3  list-group-item">Concept Development: We work closely with you to understand your vision and bring it to life with innovative ideas and unique themes.</li>
-            <li class="p-3  list-group-item">Venue Selection: From intimate settings to grand venues, we find the perfect location to match the ambiance of your event.</li>
-            <li class="p-3  list-group-item">Vendor Coordination: Our extensive network of trusted vendors ensures you get the best services, from catering and entertainment to décor and photography.</li>
-            <li class="p-3 list-group-item">Budget Management: We plan meticulously to ensure your event stays within budget without compromising on quality.</li>
-            <li class="p-3  list-group-item">On-site Management: Our team is on-site during the event, handling all logistics and ensuring everything runs smoothly.</li>
-        </ul>
-
-    </div>
+    </div> <!--end of container div-->
 </header>
 
 

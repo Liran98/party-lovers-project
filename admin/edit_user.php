@@ -16,6 +16,7 @@
 
                                 $user_id = $user->find_by_id($_GET['edit']);
                                 foreach ($user_id as $val) {
+
                             ?>
 
                                     <form action="" method="post">
@@ -27,7 +28,7 @@
                                             </div>
                                             <div class="col-5">
                                                 <label for="password" class="form-label">Password</label>
-                                                <input type="password" class="form-control password" name="password" value="<?php echo $val->password; ?>" required>
+                                                <input type="password" class="form-control password" name="password" required>
                                             </div>
 
                                             <div class="col-1 my-6">
@@ -59,6 +60,7 @@
                                         </div>
                                     </form>
                             <?php
+
                                 }
                             }
                             ?>
@@ -74,9 +76,13 @@
 
 
     if (isset($_POST['Update_user'])) {
+
         $user->username = $_POST['username'];
+
         $user->email = $_POST['email'];
-        $user->password  = $_POST['password'];
+
+        $user->password  = password_hash($_POST['password'], PASSWORD_BCRYPT, array("cost" => 12));
+
         $user->user_role = $_POST['user_role'];
 
         $user->update($_GET['edit']);
@@ -88,6 +94,6 @@
 <br>
 
 <script>
-   
+
 </script>
 <?php include("includes/footer.php"); ?>

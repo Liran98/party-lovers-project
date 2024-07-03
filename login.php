@@ -33,14 +33,14 @@ if (isset($_POST['login'])) {
   }
 }
 ?>
-<section class="py-3 py-md-5 py-xl-8">
+<section class="py-3 py-md-5 py-xl-8 " >
 <div id="loadingScreen" class="loading-screen">
         <div class="spinner"></div>
     </div>
   <div class="container d-flex justify-content-center">
     <div class="row">
       <div class="col-12">
-        <div class="rounded shadow-sm overflow-hidden text-light">
+        <div class="rounded shadow-sm overflow-hidden text-light  bg-dark">
           <h1 class="text-center">Login</h1>
           <div class="row align-items-lg-center h-100 ">
             <div class="col-12 ">

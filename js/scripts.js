@@ -1,3 +1,4 @@
+//email register picker
 const email = document.querySelector('.email');
 
 const selector = document.getElementById('email_selection')
@@ -10,7 +11,7 @@ selector.addEventListener('change', function (e) {
 
 });
 
-
+//loading spinner
 const login = document.querySelector('.login-btn');
 const loading = document.getElementById('loadingScreen');
 
@@ -27,5 +28,4 @@ login.addEventListener('click', function (e) {
    loadspinner();
 
 });
-
 
