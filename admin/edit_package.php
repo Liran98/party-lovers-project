@@ -38,9 +38,8 @@
 
                             <?php
                             if (isset($_GET['edit'])) {
-                                $pid = $package->find_by_id($_GET['edit']);
+                                $val = $package->find_by_id($_GET['edit']);
 
-                                foreach ($pid as $val) {
                             ?>
 
                                     <form action="" method="post" enctype="multipart/form-data">
@@ -80,7 +79,6 @@
                                         </div>
                                     </form>
                             <?php
-                                }
                             }
                             ?>
 

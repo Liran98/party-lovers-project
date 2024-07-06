@@ -33,9 +33,7 @@
                             <?php
 
                             if (isset($_GET['edit'])) {
-                                $e_id = $event->find_by_id($_GET['edit']);
-
-                                foreach ($e_id as $val) {
+                                $val = $event->find_by_id($_GET['edit']);
 
                             ?>
 
@@ -70,16 +68,14 @@
                                                     <!-- add for each here php ids -->
 
                                                     <?php
-                                                    $pack_id = $package->find_by_id($val->package_id);
+                                                    $theme= $package->find_by_id($val->package_id);
 
-                                                    foreach ($pack_id as $theme) {
                                                     ?>
                                                         <option value="<?php echo  $theme->id; ?>" selected>Selected : <?php echo  $theme->package_theme; ?></option>
                                                         <p>
                                                             <hr>
                                                         </p>
                                                     <?php
-                                                    }
                                                     ?>
                                                     <?php
 
@@ -114,7 +110,6 @@
                                         </div>
                                     </form>
                             <?php
-                                }
                             }
                             ?>
                         </div>

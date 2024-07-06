@@ -62,43 +62,41 @@ const package_items = [
 
 const packages = document.querySelector('.packages');
 let item_data;
+let thedata = "item";
 
-
-
-const getitems = function (arr) {
-    arr.forEach(function (data) {
-        item_data = `
+package_items.forEach(function (data) {
+    item_data = `
          <div class="col m-2 pack-card">
         <div class="card h-100 w-100  packge_acc ">
-       <p class="text-center" data-item="${data.item}">${data.item}</p>
+       <p class="text-center" data-${thedata}="${data.item}">${data.item}</p>
        <div class="card-body p-4">
         <img style="width:115px;" class="card-img-top img-fluid " src="../package items/${data.img}" alt="..." />
        </div>
        </div>
+       </div>
+
         `;
-        packages.insertAdjacentHTML('afterbegin', item_data);
-    }); // end for each array
+    packages.insertAdjacentHTML('afterbegin', item_data);
+}); // end for each array
 
-}//end of getitems function
-
-getitems(package_items);
 
 const package = document.querySelectorAll('.packge_acc');
-const items_for_textarea = [];
-const text_area = document.getElementById('all_selected_packages');
 
 
 package.forEach(function (btn) {
-
+    const text_area = document.getElementById('all_selected_packages');
+    const items_for_textarea = [];
     btn.addEventListener('click', function (e) {
-   const data = e.target.dataset.item;
+        const data = e.target.dataset.thedata;
 
         items_for_textarea.push(data);
-
+        console.log(items_for_textarea);
         text_area.value = items_for_textarea.join('&');
 
     });
 });//end of foreach package
+
+
 
 
 

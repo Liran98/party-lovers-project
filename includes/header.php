@@ -24,7 +24,7 @@
 
 </head>
 
-<body>
+<body style="font-family: cursive;">
     <?php include("navigation.php"); ?>
     <?php include("sidebar.php"); ?>
     <?php

@@ -1,4 +1,5 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" >
     <!-- Navbar Brand-->
     <a class="navbar-brand home-link ps-3" href="index.php">Party Lovers Admins</a>
     <a class="navbar-brand home-link ps-3 " href="../index.php">Home🏠</a>
@@ -20,14 +21,15 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <div class="text-center">
                     <?php
-                    echo "Hello <p class='text-success'>  " . " user here  " . "</p>";
+                    $curuser = $user->find_by_id($session->user_id);
+                    echo "Hello <p class='text-success'>  " . " $curuser->username  " . "</p>";
                     ?>
                 </div>
                 <hr>
                 <form action="" method="post">
                     <li>
                         <button name='logout-btn' class="dropdown-item">
-                            <i class="fas fa-sign-out"></i> Logout from <?php echo "<user here>"; ?><i class="fas fa-user"></i>
+                            <i class="fas fa-sign-out"></i> Logout from <?php echo $curuser->username; ?><i class="fas fa-user"></i>
                         </button>
 
                     </li>

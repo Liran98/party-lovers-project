@@ -1,4 +1,3 @@
-
 <?php include("../includes/init.php"); ?>
 
 <!DOCTYPE html>
@@ -20,45 +19,50 @@
 </head>
 
 
-<body class="sb-nav-fixed">
+<body style="font-family: cursive;" class="sb-nav-fixed">
 
     <?php include("navigation.php"); ?>
+    <?php
+    $page = substr(basename($_SERVER['PHP_SELF']), 0, -4);
 
+    ?>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark text-light" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Main Page</div>
-                        <a class="nav-link" href="index.php">
+                        <a class="nav-link <?php echo ($page == 'index') ? 'active' : ''; ?>" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="all_users.php">
+                        <a class="nav-link <?php echo ($page == 'all_users') ? 'active' : ''; ?>" href="all_users.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                             Users
                         </a>
                         <div class="sb-sidenav-menu-heading">Add/Edit Event</div>
-                        <a class="nav-link" href="add_event.php"><i class="fas fa-plus p-2"></i> Add Event</a>
-                        <a class="nav-link" href="all_events.php"> <i class="fas fa-box p-2"></i> All Events</a>
+                        <a class="nav-link <?php echo ($page == 'add_event') ? 'active' : ''; ?>" href="add_event.php"><i class="fas fa-plus p-2"></i> Add Event</a>
+                        <a class="nav-link <?php echo ($page == 'all_events') ? 'active' : ''; ?>" href="all_events.php"> <i class="fas fa-box p-2"></i> All Events</a>
 
 
                         <div class="sb-sidenav-menu-heading">Add/Edit Package</div>
-                        <a class="nav-link" href="add_package.php"> <i class="fas fa-plus p-2"></i>Add Package</a>
-                        <a class="nav-link" href="all_packages.php"> <i class="fas fa-box p-2"></i> All Packages</a>
+                        <a class="nav-link <?php echo ($page == 'add_package') ? 'active' : ''; ?>" href="add_package.php"> <i class="fas fa-plus p-2"></i>Add Package</a>
+                        <a class="nav-link <?php echo ($page == 'all_packages') ? 'active' : ''; ?>" href="all_packages.php"> <i class="fas fa-box p-2"></i> All Packages</a>
                     </div>
 
 
                     <div class="sb-sidenav-footer">
                         <div class="row">
                             <div class="col-8">
-                                <p>Logged in as:</p>
+                               
+                               <p>Logged in as:</p>
                             </div>
                             <div class="col-4">
                                 <?php
-                               
+                                 $curuser = $user->find_by_id($session->user_id);
+                                echo $curuser->username;
                                 ?>
-                               
+
                             </div>
                         </div>
                     </div>

@@ -1,19 +1,10 @@
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script> -->
-
-<script src="js/scripts.js"></script>
-
-
-<div class="d-flex flex-column">
-
-
-
+<div class="d-flex flex-column ">
     <!-- FOOTER -->
-    <footer class=" py-4  bg-dark text-light justify-content-center">
+    <div class="col-12 col-lg-12 bsb-overlay background-position-center background-size-cover" style="--bsb-overlay-opacity: 0.7; ">
+    <footer class=" py-4 my-4 text-light justify-content-center   h-50">
         <div class="container">
             <div class="row">
+          
                 <div class="col-lg-6 col-md-6">
                     <h5 class="h1"><img style="width: 60px;" src="images/party_logo.png"> Party Lovers Officals</h5>
                     <p class="small ">
@@ -29,11 +20,11 @@
                 $display_class = '';
                 if ($page == "contact") {
                     $display_class = 'none';
-                }else{
-                    $display_class ='';
+                } else {
+                    $display_class = '';
                 }
                 ?>
-                
+
                 <div style="display: <?php echo $display_class; ?>;" class="col-lg-6 col-md-6 ">
                     <h5 class="mb-3">Contact us</h5>
                     <p class="small">Get in Touch
@@ -45,7 +36,7 @@
                         </div>
                     </form>
                 </div>
-                
+
                 <hr>
                 <div class="col-lg-3 col-md-6">
                     <h5 class=" mb-3">Quick links</h5>
@@ -67,8 +58,28 @@
                 <p class="text-center "><?php echo date("Y") ?>&copy;Party Lovers Offical Copyrights. All rights reserved. </p>
             </div>
         </div>
+        
     </footer>
 </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js">
+</script>
+<script src="js/scripts.js"></script>
 </body>
 
 </html>

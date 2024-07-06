@@ -1,6 +1,6 @@
 <?php include("includes/header.php"); ?>
 <?php
 $session->logout();
-redirect("login");
+redirect('index');
 ?>
 <?php include("includes/footer.php"); ?>

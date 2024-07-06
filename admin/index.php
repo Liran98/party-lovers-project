@@ -5,7 +5,7 @@
 <div id="layoutSidenav_content">
     <main class="text-light">
         <div class="container-fluid px-4">
-            <h1 class="mt-4 text-center">Dashboard</h1>
+            <h1 class="mt-4 text-center">Dashboard <?php echo $session->user_role; ?></h1>
             <div class="row">
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">
@@ -29,7 +29,6 @@
                     </div>
                 </div>
 
-
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-secondary text-white mb-4">
                         <div class="card-body ">All Users</div>
@@ -42,7 +41,6 @@
                         </div>
                     </div>
                 </div>
-
     </main>
 
     <div>
@@ -70,8 +68,6 @@
                         <?php echo $all_packages; ?>,
                         <?php echo $all_users; ?>,
                         <?php echo $all_admins; ?>
-
-
                     ],
                     borderWidth: 3
                 }]

@@ -25,8 +25,9 @@ if (isset($_POST['register'])) {
 
     <div class="container d-flex justify-content-center">
         <div class="row">
+        <div class="col-12 col-lg-12 bsb-overlay background-position-center background-size-cover" style="--bsb-overlay-opacity: 0.7;">
             <div class="col-12">
-                <div class="rounded shadow-sm overflow-hidden text-light  bg-dark">
+                <div class="rounded shadow-sm overflow-hidden text-light">
                     <h1 class="text-center">Register</h1>
                     <div class="row align-items-lg-center h-100 ">
                         <div class="col-12 ">
@@ -74,6 +75,7 @@ if (isset($_POST['register'])) {
                 </div>
             </div>
         </div>
+    </div>
     </div>
     </div>
     </div>

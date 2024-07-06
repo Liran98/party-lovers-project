@@ -1,6 +1,6 @@
 <?php include("includes/header.php"); ?>
 
-<section class="py-5 ">
+<section class="py-5 my-5">
     <div class="container px-4 px-lg-5 ">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center m-3 ">
             <?php
@@ -10,8 +10,7 @@
             ?>
 
                 <div class="col mb-5">
-                    <div class="card h-100">
-
+                    <div class="card">
                         <!-- Product image-->
                         <img class="card-img-top img-fluid" src="<?php echo $event->img_path(); ?>" alt="..." />
                         <p class="text-center"><?php echo $event->title; ?></p>
@@ -41,9 +40,20 @@
 
             <?php
             }
+
+           
             ?>
         </div>
     </div>
+
+    <?php
+     if(!$events){
+        echo "<h1 class='text-light text-center'>No events found . 
+        <a class='btn btn-info btn-outline-light' href='admin/add_event.php'>Add one maybe?</a>
+         </h1>";
+    }
+    
+    ?>
 </section>
 
 

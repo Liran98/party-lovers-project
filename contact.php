@@ -9,7 +9,7 @@
         <div class="rounded shadow-sm overflow-hidden text-light">
           <div class="card-body p-0">
             <div class="row gy-3 gy-md-4 gy-lg-0">
-              <div class="col-12 col-lg-6 bsb-overlay background-position-center background-size-cover" style="--bsb-overlay-opacity: 0.7; background-image: url('./assets/img/contact-img-1.webp');">
+              <div class="col-12 col-lg-6 bsb-overlay background-position-center background-size-cover" style="--bsb-overlay-opacity: 0.7; ">
                 <div class="row align-items-lg-center justify-content-center h-100">
                   <div class="col-11 col-xl-10">
                     <div class="contact-info-wrapper py-4 py-xl-5">

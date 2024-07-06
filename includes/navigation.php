@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg  bg-dark ">
+<div class="col-12 col-lg-12 bsb-overlay background-position-center background-size-cover" style="--bsb-overlay-opacity: 0.7; ">
+<nav class="navbar navbar-expand-lg sticky-top">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand text-light" href="./index.php"><img style="width:40px;" src="images/party_logo.png"></a>
         <a class="navbar-brand text-light home-nav-link" href="./index.php">Home</a>
@@ -7,6 +8,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <li class="nav-item">
+                    <a class="nav-link text-light home-nav-link" href="./gallery.php">Gallery</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link text-light home-nav-link" href="./events.php">Events</a>
                 </li>
@@ -59,3 +63,4 @@
         </div>
     </div>
 </nav>
+</div>

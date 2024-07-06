@@ -39,8 +39,9 @@ if (isset($_POST['login'])) {
     </div>
   <div class="container d-flex justify-content-center">
     <div class="row">
+    <div class="col-12 col-lg-12 bsb-overlay" style="--bsb-overlay-opacity: 0.7;">
       <div class="col-12">
-        <div class="rounded shadow-sm overflow-hidden text-light  bg-dark">
+        <div class="rounded shadow-sm overflow-hidden text-light">
           <h1 class="text-center">Login</h1>
           <div class="row align-items-lg-center h-100 ">
             <div class="col-12 ">
@@ -78,6 +79,7 @@ if (isset($_POST['login'])) {
         </div>
       </div>
     </div>
+  </div>
   </div>
   </div>
   </div>
