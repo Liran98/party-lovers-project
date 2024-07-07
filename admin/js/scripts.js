@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
         show_pass.innerHTML = "";
 
-        if (visible) {
+        if (!visible) {
             password.type = 'text';
             show_pass.insertAdjacentHTML('afterbegin', "<i class='fa fa-eye display-6 my-4'></i>");
         } else {
@@ -48,13 +48,13 @@ window.addEventListener('DOMContentLoaded', event => {
 // ?</package selection for add_package.php>
 
 const package_items = [
-    { item: "Balloons", img: "balloons.jpg" },
-    { item: "Cake or cupcakes", img: "cupcakes.jpg" },
-    { item: "Appetizers", img: "appetizers.jpg" },
-    { item: "Arcade Machine", img: "arcade.png" },
-    { item: "Claw Machine", img: "claw_machine.png" },
-    { item: "Small gifts or goodie bags", img: "goodiebag.jpg" },
-    { item: "Pop Corn", img: "popcorn.jpg" },
+    { item: "Balloons", img: "balloons.jpg", price: 3000 },
+    { item: "Cake or cupcakes", img: "cupcakes.jpg", price: 2000 },
+    { item: "Appetizers", img: "appetizers.jpg", price: 2000 },
+    { item: "Arcade Machine", img: "arcade.png", price: 10000 },
+    { item: "Claw Machine", img: "claw_machine.png", price: 12000 },
+    { item: "Small gifts or goodie bags", img: "goodiebag.jpg", price: 4000 },
+    { item: "Pop Corn", img: "popcorn.jpg", price: 4000 },
 
 
 ];
@@ -62,39 +62,74 @@ const package_items = [
 
 const packages = document.querySelector('.packages');
 let item_data;
-let thedata = "item";
 
-package_items.forEach(function (data) {
+package_items.forEach(function (data, i) {
     item_data = `
-         <div class="col m-2 pack-card">
-        <div class="card h-100 w-100  packge_acc ">
-       <p class="text-center" data-${thedata}="${data.item}">${data.item}</p>
-       <div class="card-body p-4">
-        <img style="width:115px;" class="card-img-top img-fluid " src="../package items/${data.img}" alt="..." />
-       </div>
-       </div>
-       </div>
-
+   <div class="col mb-5 " >
+                    <div class="card package_acc" data-price=${data.price} data-item="${data.item}">
+                        <img class="card-img-top img-fluid" src="../package items/${data.img}" alt="..." />
+                        <p class="text-center"  >${data.item}</p>
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder"</h5>
+                                <h6 class="fw-bolder">
+                             ₱${data.price}
+                                </h6>
+                            </div>
+                        </div>
         `;
-    packages.insertAdjacentHTML('afterbegin', item_data);
+
+
+    packages.insertAdjacentHTML('beforeend', item_data);
 }); // end for each array
 
 
-const package = document.querySelectorAll('.packge_acc');
+const packageElements = document.querySelectorAll('.package_acc');
+const text_area = document.getElementById('all_selected_packages');
+const added_items = [];
+const item_prices = [];
 
 
-package.forEach(function (btn) {
-    const text_area = document.getElementById('all_selected_packages');
-    const items_for_textarea = [];
+packageElements.forEach(function (btn) {
+
+    let selected = false;
     btn.addEventListener('click', function (e) {
-        const data = e.target.dataset.thedata;
+        e.preventDefault();
 
-        items_for_textarea.push(data);
-        console.log(items_for_textarea);
-        text_area.value = items_for_textarea.join('&');
 
+        const total = btn.dataset.price;
+        const data = btn.dataset.item;
+
+
+        if (!selected) {
+            item_prices.push(total);
+            added_items.push(data);
+            btn.style.backgroundColor = 'lightgreen';
+            btn.style.color = 'white';
+            btn.classList.remove('card');
+            btn.style.filter = 'blur(2px)';
+        } else {
+            const index = added_items.indexOf(data);
+            const index_price = item_prices.indexOf(total);
+
+            if (index_price > -1) {
+                item_prices.splice(index_price, 1);
+            }
+            if (index > -1) {
+                added_items.splice(index, 1);
+            }
+            btn.style.backgroundColor = '';
+            btn.style.color = 'black';
+            btn.classList.add('card');
+            btn.style.filter = 'blur(0px)';
+        }
+        selected = !selected;
+        text_area.value = added_items.join(' ,');
+       
     });
-});//end of foreach package
+});
+//end of foreach package
 
 
 

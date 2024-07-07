@@ -14,8 +14,7 @@
 
                             if (isset($_GET['edit'])) {
 
-                                $user_id = $user->find_by_id($_GET['edit']);
-                                foreach ($user_id as $val) {
+                                $val = $user->find_by_id($_GET['edit']);
 
                             ?>
 
@@ -61,7 +60,6 @@
                                     </form>
                             <?php
 
-                                }
                             }
                             ?>
                         </div>

@@ -54,7 +54,7 @@
 }
 
 /* ------------------------------------------------------------------------------------------------------------- */
-.card:hover {
+.card:hover  {
   transform: scale(1.1);
   transition: transform .2s;
   background-image: linear-gradient(rgb(24, 104, 118), rgb(0, 174, 255));
@@ -64,6 +64,8 @@
 .card {
   transition: all .5s ease-in-out;
 }
+
+
 
 body,
 html {

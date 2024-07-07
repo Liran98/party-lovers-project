@@ -1,4 +1,4 @@
-<div class="d-flex flex-column ">
+<div class="d-flex flex-column my-5 ">
     <!-- FOOTER -->
     <div class="col-12 col-lg-12 bsb-overlay background-position-center background-size-cover" style="--bsb-overlay-opacity: 0.7; ">
     <footer class=" py-4 my-4 text-light justify-content-center   h-50">

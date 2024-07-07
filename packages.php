@@ -14,9 +14,9 @@
                     $items = $package->find_by_id($_GET['pack']);
                   
                 ?>
-                        <div class="col-lg-6 col-md-6  bsb-overlay" style="--bsb-overlay-opacity: 0.7;">
+                        <div class="col-lg-6 col-md-6 ">
                             <h1 class="mt-5">
-                                <img class="card img-fluid " style="width: 600px;" src="<?php echo $items->img_path(); ?>">
+                                <img class="card img-fluid " style="width: 600px; height:450px;" src="<?php echo $items->img_path(); ?>">
                             </h1>
                         </div>
                         <div class="col-lg-6 cold-md-4">
