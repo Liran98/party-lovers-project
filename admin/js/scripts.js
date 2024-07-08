@@ -100,15 +100,16 @@ packageElements.forEach(function (btn) {
 
         const total = btn.dataset.price;
         const data = btn.dataset.item;
+        //* could use this method instead but since we using foreach you could just use btn.dataset.item
+        // const res = e.target.closest('.package_acc');
+        // const data = res.dataset.item;
 
 
         if (!selected) {
             item_prices.push(total);
             added_items.push(data);
             btn.style.backgroundColor = 'lightgreen';
-            btn.style.color = 'white';
             btn.classList.remove('card');
-            btn.style.filter = 'blur(2px)';
         } else {
             const index = added_items.indexOf(data);
             const index_price = item_prices.indexOf(total);
@@ -120,13 +121,11 @@ packageElements.forEach(function (btn) {
                 added_items.splice(index, 1);
             }
             btn.style.backgroundColor = '';
-            btn.style.color = 'black';
             btn.classList.add('card');
-            btn.style.filter = 'blur(0px)';
         }
         selected = !selected;
         text_area.value = added_items.join(' ,');
-       
+
     });
 });
 //end of foreach package
