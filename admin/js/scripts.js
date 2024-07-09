@@ -55,6 +55,8 @@ const package_items = [
     { item: "Claw Machine", img: "claw_machine.png", price: 12000 },
     { item: "Small gifts or goodie bags", img: "goodiebag.jpg", price: 4000 },
     { item: "Pop Corn", img: "popcorn.jpg", price: 4000 },
+    { item: "Styro backDrop", img: "styros.jpg", price: 16000 },
+
 
 
 ];
@@ -64,20 +66,22 @@ const packages = document.querySelector('.packages');
 let item_data;
 
 package_items.forEach(function (data, i) {
+
+    const options = {
+        style: 'currency',
+        currency: 'PHP'
+    }
+
+    const cash = new Intl.NumberFormat('en-US', options).format(data.price);
+
     item_data = `
-   <div class="col mb-5 " >
-                    <div class="card package_acc" data-price=${data.price} data-item="${data.item}">
-                        <img class="card-img-top img-fluid" src="../package items/${data.img}" alt="..." />
-                        <p class="text-center"  >${data.item}</p>
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder"</h5>
-                                <h6 class="fw-bolder">
-                             ₱${data.price}
-                                </h6>
-                            </div>
-                        </div>
+ <div class="card package_acc m-3" data-price=${data.price} data-item="${data.item}" style="width: 13rem;">
+  <img src="../package items/${data.img}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${data.item}</h5>
+    <p class="card-text">${cash}</p>
+  </div>
+</div>
         `;
 
 
@@ -96,6 +100,7 @@ packageElements.forEach(function (btn) {
     let selected = false;
     btn.addEventListener('click', function (e) {
         e.preventDefault();
+
 
 
         const total = btn.dataset.price;
@@ -129,8 +134,6 @@ packageElements.forEach(function (btn) {
     });
 });
 //end of foreach package
-
-
 
 
 

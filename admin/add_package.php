@@ -48,19 +48,19 @@
 
                                     <div class="col-6">
                                         <label for="price" class="form-label">Package price</label>
-                                        <input class="form-control price-input" type="text" name="package_price">
+                                        <input class="form-control price-input" type="number" name="package_price">
                                     </div>
 
 
                                     <div class="col-12">
                                         <label for="package_items" class="form-label">Package items</label>
 
-                                        <div class="container px-4 m-2 px-lg-5 ">
-                                            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center  packages ">
+                                        <div class="container  m-3">
+                                            <div class="row  row-cols-2 row-cols-md-3 row-cols-xl-6  packages ">
 
                                            
                                             </div>
-                                            color picker for balloons fixing soon<input class='form-control' type="text" data-coloris>
+                                            <!-- color picker for balloons fixing soon<input class='form-control' type="text" data-coloris> -->
                                             <textarea rows="10" class="form-control  m-3" name="package_items" id="all_selected_packages">
                                       
                                             </textarea>

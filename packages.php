@@ -64,23 +64,23 @@
                         ?>
                         <div class="col mb-5">
                             <div class="card h-100 w-100">
-
                                 <!-- Product image-->
                                 <a href="packages.php?pack=<?php echo $items->id; ?>">
                                     <img class="card-img-top img-fluid" src="<?php echo $items->img_path(); ?>" alt="..." />
+                                    </a>
                                     <p class="text-center"><?php echo $items->package_theme; ?></p>
                                     <div class="card-body p-4">
                                         <div class="text-center">
                                             <!-- Product name-->
                                             <h5 class="fw-bolder"><?php echo $items->package_name; ?></h5>
                                             <h6 class="fw-bolder">
-                                                <?php
-                                                echo strlen($items->package_items) > 50 ? substr($items->package_items, 72) : $items->package_items;
+                                            ₱<?php
+                                                echo $items->package_price;
                                                 ?>
                                             </h6>
                                         </div>
                                     </div>
-                                </a>
+                                
                             </div>
                         </div>
                 <?php
