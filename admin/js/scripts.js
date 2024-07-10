@@ -56,7 +56,7 @@ const package_items = [
     { item: "Small gifts or goodie bags", img: "goodiebag.jpg", price: 4000 },
     { item: "Pop Corn", img: "popcorn.jpg", price: 4000 },
     { item: "Styro backDrop", img: "styros.jpg", price: 16000 },
-
+   
 
 
 ];
@@ -65,7 +65,36 @@ const package_items = [
 const packages = document.querySelector('.packages');
 let item_data;
 
-package_items.forEach(function (data, i) {
+const pagination_div = document.querySelector('.pagination');
+const total_pages = Math.ceil(package_items.length / 4);
+
+
+for (let i = 0; i < total_pages; i++) {
+    const btns = `<input type='button' value='${i+1}'  class='btn btn-primary pagination-btn' data-go=${i + 1}>`;
+    pagination_div.insertAdjacentHTML('beforeend', btns);
+
+}
+
+const gotobtn = document.querySelectorAll('.pagination-btn');
+gotobtn.forEach(function (button) {
+    button.addEventListener('click', function (e) {
+        packages.innerHTML = "";
+        const res = e.target.closest('.pagination-btn');
+        const data = res.dataset.go;
+      change_page(data);
+    });
+})
+
+
+const change_page = function (page) {
+    const start = (page - 1) * 4;
+    const end = page * 4;
+
+   const pack =  package_items.slice(start, end);
+
+   packages.innerHTML = "";
+
+   pack.forEach(function (data, i) {
 
     const options = {
         style: 'currency',
@@ -83,10 +112,8 @@ package_items.forEach(function (data, i) {
   </div>
 </div>
         `;
-
-
     packages.insertAdjacentHTML('beforeend', item_data);
-}); // end for each array
+});
 
 
 const packageElements = document.querySelectorAll('.package_acc');
@@ -101,20 +128,18 @@ packageElements.forEach(function (btn) {
     btn.addEventListener('click', function (e) {
         e.preventDefault();
 
-
-
         const total = btn.dataset.price;
         const data = btn.dataset.item;
         //* could use this method instead but since we using foreach you could just use btn.dataset.item
         // const res = e.target.closest('.package_acc');
         // const data = res.dataset.item;
 
-
         if (!selected) {
             item_prices.push(total);
             added_items.push(data);
             btn.style.backgroundColor = 'lightgreen';
             btn.classList.remove('card');
+            text_area.value = added_items.join(' ,');
         } else {
             const index = added_items.indexOf(data);
             const index_price = item_prices.indexOf(total);
@@ -129,7 +154,7 @@ packageElements.forEach(function (btn) {
             btn.classList.add('card');
         }
         selected = !selected;
-        text_area.value = added_items.join(' ,');
+       
 
     });
 });
@@ -137,12 +162,15 @@ packageElements.forEach(function (btn) {
 
 
 
+}
+
+
+
+ //end for each array
+
 
 
 // ? </package selection for add_package.php>
-
-
-
 
 
 

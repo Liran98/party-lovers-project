@@ -58,11 +58,18 @@
                                         <div class="container  m-3">
                                             <div class="row  row-cols-2 row-cols-md-3 row-cols-xl-6  packages ">
 
-                                           
+
                                             </div>
+
+
+                                            <h2 class="text-center pagination">
+                                                
+                                            </h2>
+
+                                            <br>
                                             <!-- color picker for balloons fixing soon<input class='form-control' type="text" data-coloris> -->
                                             <textarea rows="10" class="form-control  m-3" name="package_items" id="all_selected_packages">
-                                      
+
                                             </textarea>
                                         </div>
 
