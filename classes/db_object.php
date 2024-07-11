@@ -70,8 +70,6 @@ class Db_object
 
         $res =  $database->query($sql);
 
-        
-
         $row =  mysqli_fetch_array($res);
 
         return array_shift($row);

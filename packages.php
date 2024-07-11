@@ -66,7 +66,7 @@
                             <div class="card h-100 w-100">
                                 <!-- Product image-->
                                 <a href="packages.php?pack=<?php echo $items->id; ?>">
-                                    <img class="card-img-top img-fluid" src="<?php echo $items->img_path(); ?>" alt="..." />
+                                    <img class="card-img-top img-fluid" style="height: 360px;" src="<?php echo $items->img_path(); ?>" alt="..." />
                                     </a>
                                     <p class="text-center"><?php echo $items->package_theme; ?></p>
                                     <div class="card-body p-4">

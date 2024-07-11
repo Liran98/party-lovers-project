@@ -46,15 +46,7 @@
         </div>
     </div>
 
-    <?php
-     if(!$events){
-        echo "<h1 class='text-light text-center'>No events found . 
-        <a class='btn btn-info btn-outline-light' href='admin/add_event.php'>Add one maybe?</a>
-         </h1>";
-    }
-    
-    ?>
+  
 </section>
-
 
 <?php include("includes/footer.php"); ?>
