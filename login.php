@@ -51,14 +51,14 @@ if (isset($_POST['login'])) {
                 <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
 
                   <div class="col-12">
-                  <p class="bg-danger"><?php echo $msg_user; ?></p>
+                  <p class="text-danger text-center"><?php echo $msg_user; ?></p>
                     <label for="user" class="form-label">User Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="user" name="user" value="" required>
                   </div>
 
 
                   <div class="col-12">
-                    <p class="bg-danger"><?php echo $msg; ?></p>
+                    <p class="text-danger text-center"><?php echo $msg; ?></p>
                     <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
                     <input type="password" class="form-control" id="password" name="pass" value="" required>
                   </div>

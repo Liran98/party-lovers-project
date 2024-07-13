@@ -1,6 +1,6 @@
 <?php include("includes/header.php"); ?>
 
-<section class="text-light m-5">
+<section class="text-light py-5 my-5">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5">
           
@@ -62,11 +62,11 @@
                     $all_packs = $package->find_all();
                     foreach ($all_packs as $items) {
                         ?>
-                        <div class="col mb-5">
-                            <div class="card h-100 w-100">
+                        <div class="col-4 mb-5">
+                            <div class="card">
                                 <!-- Product image-->
                                 <a href="packages.php?pack=<?php echo $items->id; ?>">
-                                    <img class="card-img-top img-fluid" style="height: 360px;" src="<?php echo $items->img_path(); ?>" alt="..." />
+                                    <img class="card-img-top img-fluid" style="height: 260px;" src="<?php echo $items->img_path(); ?>" alt="..." />
                                     </a>
                                     <p class="text-center"><?php echo $items->package_theme; ?></p>
                                     <div class="card-body p-4">

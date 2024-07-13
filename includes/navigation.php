@@ -11,13 +11,21 @@
                     <li class="nav-item">
                         <a class="nav-link text-light home-nav-link" href="./gallery.php">Gallery</a>
                     </li>
+
+                    <?php
+                     if($event->count_all() == 0 && $package->count_all() == 0){
+                        echo "";
+                    }else{
+                        ?>
                     <li class="nav-item">
                         <a class="nav-link text-light home-nav-link" href="./packages.php">Packages</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light home-nav-link" href="./events.php">Events</a>
                     </li>
-
+                    <?php
+                    } 
+                    ?>
 
                     <li class="nav-item">
                         <a class="nav-link text-light home-nav-link" aria-current="page" href="./about_us.php">About us</a>

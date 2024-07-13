@@ -1,5 +1,5 @@
 <?php include("includes/header.php"); ?>
-<?php if($session->is_signed_in()) redirect("index"); ?>
+<?php if ($session->is_signed_in()) redirect("index"); ?>
 <?php
 
 if (isset($_POST['register'])) {
@@ -10,14 +10,20 @@ if (isset($_POST['register'])) {
 
 
     $password = $_POST['password'];
+    $confrim_pass = $_POST['password01'];
 
-    $options = array("cost" => 12);
-    $password =  password_hash($password, PASSWORD_BCRYPT, $options);
-    $user->password = $password;
+    if ($password == $confrim_pass && strlen($password) >= 6 && strlen($confirm_pass) >= 6) {
 
-    if ($user->create()) {
-        redirect("login");
-    };
+        $options = array("cost" => 12);
+
+        $password =  password_hash($confrim_pass, PASSWORD_BCRYPT, $options);
+
+        $user->password = $password;
+
+        if ($user->create()) {
+            redirect("login");
+        };
+    }
 }
 
 ?>
@@ -50,17 +56,20 @@ if (isset($_POST['register'])) {
                                             </select>
                                         </div>
                                         <div class="col-12">
-
-                                            <label for="fullname" class="form-label">User Name <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="fullname" name="user" value="" required>
+                                            <p class="user-validation-text text-center"></p>
+                                            <label for="username" class="form-label">User Name <span class="text-danger user_validation">*</span></label>
+                                            <input type="text" class="form-control" id="username" name="user" value="" required>
                                         </div>
 
-
-                                        <div class="col-12">
-                                            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                                            <input type="password" class="form-control" id="password" name="password" value="" required>
+                                        <p class="text-validation text-center"></p>
+                                        <div class="col-6">
+                                            <label for="password" class="form-label">Password <span class="text-danger password_validation">*</span></label>
+                                            <input type="password" class="form-control pass" id="password" name="password" value="" required>
                                         </div>
-
+                                        <div class="col-6">
+                                            <label for="password" class="form-label">Confirm Password <span class="text-danger password_validation01">*</span></label>
+                                            <input type="password" class="form-control pass01" id="password01" name="password01" value="" required>
+                                        </div>
 
 
                                         <div class="col-12">
@@ -82,4 +91,73 @@ if (isset($_POST['register'])) {
 </section>
 <br>
 
+<script>
+    const pass = document.getElementById('password');
+    const confirm_pass = document.getElementById('password01');
+    const text_validation = document.querySelector('.text-validation');
+    const password_validation = document.querySelector('.password_validation');
+    const password_validation01 = document.querySelector('.password_validation01');
+
+
+    const arr = [pass, confirm_pass];
+    arr.forEach(function(input) {
+        input.addEventListener('change', function(e) {
+            e.preventDefault();
+            if (pass.value.length >= 6 && confirm_pass.value.length >= 6 && pass.value == confirm_pass.value) {
+                text_validation.style.color = 'lightgreen';
+                text_validation.textContent = "Passwords Match";
+                password_validation.textContent = "✅";
+                password_validation01.textContent = "✅";
+
+
+            } else if (pass.value.length < 6 && confirm_pass.value.length < 6) {
+                text_validation.style.color = 'red';
+                text_validation.textContent = "Password has to be at least 6 Characters";
+                password_validation.textContent = "*";
+                password_validation01.textContent = "*";
+            }
+            if (pass.value !== confirm_pass.value) {
+                text_validation.style.color = 'red';
+                text_validation.textContent = "Passwords do not Match";
+                password_validation.textContent = "*";
+                password_validation01.textContent = "*";
+            }
+
+        });
+    });
+
+
+    const username = document.getElementById('username');
+    const user_validation = document.querySelector('.user_validation');
+    const user_validation_text = document.querySelector('.user-validation-text');
+
+    username.addEventListener('change', function(e) {
+
+        if (username.value.length >= 4) {
+            user_validation.textContent = "✅";
+            user_validation_text.style.color = 'lightgreen';
+            user_validation_text.textContent = "Username Valid";
+        } else {
+            user_validation.innerHTML = `<span class="text-danger user_validation">*</span>`;
+            user_validation_text.style.color = 'red';
+            user_validation_text.textContent = "Username must be at least 4 characters";
+        }
+    });
+
+
+
+    const email = document.querySelector('.email');
+    const selector = document.getElementById('email_selection')
+
+    if (!selector) {
+
+    } else {
+        selector.addEventListener('change', function(e) {
+            e.preventDefault();
+            email.focus();
+            email.value = selector.value;
+
+        });
+    }
+</script>
 <?php include("includes/footer.php"); ?>
