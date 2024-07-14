@@ -218,7 +218,7 @@
                     added_items.splice(index, 1);
                 }
                 btn.style.filter = 'drop-shadow(0 0 0.75rem red)';
-                btn.style.backgroundColor = '#E55141';
+                btn.style.backgroundColor = '';
                 btn.classList.add('card');
 
             }

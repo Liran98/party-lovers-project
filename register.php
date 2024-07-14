@@ -10,13 +10,13 @@ if (isset($_POST['register'])) {
 
 
     $password = $_POST['password'];
-    $confrim_pass = $_POST['password01'];
+    $confirm_pass = $_POST['password01'];
 
-    if ($password == $confrim_pass && strlen($password) >= 6 && strlen($confirm_pass) >= 6) {
+    if ($password == $confirm_pass && strlen($password) >= 6 && strlen($confirm_pass) >= 6 && strlen($user->username) >= 4) {
 
         $options = array("cost" => 12);
 
-        $password =  password_hash($confrim_pass, PASSWORD_BCRYPT, $options);
+        $password =  password_hash($confirm_pass, PASSWORD_BCRYPT, $options);
 
         $user->password = $password;
 
@@ -40,12 +40,14 @@ if (isset($_POST['register'])) {
 
                                 <form action="" method="post">
                                     <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
+
+                                        <p class="email-text-err text-center"></p>
                                         <div class="col-8">
-                                            <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                            <label for="email" class="form-label">Email <span class="text-danger email_validator">*</span></label>
                                             <input type="email" class="form-control email" id="email" name="email" value="" required>
                                         </div>
                                         <div class="col-4">
-                                            <label for="email" class="form-label">Selection <span class="text-danger">*</span></label>
+                                            <label for="email" class="form-label">Selection <span class="text-danger selector_validator">*</span></label>
                                             <select class="form-select" name="" id="email_selection">
                                                 <option value="">Select Email Type</option>
                                                 <hr>
@@ -70,7 +72,6 @@ if (isset($_POST['register'])) {
                                             <label for="password" class="form-label">Confirm Password <span class="text-danger password_validation01">*</span></label>
                                             <input type="password" class="form-control pass01" id="password01" name="password01" value="" required>
                                         </div>
-
 
                                         <div class="col-12">
                                             <div class="d-grid">
@@ -146,18 +147,44 @@ if (isset($_POST['register'])) {
 
 
 
-    const email = document.querySelector('.email');
-    const selector = document.getElementById('email_selection')
+    const email = document.getElementById('email');
+    const selector = document.getElementById('email_selection');
+    const email_validation = document.querySelector('.email_validator');
+    const selector_validation = document.querySelector('.selector_validator');
 
-    if (!selector) {
 
-    } else {
-        selector.addEventListener('change', function(e) {
+    selector.addEventListener('change', function(e) {
+        e.preventDefault();
+        email.value = selector.value;
+        email.type = 'text';
+        email.focus();
+        email.setSelectionRange(0, 0);
+        email.type = 'email';
+
+    });
+
+
+    const email_checker = document.querySelector('.email-text-err');
+
+    const inputs = [email, selector];
+    const validators = [email_validation, selector_validation];
+
+    inputs.forEach(function(btn, i) {
+        btn.addEventListener('change', function(e) {
             e.preventDefault();
-            email.focus();
-            email.value = selector.value;
+       
+            if (email.value.length >= 3 && email.value.includes("@")) {
+                validators[i].innerHTML = `✅`;
+                email_checker.textContent = "Email Valid";
+                email_checker.style.color = "lightgreen";
+
+            } else {
+                validators[i].innerHTML = `*`;
+                email_checker.textContent = "Email cannot be Empty";
+                email_checker.style.color = "red";
+            }
 
         });
-    }
+    })
 </script>
 <?php include("includes/footer.php"); ?>
