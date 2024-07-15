@@ -479,7 +479,7 @@ composer.phar
 node_modules/
 
 # Ignore vendor directory (for PHP Composer)
-vendor/
+/vendor
 
 # Ignore log files
 *.log
