@@ -1,9 +1,5 @@
 <?php include("includes/header.php"); ?>
 
-
-
-
-
 <section class="dark">
     <div class="container py-4">
         <h1 class="h1 text-center text-light party_img" id="pageHeaderTitle">
@@ -89,6 +85,14 @@
     </div>
 </section>
 
+<script>
+    // index random images 
+const image = document.querySelectorAll('.index_img');
+image.forEach(function (curimg) {
+   const randomimg = Math.floor(Math.random() * 20);
+   curimg.src = `./gallery_images/gallery${randomimg}.jpg`;
+});
 
+</script>
 
 <?php include("includes/footer.php"); ?>

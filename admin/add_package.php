@@ -47,7 +47,7 @@
                                     </div>
 
                                     <div class="col-6">
-                                        <label for="price" class="form-label">Package price</label>
+                                        <label for="price" class="form-label">Package price ₱</label>
                                         <input disabled class="form-control price-input" type="number" name="package_price">
                                     </div>
 
@@ -62,8 +62,9 @@
                                             </div>
 
                                             <br>
+                                            <h3>Added items</h3>
                                             <!-- color picker for balloons fixing soon<input class='form-control' type="text" data-coloris> -->
-                                            <textarea rows="10" class="form-control  m-3" name="package_items" id="all_selected_packages">
+                                            <textarea disabled rows="10" class="form-control  m-3" name="package_items" id="all_selected_packages">
 
                                             </textarea>
                                         </div>
@@ -223,11 +224,13 @@
 
             }
             selected = !selected;
-            text_area.value = added_items.join(',');
+            text_area.value = added_items.join('   ,   ');
 
             const total_price = item_prices.reduce(function(acc, cur) {
                 return acc + cur;
             });
+
+          
             priceInput.value = total_price;
         });
     });

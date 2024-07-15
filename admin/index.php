@@ -1,11 +1,11 @@
 <?php include("includes/header.php"); ?>
 
-<?php if (!$session->is_signed_in()) redirect("../index"); ?>
+<?php if (!$session->is_signed_in() || !$session->user_id) redirect("../index"); ?>
 
 <div id="layoutSidenav_content">
     <main class="text-light">
         <div class="container-fluid px-4">
-            <h1 class="mt-4 text-center">Dashboard <?php echo $session->user_role; ?></h1>
+            <h1 class="mt-4 text-center">Dashboard</h1>
             <div class="row">
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">

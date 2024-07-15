@@ -6,6 +6,10 @@
             <?php
             $events = $event->find_all();
 
+            if(!$events){
+            redirect("index");
+            }
+
             foreach ($events as $event) {
             ?>
 

@@ -6,7 +6,6 @@ class Session
 {
 
     public $user_id;
-    public $user_role;
     private $signed_in = false;
 
     function __construct()
@@ -18,7 +17,6 @@ class Session
     public function login($user)
     {
         if ($user) {
-            $this->user_role = $_SESSION['role'] = $user->user_role;
             $this->user_id = $_SESSION['user_id'] = $user->id;
             $this->signed_in = true;
         }
