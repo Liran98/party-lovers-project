@@ -46,7 +46,7 @@ if (isset($_POST['register'])) {
                                         <p class="email-text-err text-center"></p>
                                         <div class="col-8">
                                             <label for="email" class="form-label">Email <span class="text-danger email_validator">*</span></label>
-                                            <input type="email" class="form-control email" id="email" name="email" value="www@gmail.com" required>
+                                            <input type="email" class="form-control email" id="email" name="email" value="" required>
                                         </div>
                                         <div class="col-4">
                                             <label for="email" class="form-label">Selection <span class="text-danger selector_validator">*</span></label>
@@ -62,17 +62,17 @@ if (isset($_POST['register'])) {
                                         <div class="col-12">
                                             <p class="user-validation-text text-center"></p>
                                             <label for="username" class="form-label">User Name <span class="text-danger user_validation">*</span></label>
-                                            <input type="text" class="form-control" id="username" name="user" value="123__" required>
+                                            <input type="text" class="form-control" id="username" name="user" value="" required>
                                         </div>
 
                                         <p class="text-validation text-center"></p>
                                         <div class="col-6">
                                             <label for="password" class="form-label">Password <span class="text-danger password_validation">*</span></label>
-                                            <input type="password" class="form-control pass" id="password" name="password" value="111111" required>
+                                            <input type="password" class="form-control pass" id="password" name="password" value="" required>
                                         </div>
                                         <div class="col-6">
                                             <label for="password" class="form-label">Confirm Password <span class="text-danger password_validation01">*</span></label>
-                                            <input type="password" class="form-control pass01" id="password01" name="password01" value="111111" required>
+                                            <input type="password" class="form-control pass01" id="password01" name="password01" value="" required>
                                         </div>
 
                                         <div class="col-12">

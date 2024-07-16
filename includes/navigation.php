@@ -13,18 +13,18 @@
                     </li>
 
                     <?php
-                     if($event->count_all() == 0 && $package->count_all() == 0){
+                    if ($event->count_all() == 0 || $package->count_all() == 0) {
                         echo "";
-                    }else{
-                        ?>
-                    <li class="nav-item">
-                        <a class="nav-link text-light home-nav-link" href="./packages.php">Packages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light home-nav-link" href="./events.php">Events</a>
-                    </li>
+                    } else {
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-light home-nav-link" href="./packages.php">Packages</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light home-nav-link" href="./events.php">Events</a>
+                        </li>
                     <?php
-                    } 
+                    }
                     ?>
 
                     <li class="nav-item">
@@ -41,6 +41,13 @@
                         <li class="nav-item">
                             <a class="nav-link text-light home-nav-link" href='admin'>Admin</a>
                         </li>
+                        <li class="nav-item">
+                            <?php
+                            $logged_user = $user->find_by_id($session->user_id);
+                            echo "<a class='nav-link text-dark bg-info'>Logged in: $logged_user->username </a>";
+                            ?>
+
+                        </li>
                     <?php else : ?>
                         <li class="nav-item">
                             <a class="nav-link text-light home-nav-link" href='./login.php'>Login</a>
@@ -48,27 +55,40 @@
                     <?php endif; ?>
 
                 </ul>
+
+
+
+
                 <?php if ($session->is_signed_in()) : ?>
 
                     <form class="d-flex">
                         <?php
-                        $active_class = '';
-                        if ($cart->count_all() == 0) {
-                            $active_class = 'dark';
-                        } else {
-                            $active_class = 'info';
+                        $all_users =  $user->find_all();
+
+                        foreach ($all_users as $uid) {
+                            if ($uid->id == $session->user_id) {
+
+                                $active_class = '';
+
+                                if ($cart->count_all() == 0) {
+                                    $active_class = 'dark';
+                                } else {
+                                    $active_class = 'info';
+                                }
+                            }
                         }
+
                         ?>
                         <i class="fa badge bg-<?php echo $active_class; ?> btn  fa-lg cart-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                             &#xf07a;
                             <span class="badge   ms-1 rounded-pill">
                                 <?php
-                                $cart = new Cart();
-                                echo $cart->count_all();
+                              echo $cart->find_user_carts($session->user_id);
 
                                 ?></span>
                         </i>
                     </form>
+
                 <?php endif; ?>
             </div>
         </div>

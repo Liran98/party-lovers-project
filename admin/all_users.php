@@ -77,6 +77,7 @@
 <?php
 
 if (isset($_GET['del'])) {
+    $user->delete_user_carts($_GET['del']);
     $user->delete($_GET['del']);
     $session->logout();
     redirect("../index");

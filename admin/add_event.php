@@ -50,6 +50,11 @@
                                             <option value="Adventure">Adventure</option>
                                             <option value="Super heros">Super heros</option>
                                             <option value="Anime">Anime</option>
+                                            <option value="Halloween">Halloween</option>
+                                            <option value="Christmas">Christmas</option>
+                                            <option value="Video games">Video games</option>
+
+
                                         </select>
                                     </div>
 

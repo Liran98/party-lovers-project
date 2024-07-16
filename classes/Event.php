@@ -46,15 +46,7 @@ class Event extends Db_object
 
 
 
-    public function delete_img($id)
-    {
-
-        if ($this->delete($id)) {
-            $imgpath = SITE_ROOT . DS . $this->img_path();
-
-            return unlink($imgpath);
-        }
-    }
+  
 } //end of class Event
 
 

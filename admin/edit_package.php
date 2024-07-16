@@ -42,42 +42,52 @@
 
                             ?>
 
-                                    <form action="" method="post" enctype="multipart/form-data">
-                                        <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
 
-                                            <div class="col-6">
-                                                <label for="name" class="form-label">Package Name </label>
-                                                <input type="text" class="form-control" id="name" name="name" value="<?php echo $val->package_name; ?>" required>
-                                            </div>
-                                            <div class="col-6">
-                                                <label for="package image" class="form-label">Package Image</label>
-                                                <input class="form-control" type="file" name="package_image">
-                                                <?php echo $val->package_image; ?>
-                                            </div>
-
-                                            <div class="col-6">
-                                                <label for="theme" class="form-label">Package theme</label>
-                                                <input class="form-control" type="text" name="package_theme" value="<?php echo $val->package_theme; ?>">
-                                            </div>
-
-                                            <div class="col-6">
-                                                <label for="price" class="form-label">Package price</label>
-                                                <input class="form-control" type="text" name="package_price" value="<?php echo $val->package_price; ?>">
-                                            </div>
-                                            <div class="col-12">
-                                                <label for="package_items" class="form-label">Package items</label>
-                                                <textarea class="form-control" name="package_items" rows="10" cols="10">
-                                       <?php echo $val->package_items; ?>
-                                        </textarea>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="d-grid">
-                                                    <button name="edit_package" class="btn btn-primary btn-lg" type="submit">Edit package</button>
-                                                </div>
-                                                <br>
-                                            </div>
+                                        <div class="col-6">
+                                            <label for="name" class="form-label">Package Name </label>
+                                            <input type="text" class="form-control" id="name" name="name" value="<?php echo $val->package_name; ?>" required>
                                         </div>
-                                    </form>
+                                        <div class="col-6">
+                                            <label for="package image" class="form-label">Package Image</label>
+                                            <input class="form-control" type="file" name="package_image">
+                                            <?php echo $val->package_image; ?>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label for="theme" class="form-label">Package theme</label>
+                                            <input class="form-control" type="text" name="package_theme" value="<?php echo $val->package_theme; ?>">
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label for="price" class="form-label">Package price</label>
+                                            <input class="form-control price-input" type="text" name="package_price" value="<?php echo $val->package_price; ?>">
+                                        </div>
+                                        <div class="col-12">
+                                        <label for="package_items" class="form-label">Package items</label>
+
+                                        <div class="container  m-3 ">
+                                            <div class="row  row-cols-2 row-cols-md-3 row-cols-xl-6  packages ">
+
+
+                                            </div>
+
+                                            <br>
+                                            <h3>Edit items</h3>
+                                            <!-- color picker for balloons fixing soon<input class='form-control' type="text" data-coloris> -->
+                                            <textarea rows="10" class="form-control  m-3" name="package_items" id="all_selected_packages">
+                                      <?php echo $val->package_items; ?>
+                                            </textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="d-grid">
+                                                <button name="edit_package" class="btn btn-primary btn-lg" type="submit">Edit package</button>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </form>
                             <?php
                             }
                             ?>
@@ -93,6 +103,12 @@
 </section>
 <br>
 
+<script type="module">
+    // ?</package selection for add_package.php>
 
+import package_items from './js/package_items.js';
+
+
+</script>
 
 <?php include("includes/footer.php"); ?>

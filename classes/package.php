@@ -39,18 +39,6 @@ class Package extends Db_object
     }
 
 
-
-    public function delete_img($id)
-    {
-     
-        if($this->delete($id)){
-            
- $imgpath = IMG_PATH . DS . $this->package_image;
-        
-return unlink($imgpath);
-    }
-
-}
 }//end of class Package
 
 $package = new Package();

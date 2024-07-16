@@ -77,6 +77,7 @@
                                         </td>
                                     </tr>
                                 <?php
+                       
                                 }
                                 ?>
                             </tbody>
@@ -92,8 +93,14 @@
 <?php
 
 if (isset($_GET['del'])) {
+    $pack_id = $package->find_by_id($_GET['del']);
+    $package_img_path = "../" . $pack_id->img_path();
     if ($package->delete($_GET['del'])) {
-        redirect("all_packages");
+        if (is_file($package_img_path)) {
+            if (unlink($package_img_path)) {
+                redirect("all_packages");
+            }
+        }
     };
 }
 
@@ -105,12 +112,24 @@ if (isset($_POST['del-pack'])) {
         $packages_id = $_POST['check_pack'];
 
         foreach ($packages_id as $pid) {
+            $pid_img = $package->find_by_id($pid);
+             $img_path = "../" .  $pid_img->img_path();
+             echo $img_path;
             if ($package->delete($pid)) {
-                redirect("all_packages");
+                if (is_file($img_path)) {
+                    if (unlink($img_path)) {
+                        redirect("all_packages");
+                    }
+                }
             };
         }
+
+        
+
+        
     }
-} 
+
+}
 
 ?>
 

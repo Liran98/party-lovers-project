@@ -70,6 +70,8 @@
         </td>
         </tr>
       <?php
+
+               
                 }
       ?>
       </tbody>
@@ -82,15 +84,18 @@
 </div>
 </div>
 <?php
+   if (isset($_GET['del'])) {
+   $event_img = $event->find_by_id($_GET['del']);
+    $event_img_path = "../" . $event_img->img_path();
+    if ($event->delete($_GET['del'])) {
+      if (is_file($event_img_path)) {
+        if (unlink($event_img_path)) {
+          redirect("all_events");
+        }
+      }
+    };
+  }
 
-
-
-
-if (isset($_GET['del'])) {
-  if ($event->delete_img($_GET['del'])) {
-    redirect("all_events");
-  };
-};
 
 
 if (isset($_POST['delete-events'])) {
@@ -99,12 +104,18 @@ if (isset($_POST['delete-events'])) {
     $events_id = $_POST['checkboxes'];
 
     foreach ($events_id as $eid) {
-      $event->delete($eid);
-      redirect("all_events");
+      $eid_img = $event->find_by_id($eid);
+      $img_path = "../" .  $eid_img->img_path();
+      if ($event->delete($eid)) {
+        if (is_file($img_path)) {
+          if (unlink($img_path)) {
+            redirect("all_events");
+          }
+        }
+      };
     }
   }
 }
-
 
 ?>
 <script>

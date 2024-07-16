@@ -52,14 +52,14 @@ if (isset($_POST['login'])) {
                     <div class="col-12">
                       <p class="text-danger text-center"><?php echo $msg_user; ?></p>
                       <label for="user" class="form-label">User Name <span class="text-danger validator">*</span></label>
-                      <input type="text" class="form-control username" id="user" name="user" value="wwe_" required>
+                      <input type="text" class="form-control username" id="user" name="user" value="partylovers" required>
                     </div>
 
 
                     <div class="col-12">
                       <p class="text-danger text-center"><?php echo $msg; ?></p>
                       <label for="password" class="form-label">Password <span class="text-danger validator">*</span></label>
-                      <input type="password" class="form-control password" id="password" name="pass" value="123wwe" required>
+                      <input type="password" class="form-control password" id="password" name="pass" value="123456" required>
                     </div>
 
                     <div class="col-12">
@@ -108,9 +108,9 @@ if (isset($_POST['login'])) {
     const inputs = [username, password];
 
     inputs.forEach(function(input,i) {
-      validation[i].innerHTML="✅";
+      
       input.addEventListener('change', function (e){
-        if(input.value == ""){
+        if(input.value.length == 0){
           validation[i].innerHTML="*";
         }else{
           validation[i].innerHTML="✅";

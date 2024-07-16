@@ -3,7 +3,7 @@
 
 
 <div class="container my-3">
-    <div  class="my-5 text-center ">
+    <div class="my-5 text-center ">
         <h1 class="display-4  p-2 text-light">Welcome to Party Lovers Officals <img class="img-fluid" style="width: 70px;" src="images/party_logo.png"></h1>
         <p class=" lead  p-3  text-white mb-0">
 
@@ -22,15 +22,20 @@
         </p>
         <hr>
 
-       
+
     </div>
 
 
-<p class="lead text-center my-5">
+    <p class="lead text-center my-5">
+        <?php if ($event->count_all() > 0) {
+        ?>
             <a class="btn btn-light  btn-outline-dark btn-lg m-2" href="events.php" role="button">Check Out Our Themes</a>
-            <a class="btn btn-light  btn-outline-dark btn-lg m-2" href="gallery.php" role="button">Check Out Our Gallery</a>
-        </p>
-       
+        <?php
+        }
+        ?>
+        <a class="btn btn-light  btn-outline-dark btn-lg m-2" href="gallery.php" role="button">Check Out Our Gallery</a>
+    </p>
+
 </div>
 
 

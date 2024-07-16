@@ -32,6 +32,15 @@ class User extends Db_object
 
         return mysqli_num_rows($res);
     }
+
+    public function delete_user_carts($id)
+    {
+        global $database;
+        if ($this->delete($id)) {
+            $sql = "DELETE FROM cart WHERE user_id = $id";
+           return  $database->query($sql);
+        }
+    }
 } // end of class user
 
 
