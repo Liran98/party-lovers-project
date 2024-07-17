@@ -4,7 +4,18 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <div class="container text-bg-light p-3">
+        <?php
+        $container_class = '';
+
+        if ($cart->count_all() == 0) {
+            $container_class = '';
+        } else {
+            $container_class = 'bg-light';
+        }
+
+
+        ?>
+        <div class="container <?php echo $container_class; ?> p-3">
             <div class="row gx-2 gx-lg-2">
                 <?php
                 $cart = new Cart();
@@ -29,7 +40,7 @@
                         <hr>
 
                 <?php
-                    }else{
+                    } else {
                         echo "";
                     }
                 }

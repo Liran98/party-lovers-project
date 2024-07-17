@@ -3,6 +3,8 @@
 class Db_object
 {
 
+    public $file_directory = "images";
+    public $tmp_path = "";
 
     public function find_all()
     {
@@ -124,6 +126,10 @@ class Db_object
         }
         return $props;
     }
+
+
+ 
+
 } //end of class db_object
 
 $db = new Db_object();

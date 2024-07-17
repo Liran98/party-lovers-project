@@ -4,7 +4,7 @@
 class User extends Db_object
 {
     static $table = 'users';
-    static $db_fields = ['username', 'email', 'password', 'user_role'];
+    static $db_fields = ['username', 'email', 'password', 'user_role','user_image'];
 
     public $id;
     public $username;
@@ -12,11 +12,12 @@ class User extends Db_object
     public $email;
     public $user_role;
 
+    public $user_image;
 
-    public function verify_user($username)
+    public function verify_user($username, $email="")
     {
 
-        $sql = "SELECT * FROM " . self::$table . " WHERE username = '$username'";
+        $sql = "SELECT * FROM " . self::$table . " WHERE username = '$username' OR email = '$email'";
         $res_array = static::find_query($sql);
         return  !empty($res_array) ? array_shift($res_array) : false;
     }
@@ -41,6 +42,32 @@ class User extends Db_object
            return  $database->query($sql);
         }
     }
+
+    public function set_file($file)
+    {
+        $this->user_image = $file['name'];
+
+        $this->tmp_path = $file['tmp_name'];
+
+        $path_for_img = IMG_PATH . DS . $this->user_image;
+
+        if(file_exists($path_for_img)){
+            echo "<p class='bg-danger text-center'>image already exists</p>";
+        return false;
+        }
+       if (move_uploaded_file($this->tmp_path, $path_for_img)) {
+            unset($this->tmp_path);
+            return true;
+        };
+    }
+
+    public function img_path()
+    {
+        return $this->file_directory . DS . $this->user_image;
+    }
+
+    
+
 } // end of class user
 
 

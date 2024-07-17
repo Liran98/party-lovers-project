@@ -4,7 +4,6 @@
 
 class Session
 {
-    public $role;
     public $user_id;
     private $signed_in = false;
 
@@ -12,13 +11,12 @@ class Session
     {
         session_start();
         $this->check_login();
-        $this->check_user_role();
     }
 
     public function login($user)
     {
         if ($user) {
-            $this->role = $_SESSION['role'] = $user->user_role;
+
             $this->user_id = $_SESSION['user_id'] = $user->id;
             $this->signed_in = true;
         }
@@ -27,7 +25,7 @@ class Session
 
     public function logout()
     {
-        unset($_SESSION['role']);
+
         unset($_SESSION['user_id']);
         unset($this->user_id);
         $this->signed_in = false;
@@ -45,14 +43,6 @@ class Session
         }
     }
 
-    public function check_user_role()
-    {
-        if (isset($_SESSION['role'])) {
-            $this->role = $_SESSION['role'];
-        }else{
-            unset($_SESSION['role']);
-        }
-    }
 
     public function is_signed_in()
     {

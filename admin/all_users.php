@@ -54,7 +54,7 @@
                                     if ($session->user_id == $users->id) {
                                     ?>
                                         <td>
-                                            <a href="all_users.php?del=<?php echo $users->id; ?>" class="del-btn"> <i class="fas fa-trash p-2"></i> </a>
+                                            <a data-user="<?php echo $users->id; ?>" href="all_users.php?del=<?php echo $users->id; ?>" class="del-btn"> <i class="fas fa-trash p-2"></i> </a>
                                         </td>
                                         <td>
                                             <a href="edit_user.php?edit=<?php echo $users->id; ?>"> <i class="fas fa-edit p-2"></i> </a>
@@ -76,19 +76,63 @@
 </div>
 <?php
 
-if (isset($_GET['del'])) {
-    $user->delete_user_carts($_GET['del']);
-    $user->delete($_GET['del']);
-    $session->logout();
-    redirect("../index");
-}
+
 if (isset($_GET['edit'])) {
     $user->find_by_id($_GET['edit']);
 }
 
+if (isset($_GET['del'])) {
 
+    $user_img = $user->find_by_id($_GET['del']);
+    
+    $img_path = "../" .  $user_img->img_path();
+
+    if ($user->delete($_GET['del'])) {
+
+        $user->delete_user_carts($_GET['del']);
+
+        $session->logout();
+
+        if (is_file($img_path)) {
+            if (unlink($img_path)) {
+                redirect("../index");
+            }
+        }
+    }
+}
 
 ?>
 
+<script>
+    const delete_user = document.querySelector('.del-btn');
 
+    delete_user.addEventListener('click', function(e) {
+        e.preventDefault();
+        const btn = e.target.closest('.del-btn');
+        const user_id = btn.dataset.user;
+        Swal.fire({
+            title: "Delete User ?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(function(result) {
+            if (result.isConfirmed) {
+
+                fetch(`all_users.php?del=${user_id}`)
+                    .then(function(res) {
+                        res.json();
+                    })
+                    .then(function() {
+                        setTimeout(() => {
+                            window.location.href = "../index.php";
+                        }, 400);
+                    });
+            }
+        });
+
+    });
+</script>
 <?php include("includes/footer.php"); ?>

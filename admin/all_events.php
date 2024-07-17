@@ -63,7 +63,7 @@
         </div>
         </td>
         <td>
-          <a href="all_events.php?del=<?php echo $events->id; ?>"> <i class="fas fa-trash p-2"></i></a>
+          <a class="delete-event" data-event="<?php echo $events->id; ?>" href="all_events.php?del=<?php echo $events->id; ?>"> <i class="fas fa-trash p-2"></i></a>
         </td>
         <td>
           <a href="edit_event.php?edit=<?php echo $events->id; ?>"><i class="fas fa-edit p-2"></i> </a>
@@ -144,6 +144,39 @@ if (isset($_POST['delete-events'])) {
 
 
   });
+
+
+  const del_event = document.querySelectorAll('.delete-event');
+del_event.forEach(function(val){
+val.addEventListener('click', function(e) {
+    e.preventDefault();
+    const btn = e.target.closest('.delete-event');
+    const event_id = btn.dataset.event;
+    Swal.fire({
+        title: "Delete Event ?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then(function(result) {
+        if (result.isConfirmed) {
+
+            fetch(`all_events.php?del=${event_id}`)
+                .then(function(res) {
+                    res.json();
+                })
+                .then(function() {
+                    setTimeout(() => {
+                        window.location.href = "all_events.php";
+                    }, 400);
+                });
+        }
+    });
+
+});
+});
 </script>
 
 <?php include("includes/footer.php"); ?>

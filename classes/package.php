@@ -12,8 +12,7 @@ class Package extends Db_object
     public $package_theme;
     public $package_price;
 
-    public $file_directory = "images";
-    public $tmp_path = "";
+ 
 
     public function set_file($file)
     {

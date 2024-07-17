@@ -28,6 +28,7 @@
 <body style="font-family: cursive;">
     <?php include("navigation.php"); ?>
     <?php include("sidebar.php"); ?>
+
     <?php
     if (isset($_GET['del'])) {
         $cart->find_by_id($_GET['del']);

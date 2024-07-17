@@ -1,5 +1,16 @@
 <div class="col-12 col-lg-12 bsb-overlay background-position-center background-size-cover" style="--bsb-overlay-opacity: 0.7; ">
     <nav class="navbar navbar-expand-lg sticky-top">
+      
+            <?php
+           
+            if($session->is_signed_in()) {
+                $logged_user = $user->find_by_id($session->user_id);
+                echo "<i class='fas fa-user text-light m-2'></i><p class=' card p-1 m-2'>$logged_user->username </p>";
+            }
+           
+            ?>
+    
+
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand text-light" href="./index.php"><img style="width:40px;" src="images/party_logo.png"></a>
             <a class="navbar-brand text-light home-nav-link" href="./index.php">Home</a>
@@ -12,20 +23,18 @@
                         <a class="nav-link text-light home-nav-link" href="./gallery.php">Gallery</a>
                     </li>
 
-                    <?php
-                    if ($event->count_all() == 0 || $package->count_all() == 0) {
-                        echo "";
-                    } else {
-                    ?>
-                        <li class="nav-item">
-                            <a class="nav-link text-light home-nav-link" href="./packages.php">Packages</a>
-                        </li>
+                    <?php if ($event->count_all() > 0) { ?>
                         <li class="nav-item">
                             <a class="nav-link text-light home-nav-link" href="./events.php">Events</a>
                         </li>
-                    <?php
-                    }
-                    ?>
+                    <?php } ?>
+
+                    <?php if ($package->count_all() > 0) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-light home-nav-link" href="./packages.php">Packages</a>
+                        </li>
+                    <?php } ?>
+
 
                     <li class="nav-item">
                         <a class="nav-link text-light home-nav-link" aria-current="page" href="./about_us.php">About us</a>
@@ -41,13 +50,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-light home-nav-link" href='admin'>Admin</a>
                         </li>
-                        <li class="nav-item">
-                            <?php
-                            $logged_user = $user->find_by_id($session->user_id);
-                            echo "<a class='nav-link text-dark bg-info'>Logged in: $logged_user->username </a>";
-                            ?>
 
-                        </li>
                     <?php else : ?>
                         <li class="nav-item">
                             <a class="nav-link text-light home-nav-link" href='./login.php'>Login</a>
@@ -55,11 +58,17 @@
                     <?php endif; ?>
 
                 </ul>
-
-
-
-
                 <?php if ($session->is_signed_in()) : ?>
+                    <div class="d-flex">
+                        <?php
+                        $logged_user = $user->find_by_id($session->user_id);
+                        ?>
+
+                        <img style="width: 50px;" src="<?php echo "./" . $logged_user->img_path(); ?>" alt="" class="rounded-circle m-2">
+                    </div>
+
+
+
 
                     <form class="d-flex">
                         <?php
@@ -83,13 +92,15 @@
                             &#xf07a;
                             <span class="badge   ms-1 rounded-pill">
                                 <?php
-                              echo $cart->find_user_carts($session->user_id);
+                                echo $cart->find_user_carts($session->user_id);
 
                                 ?></span>
                         </i>
                     </form>
 
                 <?php endif; ?>
+
+
             </div>
         </div>
     </nav>

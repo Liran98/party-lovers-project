@@ -70,14 +70,14 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="all_packages.php?del=<?php echo $packages->id; ?>"> <i class="fas fa-trash p-2"></i> </a>
+                                            <a class="delete-pack" data-pack="<?php echo $packages->id; ?>" href="all_packages.php?del=<?php echo $packages->id; ?>"> <i class="fas fa-trash p-2"></i> </a>
                                         </td>
                                         <td>
                                             <a href="edit_package.php?edit=<?php echo $packages->id; ?>"><i class="fas fa-edit p-2"></i> </a>
                                         </td>
                                     </tr>
                                 <?php
-                       
+
                                 }
                                 ?>
                             </tbody>
@@ -104,17 +104,14 @@ if (isset($_GET['del'])) {
     };
 }
 
-
-
 if (isset($_POST['del-pack'])) {
-
     if (!empty($_POST['check_pack']) && is_array($_POST['check_pack'])) {
         $packages_id = $_POST['check_pack'];
 
         foreach ($packages_id as $pid) {
             $pid_img = $package->find_by_id($pid);
-             $img_path = "../" .  $pid_img->img_path();
-             echo $img_path;
+            $img_path = "../" .  $pid_img->img_path();
+            echo $img_path;
             if ($package->delete($pid)) {
                 if (is_file($img_path)) {
                     if (unlink($img_path)) {
@@ -123,14 +120,8 @@ if (isset($_POST['del-pack'])) {
                 }
             };
         }
-
-        
-
-        
     }
-
 }
-
 ?>
 
 <script>
@@ -156,8 +147,38 @@ if (isset($_POST['del-pack'])) {
         }
 
         is_checked = !is_checked;
+    });
 
 
+    const delete_pack = document.querySelectorAll('.delete-pack');
+    delete_pack.forEach(function(val) {
+        val.addEventListener('click', function(e) {
+            e.preventDefault();
+            const btn = e.target.closest('.delete-pack');
+            const pack_id = btn.dataset.pack;
+            Swal.fire({
+                title: "Delete Package ?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then(function(result) {
+                if (result.isConfirmed) {
+                    fetch(`all_packages.php?del=${pack_id}`)
+                        .then(function(res) {
+                            res.json();
+                        })
+                        .then(function() {
+                            setTimeout(() => {
+                                window.location.href = "all_packages.php";
+                            }, 400);
+                        })
+                }
+            });
+
+        });
     });
 </script>
 <?php include("includes/footer.php"); ?>

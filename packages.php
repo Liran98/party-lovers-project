@@ -36,7 +36,8 @@
                             <input name="add-to-cart" class="btn btn-outline-light add-package" type="submit" value="Add to Cart" />
 
                             <?php
-                            if ($session->check_user_role() == 'Admin') {
+                            $logged_user = $user->find_by_id($session->user_id);
+                            if ($logged_user->user_role == 'Admin') {
                             ?>
                                 <a class="btn btn-outline-light" href="admin/edit_package.php?edit=<?php echo $items->id; ?>">
                                     Edit

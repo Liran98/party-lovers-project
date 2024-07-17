@@ -13,8 +13,7 @@ class Event extends Db_object
 
     public $event_image;
 
-    public $file_directory = "images";
-    public $tmp_path = "";
+  
 
     public function find_by_search($search)
     {

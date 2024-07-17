@@ -7,6 +7,10 @@
         <div class="container-fluid px-4">
             <h1 class="mt-4 text-center">Dashboard</h1>
             <div class="row">
+                <?php
+                $logged_user = $user->find_by_id($session->user_id);
+                if($logged_user->user_role == 'Admin' ){
+                    ?>
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">
                         <div class="card-body">All Events</div>
@@ -28,7 +32,9 @@
                         </div>
                     </div>
                 </div>
-
+                <?php
+                }
+                ?>
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-secondary text-white mb-4">
                         <div class="card-body ">All Users</div>

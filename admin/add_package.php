@@ -63,7 +63,7 @@
 
                                             <br>
                                             <h3>Added items</h3>
-                                            <!-- color picker for balloons fixing soon<input class='form-control' type="text" data-coloris> -->
+                                           
                                             <textarea  rows="10" class="form-control  m-3" name="package_items" id="all_selected_packages">
 
                                             </textarea>

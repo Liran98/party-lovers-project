@@ -1,16 +1,19 @@
 <?php include("includes/header.php"); ?>
 <?php if ($session->is_signed_in()) redirect("index"); ?>
 <?php
-
+$msg_err = "";
 if (isset($_POST['register'])) {
 
     $user->username = $_POST['user'];
     $user->email = $_POST['email'];
     $user->user_role = "subscriber";
 
+    $user_exists = $user->verify_user($_POST['user'], $_POST['email']);
 
     $password = $_POST['password'];
     $confirm_pass = $_POST['password01'];
+
+     $user->set_file($_FILES['profile_img']);
 
     if ($password == $confirm_pass && strlen($password) >= 6 && strlen($confirm_pass) >= 6 && strlen($user->username) >= 4) {
 
@@ -20,9 +23,18 @@ if (isset($_POST['register'])) {
 
         $user->password = $password;
 
-        if ($user->create()) {
-            redirect("login");
-        };
+
+        if ($user_exists->username == $user->username) {
+            $msg_err =  "User already exists";
+        }
+        if ($user_exists->email == $user->email) {
+            $msg_err =  "Email already exists";
+        }
+        if (!$user_exists->email && !$user_exists->username) {
+            if ($user->create()) {
+                redirect("login");
+            };
+        }
     }
 }
 
@@ -30,20 +42,19 @@ if (isset($_POST['register'])) {
 <section class="py-3 py-md-5 py-xl-8">
 
     <?php include("includes/loadingSpinner.php") ?>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="container d-flex justify-content-center">
             <div class="row">
                 <div class="col-12 col-lg-12 bsb-overlay background-position-center background-size-cover" style="--bsb-overlay-opacity: 0.7;">
                     <div class="col-12">
                         <div class="rounded shadow-sm overflow-hidden text-light">
-                            <h1 class="text-center">Register</h1>
                             <div class="row align-items-lg-center h-100 ">
                                 <div class="col-12 ">
-
-
-                                    <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
+                                    <div class="row gy-3 gy-xl-3 p-3 p-xl-3">
+                                        <h1 class="text-center">Register</h1>
 
                                         <p class="email-text-err text-center"></p>
+                                        <p class="text-danger text-center"><?php echo  $msg_err; ?></p>
                                         <div class="col-8">
                                             <label for="email" class="form-label">Email <span class="text-danger email_validator">*</span></label>
                                             <input type="email" class="form-control email" id="email" name="email" value="" required>
@@ -59,12 +70,16 @@ if (isset($_POST['register'])) {
                                                 <option value="@gmail.com">Gmail</option>
                                             </select>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-8">
                                             <p class="user-validation-text text-center"></p>
                                             <label for="username" class="form-label">User Name <span class="text-danger user_validation">*</span></label>
                                             <input type="text" class="form-control" id="username" name="user" value="" required>
                                         </div>
-
+                                        <div class="col-4">
+                                            <p class="user-validation-text text-center"></p>
+                                            <label for="profile" class="form-label">Profile Picture <span>(Optional)</span></label>
+                                            <input type="file" class="form-control" name="profile_img">
+                                        </div>
                                         <p class="text-validation text-center"></p>
                                         <div class="col-6">
                                             <label for="password" class="form-label">Password <span class="text-danger password_validation">*</span></label>
@@ -74,12 +89,15 @@ if (isset($_POST['register'])) {
                                             <label for="password" class="form-label">Confirm Password <span class="text-danger password_validation01">*</span></label>
                                             <input type="password" class="form-control pass01" id="password01" name="password01" value="" required>
                                         </div>
-
-                                        <div class="col-12">
+                                      
+                                        <div class="col-4"></div>
+                                        <div class="col-4">
                                             <div class="d-grid">
                                                 <button class="btn btn-primary btn-lg register-btn" name="register" type="submit">Sign Up</button>
                                             </div>
                                         </div>
+                                        <div class="col-4"></div>
+
                                     </div>
 
                                 </div>
@@ -187,7 +205,7 @@ if (isset($_POST['register'])) {
 
     inputs.forEach(function(inp) {
         inp.addEventListener('change', function(e) {
-         
+
 
             function validateEmail(email) {
                 const regex = /^[^\s@]+@[^\s@]+$/;

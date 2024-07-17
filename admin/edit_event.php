@@ -39,7 +39,9 @@
 
                                     <form action="" method="post" enctype="multipart/form-data">
                                         <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
-
+                                        <div class="col-12 d-flex justify-content-center">
+                                          <img style="width: 300px;" src="../images/<?php echo $val->event_image; ?>" alt="">
+                                        </div>
                                             <div class="col-6">
                                                 <label for="title" class="form-label">Title </label>
                                                 <input type="text" class="form-control" id="title" name="title" value="<?php echo $val->title; ?>" required>
@@ -47,7 +49,7 @@
                                             <div class="col-6">
                                                 <label for="image" class="form-label">Event Image</label>
                                                 <input class="form-control" type="file" name="event_image">
-                                                <?php echo $val->event_image; ?>
+                                                <p class="text-warning"><?php echo $val->event_image; ?></p>
                                             </div>
                                             <div class="col-6">
                                                 <label for="Themetype" class="form-label">Theme type </label>
