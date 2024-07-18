@@ -12,11 +12,16 @@
             if (isset($_GET['pack'])) {
 
                 $items = $package->find_by_id($_GET['pack']);
-
+                $pack_img = "";
+                if (!empty($items->package_image)) {
+                    $pack_img = $items->img_path();
+                } else {
+                    $pack_img = "images/placeholder-image.jpg";
+                }
             ?>
                 <div class="col-lg-6 col-md-6 ">
                     <h1 class="mt-5">
-                        <img class="card img-fluid " style="width: 600px; height:450px;" src="<?php echo $items->img_path(); ?>">
+                        <img class="card img-fluid " style="width: 600px; height:450px;" src="<?php echo $pack_img; ?>">
                     </h1>
                 </div>
                 <div class="col-lg-6 cold-md-4">
@@ -75,13 +80,20 @@
                 }
 
                 foreach ($all_packs as $items) {
+
+                    $all_pack_img = "";
+                    if (!empty($items->package_image)) {
+                        $all_pack_img = $items->img_path();
+                    } else {
+                        $all_pack_img = "images/placeholder-image.jpg";
+                    }
                 ?>
 
                     <div class="col-4 mb-5">
                         <div class="card">
                             <!-- Product image-->
                             <a class="nav-link" href="packages.php?pack=<?php echo $items->id; ?>">
-                                <img class="card-img-top img-fluid" style="height: 260px;" src="<?php echo $items->img_path(); ?>" alt="..." />
+                                <img class="card-img-top img-fluid" style="height: 260px;" src="<?php echo $all_pack_img; ?>" alt="..." />
 
                                 <p class="text-center"><?php echo $items->package_theme; ?></p>
                                 <div class="card-body p-4">

@@ -15,7 +15,7 @@
                     <table class="table align-items-center table-dark table-flush">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Id</th>
+                                <th scope="col">IMG</th>
                                 <th scope="col">User Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Role</th>
@@ -26,39 +26,63 @@
                         <tbody>
 
                             <?php
+
                             $all_users = $user->find_all();
 
                             foreach ($all_users as $users) {
 
+                                $all_user_img = "";
+                                if (!empty($users->user_image)) {
+                                    $all_user_img = "../" .  $users->img_path();
+                                } else {
+                                    $all_user_img = "../images/empty_img.png";
+                                }
                             ?>
                                 <tr>
                                     <td>
                                         <div class="media-body">
-                                            <span class="mb-0 text-sm"><?php echo $users->id; ?></span>
+                                            <span class="mb-0 text-sm"><img class="rounded" style="width:60px" src="<?php echo $all_user_img; ?>" alt=""></span>
                                         </div>
+
                                     <td>
+
                                         <div class="media-body">
                                             <span class="mb-0 text-sm"><?php echo $users->username; ?></span>
                                         </div>
                                     </td>
-                                    <td>
-                                        <?php echo $users->email; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $users->user_role; ?>
-                                    </td>
-
+                                    <?php
+                                    if ($session->user_id == $users->id) {
+                                    ?>
+                                        <td>
+                                            <?php echo $users->email; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $users->user_role; ?>
+                                        </td>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <td>*******</td>
+                                        <td>*******</td>
+                                    <?php
+                                    }
+                                    ?>
 
                                     <?php
 
                                     if ($session->user_id == $users->id) {
                                     ?>
                                         <td>
-                                            <a data-user="<?php echo $users->id; ?>" href="all_users.php?del=<?php echo $users->id; ?>" class="del-btn"> <i class="fas fa-trash p-2"></i> </a>
+                                            <a data-user="<?php echo $users->id; ?>" href="all_users.php?del=<?php echo $users->id; ?>" class="del-btn"> <i class="fas fa-trash p-2 text-danger"></i> </a>
                                         </td>
                                         <td>
                                             <a href="edit_user.php?edit=<?php echo $users->id; ?>"> <i class="fas fa-edit p-2"></i> </a>
                                         </td>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <td>******</td>
+                                        <td>******</td>
                                     <?php
                                     }
                                     ?>
@@ -81,14 +105,19 @@ if (isset($_GET['edit'])) {
     $user->find_by_id($_GET['edit']);
 }
 
+
+
 if (isset($_GET['del'])) {
 
+
     $user_img = $user->find_by_id($_GET['del']);
-    
+
     $img_path = "../" .  $user_img->img_path();
 
-    if ($user->delete($_GET['del'])) {
+    //to prevent from deleting other users from url
 
+    if ($session->user_id == $_GET['del']) {
+        $user->delete($_GET['del']);
         $user->delete_user_carts($_GET['del']);
 
         $session->logout();
@@ -98,6 +127,8 @@ if (isset($_GET['del'])) {
                 redirect("../index");
             }
         }
+    } else {
+        redirect("all_users");
     }
 }
 

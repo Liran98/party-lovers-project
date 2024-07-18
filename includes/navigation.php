@@ -1,15 +1,15 @@
 <div class="col-12 col-lg-12 bsb-overlay background-position-center background-size-cover" style="--bsb-overlay-opacity: 0.7; ">
     <nav class="navbar navbar-expand-lg sticky-top">
-      
-            <?php
-           
-            if($session->is_signed_in()) {
-                $logged_user = $user->find_by_id($session->user_id);
-                echo "<i class='fas fa-user text-light m-2'></i><p class=' card p-1 m-2'>$logged_user->username </p>";
-            }
-           
-            ?>
-    
+
+        <?php
+
+        if ($session->is_signed_in()) {
+            $logged_user = $user->find_by_id($session->user_id);
+            echo "<i class='fas fa-user text-light m-2'></i><p class=' card p-1 m-2'>$logged_user->username </p>";
+        }
+
+        ?>
+
 
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand text-light" href="./index.php"><img style="width:40px;" src="images/party_logo.png"></a>
@@ -61,10 +61,17 @@
                 <?php if ($session->is_signed_in()) : ?>
                     <div class="d-flex">
                         <?php
+                        $user_img = "";
+
                         $logged_user = $user->find_by_id($session->user_id);
+                        if (!empty($logged_user->user_image)) {
+                            $user_img = "./" .  $logged_user->img_path();
+                        } else {
+                            $user_img = "./images/empty_img.png";
+                        }
                         ?>
 
-                        <img style="width: 50px;" src="<?php echo "./" . $logged_user->img_path(); ?>" alt="" class="rounded-circle m-2">
+                        <img style="width: 50px;" src="<?php echo $user_img; ?>" alt="" class="rounded-circle m-2">
                     </div>
 
 

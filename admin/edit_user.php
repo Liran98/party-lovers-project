@@ -5,12 +5,16 @@
             <div class="col-2">
             </div>
             <div class="col-10">
-                <div class="rounded shadow-sm overflow-hidden text-light">
+                <div class="rounded shadow-sm overflow-hidden ">
                     <h3 class="text-center m-3 text-light">Edit User</h3>
-                    <div class="row align-items-lg-center h-100 bg-dark ">
+                    <div class="row align-items-lg-center h-100 bg-light">
                         <div class="col-12 ">
 
                             <?php
+
+                            if($session->user_id !== $_GET['edit']){
+                                redirect("all_users");
+                            }
                             if (isset($_GET['edit'])) {
 
                                 if (isset($_POST['Update_user'])) {
@@ -21,7 +25,14 @@
 
                                     $password = $_POST['password'];
 
-                                    $user->set_file($_POST['profile_img']);
+                                    $curuser = $user->find_by_id($_GET['edit']);
+
+                                    if (empty($curuser->img_path())) {
+                                        $curuser->set_file($_FILES['profile_img']);
+                                    } else {
+                                        unlink("../" . $curuser->img_path());
+                                    }
+                                     $user->set_file($_FILES['profile_img']);
 
                                     if (strlen($password) >= 6 && strlen($_POST['username']) >= 4 && !empty($_POST['email'])) {
                                         $user->password  = password_hash($_POST['password'], PASSWORD_BCRYPT, array("cost" => 12));
@@ -30,6 +41,7 @@
 
 
                                         if ($user->update($_GET['edit'])) {
+
                                             redirect("all_users");
                                         };
                                     }
@@ -38,17 +50,14 @@
 
 
                                 $val = $user->find_by_id($_GET['edit']);
+                                 
+                                
 
                             ?>
                                 <form action="" method="post" enctype="multipart/form-data">
 
                                     <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
-                                        <div class="col-1">
-                                            <label for="file-input">
-                                                <img style="width: 70px; cursor: pointer;" src="<?php echo "../" . $val->img_path(); ?>" alt="" class="rounded card">
-                                            </label>
-                                            <input id="file-input" name="profile_img" type="file" style="display: none;" />
-                                        </div>
+
                                         <div class="col-5">
                                             <label for="username" class="form-label">User Name</label>
                                             <input type="text" class="form-control user-input" name="username" value="<?php echo $val->username; ?>" required>
@@ -62,16 +71,16 @@
                                             <p class="password_validation"></p>
                                         </div>
 
-                                        <div class="col-1 my-6">
-                                            <a class="show-password" href=""><i class="fa fa-eye-slash display-6 my-4 text-light"></i></a>
+                                        <div class="col-1">
+                                            <a class="show-password" href=""><i class="fa fa-eye-slash display-6 my-4 "></i></a>
                                         </div>
 
-                                        <div class="col-6">
+                                        <div class="col-5">
                                             <label for="email" class="form-label">Email</label>
                                             <input type="email" class="form-control email-input" name="email" value="<?php echo $val->email; ?>" required>
                                             <p class="email_validation"></p>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-5">
                                             <label for="role" class="form-label">User Role</label>
                                             <select class="form-select" name="user_role" id="">
                                                 <option value="<?php echo $val->user_role; ?>" selected>Selected: <?php echo $val->user_role; ?></option>
@@ -83,7 +92,24 @@
 
                                             </select>
                                         </div>
+                                        <div class="col-8 p-4">
+                                        <label for="profile image" class="form-label">Profile Image (Optional)</label>
+                                            <input id="file-input" name="profile_img" class="form-control" type="file" />
+                                            
+                                        </div>
+                                        <div class="col-4">
+                                            <?php
+                                            $user_img = "";
 
+                                            if(!empty($val->user_image)){
+                                                $user_img = "../" . $val->img_path();
+                                            }else{
+                                                $user_img = "../images/empty_img.png";
+                                            }
+                                            
+                                            ?>
+                                           <img class="card" style="width: 90px;" src="<?php echo $user_img; ?>" alt="">
+                                        </div>
                                         <div class="col-12">
                                             <div class="d-grid">
                                                 <button name="Update_user" class="btn btn-primary btn-lg" type="submit">Update User</button>
@@ -108,8 +134,6 @@
 <br>
 
 <script>
-
-
     // ! <SHOW AND HIDE PASSWORD FOR EDIT_USER.PHP>
     const show_pass = document.querySelector('.show-password');
     const password = document.querySelector('.password');
@@ -122,10 +146,10 @@
 
         if (!visible) {
             password.type = 'text';
-            show_pass.insertAdjacentHTML('afterbegin', "<i class='fa fa-eye display-6 my-4 text-light'></i>");
+            show_pass.insertAdjacentHTML('afterbegin', "<i class='fa fa-eye display-6 my-4 '></i>");
         } else {
             password.type = 'password';
-            show_pass.insertAdjacentHTML('afterbegin', "<i class='fa fa-eye-slash display-6 my-4 text-light'></i>");
+            show_pass.insertAdjacentHTML('afterbegin', "<i class='fa fa-eye-slash display-6 my-4 '></i>");
         }
 
         visible = !visible;
@@ -148,7 +172,7 @@
             user_text.style.color = "#EA4E4D";
             user_text.textContent = 'Username must be at least 4 characters';
         } else {
-            user_text.style.color = "lightgreen";
+            user_text.style.color = "green";
             user_text.textContent = 'Username valid';
         }
     });
@@ -158,7 +182,7 @@
             password_text.style.color = "#EA4E4D";
             password_text.textContent = 'Passowrd must be at least 6 characters';
         } else {
-            password_text.style.color = "lightgreen";
+            password_text.style.color = "green";
             password_text.textContent = 'Password valid';
         }
     });
@@ -176,7 +200,7 @@
             email_text.style.color = "#EA4E4D";
             email_text.textContent = 'Email not valid';
         } else {
-            email_text.style.color = "lightgreen";
+            email_text.style.color = "green";
             email_text.textContent = 'Email valid';
         }
     });

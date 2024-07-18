@@ -12,11 +12,13 @@
     <title>Party lovers Admin</title>
 
     <link href="css/styles.css" rel="stylesheet" />
-
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/> -->
     <link rel="icon" href="../images/favicon.ico">
+
+    
+   
 
 </head>
 
@@ -38,44 +40,44 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        
+
                         <a class="nav-link <?php echo ($page == 'all_users') ? 'active' : ''; ?>" href="all_users.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                             Users
                         </a>
-                        <?php 
-                        $logged_user = $user->find_by_id($session->user_id); 
-                        
-                        if($logged_user->user_role == 'Admin'){
-                            ?>
+                        <?php
+                        $logged_user = $user->find_by_id($session->user_id);
 
-                        <div class="sb-sidenav-menu-heading">Add/Edit Event</div>
-                        <a class="nav-link <?php echo ($page == 'add_event') ? 'active' : ''; ?>" href="add_event.php"><i class="fas fa-plus p-2"></i> Add Event</a>
-                        <a class="nav-link <?php echo ($page == 'all_events') ? 'active' : ''; ?>" href="all_events.php"> <i class="fas fa-box p-2"></i> All Events</a>
-
-
-                        <div class="sb-sidenav-menu-heading">Add/Edit Package</div>
-                        <a class="nav-link <?php echo ($page == 'add_package') ? 'active' : ''; ?>" href="add_package.php"> <i class="fas fa-plus p-2"></i>Add Package</a>
-                        <a class="nav-link <?php echo ($page == 'all_packages') ? 'active' : ''; ?>" href="all_packages.php"> <i class="fas fa-box p-2"></i> All Packages</a>
-                    </div>
-                    <?php
-                        }
+                        if ($logged_user->user_role == 'Admin') {
                         ?>
 
-                    <div class="sb-sidenav-footer">
-                        <div class="row">
-                            <div class="col-4 p-3">
-                               
-                               <p>LoggedIn </p>
-                            </div>
-                            <div class="col-6 text-success p-3">
-                                <?php
-                                 $curuser = $user->find_by_id($session->user_id);
-                                echo $curuser->username;
-                                ?>
+                            <div class="sb-sidenav-menu-heading">Add/Edit Event</div>
+                            <a class="nav-link <?php echo ($page == 'add_event') ? 'active' : ''; ?>" href="add_event.php"><i class="fas fa-plus p-2"></i> Add Event</a>
+                            <a class="nav-link <?php echo ($page == 'all_events') ? 'active' : ''; ?>" href="all_events.php"> <i class="fas fa-box p-2"></i> All Events</a>
 
-                            </div>
+
+                            <div class="sb-sidenav-menu-heading">Add/Edit Package</div>
+                            <a class="nav-link <?php echo ($page == 'add_package') ? 'active' : ''; ?>" href="add_package.php"> <i class="fas fa-plus p-2"></i>Add Package</a>
+                            <a class="nav-link <?php echo ($page == 'all_packages') ? 'active' : ''; ?>" href="all_packages.php"> <i class="fas fa-box p-2"></i> All Packages</a>
+                    </div>
+                <?php
+                        }
+                ?>
+
+                <div class="sb-sidenav-footer">
+                    <div class="row">
+                        <div class="col-4 p-3">
+
+                            <p>LoggedIn </p>
+                        </div>
+                        <div class="col-6 text-success p-3">
+                            <?php
+                            $curuser = $user->find_by_id($session->user_id);
+                            echo $curuser->username;
+                            ?>
+
                         </div>
                     </div>
+                </div>
             </nav>
         </div>

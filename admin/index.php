@@ -66,7 +66,7 @@
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Events', 'Packages', 'Users', 'Admins'],
+                labels: ['Events', 'Packages', 'Subscriber (Regular account)', 'Admins'],
                 datasets: [{
                     label: '# Count',
                     data: [

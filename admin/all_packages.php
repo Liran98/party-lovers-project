@@ -34,15 +34,20 @@
                                 $all_packages = $package->find_all();
 
                                 foreach ($all_packages as $packages) {
-
+                                    $all_package_img = "";
+                                    if (!empty($packages->package_image)) {
+                                        $all_package_img = "../" .  $packages->img_path();
+                                    } else {
+                                        $all_package_img = "../images/placeholder-image.jpg";
+                                    }
                                 ?>
                                     <tr>
                                         <th scope="row">
                                             <div class="media align-items-center">
-                                                <input class="check-package m-2" type="checkbox" name="check_pack[]" value="<?php echo $packages->id; ?>">
-                                                <img class="avatar rounded-circle mr-3 bg-dark" src="
+                                                <input hidden class="check-package m-2" type="checkbox" name="check_pack[]" value="<?php echo $packages->id; ?>">
+                                                <img class="avatar rounded mr-3 bg-dark" src="
                                             <?php
-                                            echo "../" . $packages->img_path();
+                                            echo $all_package_img;
                                             ?>
                                             ">
 
@@ -70,7 +75,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <a class="delete-pack" data-pack="<?php echo $packages->id; ?>" href="all_packages.php?del=<?php echo $packages->id; ?>"> <i class="fas fa-trash p-2"></i> </a>
+                                            <a class="delete-pack" data-pack="<?php echo $packages->id; ?>" href="all_packages.php?del=<?php echo $packages->id; ?>"> <i class="fas fa-trash p-2 text-danger"></i> </a>
                                         </td>
                                         <td>
                                             <a href="edit_package.php?edit=<?php echo $packages->id; ?>"><i class="fas fa-edit p-2"></i> </a>
@@ -138,11 +143,14 @@ if (isset($_POST['del-pack'])) {
             delete_package.hidden = false;
             btn_per_package.forEach(function(btn) {
                 btn.checked = true;
+                btn.hidden = false;
             });
         } else {
             delete_package.hidden = true;
             btn_per_package.forEach(function(btn) {
                 btn.checked = false;
+                btn.hidden = true;
+
             });
         }
 

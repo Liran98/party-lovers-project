@@ -4,9 +4,9 @@
         <div class="row">
             <div class="col-2">
             </div>
-            <div class="col-10">
-                <div class="rounded shadow-sm overflow-hidden text-light m-3">
-                    <h3 class="text-center m-3 text-light">Add Event</h3>
+            <div class="col-10 bg-light">
+                <div class="rounded shadow-sm overflow-hidden  m-3">
+                    <h3 class="text-center m-3 ">Add Event</h3>
                     <div class="row align-items-lg-center h-100 ">
                         <div class="col-12 ">
                             <?php
@@ -39,7 +39,7 @@
                                         <input type="text" class="form-control" id="title" name="title" value="" required>
                                     </div>
                                     <div class="col-6">
-                                        <label for="image" class="form-label">Event Image</label>
+                                        <label for="image" class="form-label">Event Image (Optional)</label>
                                         <input class="form-control" type="file" name="event_image">
                                     </div>
                                     <div class="col-6">

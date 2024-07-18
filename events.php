@@ -11,12 +11,18 @@
             }
 
             foreach ($events as $event) {
+                $events_img = "";
+                if (!empty($event->event_image)) {
+                    $events_img = $event->img_path();
+                } else {
+                    $events_img = "images/placeholder-image.jpg";
+                }
             ?>
 
                 <div class="col mb-5">
                     <div class="card">
                         <!-- Product image-->
-                        <img style="height: 260px;" class="card-img-top img-fluid" src="<?php echo $event->img_path(); ?>" alt="..." />
+                        <img style="height: 260px;" class="card-img-top img-fluid" src="<?php echo $events_img; ?>" alt="..." />
                         <p class="text-center"><?php echo $event->title; ?></p>
                         <div class="card-body p-4">
                             <div class="text-center">
