@@ -112,11 +112,12 @@ if (isset($_POST['delete-events'])) {
       $eid_img = $event->find_by_id($eid);
       $img_path = "../" .  $eid_img->img_path();
       if ($event->delete($eid)) {
-        if (is_file($img_path)) {
-          if (unlink($img_path)) {
-            redirect("all_events");
+        if ($event->delete($eid)) {
+          if (!empty($img_path) && is_file($img_path)) {
+              unlink($img_path);
           }
-        }
+          redirect("all_events");
+      }
       };
     }
   }

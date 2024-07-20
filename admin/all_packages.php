@@ -116,14 +116,13 @@ if (isset($_POST['del-pack'])) {
         foreach ($packages_id as $pid) {
             $pid_img = $package->find_by_id($pid);
             $img_path = "../" .  $pid_img->img_path();
-            echo $img_path;
+
             if ($package->delete($pid)) {
-                if (is_file($img_path)) {
-                    if (unlink($img_path)) {
-                        redirect("all_packages");
-                    }
+                if (!empty($img_path) && is_file($img_path)) {
+                    unlink($img_path);
                 }
-            };
+                redirect("all_packages");
+            }
         }
     }
 }

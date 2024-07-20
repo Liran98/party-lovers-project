@@ -1,9 +1,12 @@
 <?php include("includes/header.php"); ?>
 <section class="py-3 py-md-5 py-xl-8 m-4 p-4">
+
     <div class="container-fluid d-flex justify-content-center">
+
         <div class="row">
             <div class="col-2">
             </div>
+
             <div class="col-10 bg-light">
                 <div class="rounded shadow-sm overflow-hidden  m-3">
                     <h3 class="text-center m-3 ">Add Event</h3>
@@ -18,7 +21,7 @@
                                 $event->package_id = $_POST['package_id'];
 
                                 $event->set_file($_FILES['event_image']);
-                              
+
 
                                 $event->create();
 
@@ -60,14 +63,13 @@
 
                                         </select>
                                     </div>
-
+                                 
                                     <div class="col-5">
                                         <label for="PackageId" class="form-label">Package Id</label>
-                                        <select class="form-select" name="package_id" id="">
+                                        <select  class="form-select" name="package_id" id="">
                                             <!-- add for each here php ids -->
                                             <option selected>Package Selection</option>
                                             <?php
-
                                             $packages = $package->find_all();
 
                                             foreach ($packages as $item) {
@@ -103,8 +105,9 @@
             </div>
         </div>
     </div>
+
     </div>
-    </div>
+
 </section>
 <br>
 
