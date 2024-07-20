@@ -20,10 +20,10 @@
                                     $event->theme_type = $_POST['Themetype'];
                                     $event->package_id = $_POST['package_id'];
 
-                                    if(empty($val->img_path())){
+                                    if (empty($val->img_path())) {
                                         $val->set_file($_FILES['event_image']);
-                                    }else{
-                                        unlink("../". $val->img_path());
+                                    } else {
+                                        unlink("../" . $val->img_path());
                                     }
                                     $event->set_file($_FILES['event_image']);
 
@@ -48,11 +48,11 @@
                                     </div>
                                     <div class="col-5">
                                         <label for="image" class="form-label">Event Image (Optional)</label>
-                                        <input class="form-control" type="file" name="event_image">
+                                        <input id="file-input" class="form-control" type="file" name="event_image">
                                         <p class="text-warning"><?php echo $val->event_image; ?></p>
                                     </div>
                                     <div class="col-1">
-                                        <img style="width: 150px;" src="../images/<?php echo $val->event_image; ?>" alt="">
+                                        <img id="card_img" style="width: 150px;" src="../images/<?php echo $val->event_image; ?>" alt="">
                                     </div>
                                     <div class="col-5">
                                         <label for="Themetype" class="form-label">Theme type </label>
@@ -126,5 +126,10 @@
 
 </section>
 <br>
-
+<script type="module">
+    import {
+        load_img
+    } from './js/load-img.js';
+    load_img("file-input", "card_img");
+</script>
 <?php include("includes/footer.php"); ?>

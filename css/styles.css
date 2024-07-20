@@ -481,8 +481,8 @@ html {
   height: 100%;
   width: 100%;
   background-color: #483e3e;
-  background-image: url("../images/body-wallpaper.jpg");
-  background-size: cover;
+  background-image: url("../images/b-g.jpg");
+background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -7959,7 +7959,7 @@ fieldset:disabled .btn {
   max-width: 100%;
   color: var(--bs-offcanvas-color);
   visibility: hidden;
-  background-image: url("../images/body-wallpaper.jpg");
+  background-image: url("../images/b-g.jpg");
   background-clip: padding-box;
   outline: 0;
   transition: transform 0.3s ease-in-out;

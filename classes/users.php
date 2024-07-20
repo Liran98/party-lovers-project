@@ -51,10 +51,6 @@ class User extends Db_object
 
         $path_for_img = IMG_PATH . DS . $this->user_image;
 
-        if(file_exists($path_for_img)){
-            echo "<p class='bg-danger text-center'>image already exists</p>";
-        return false;
-        }
        if (move_uploaded_file($this->tmp_path, $path_for_img)) {
             unset($this->tmp_path);
             return true;

@@ -54,11 +54,11 @@
                                     </div>
                                     <div class="col-5">
                                         <label for="package image" class="form-label">Package Image (Optional)</label>
-                                        <input class="form-control" type="file" value="" name="package_image">
+                                        <input id="file-input" class="form-control" type="file" value="" name="package_image">
                                         <p class="text-warning"><?php echo $val->package_image; ?></p>
                                     </div>
                                     <div class="col-2">
-                                        <img style="width: 150px;" src="../images/<?php echo $val->package_image; ?>" alt="">
+                                        <img id="card_img" style="width: 150px;" src="../images/<?php echo $val->package_image; ?>" alt="">
                                     </div>
 
                                     <div class="col-5">
@@ -113,9 +113,9 @@
 <br>
 
 <script type="module">
-    // ?</package selection for add_package.php>
-
     import package_items from './js/package_items.js';
+    import {load_img} from './js/load-img.js';
+    load_img("file-input", "card_img");
 </script>
 
 <?php include("includes/footer.php"); ?>

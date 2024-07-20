@@ -22,6 +22,8 @@ defined("PATH") ? null : define('PATH',SITE_ROOT.DS."classes");
  require_once(PATH.DS."package.php"); 
  require_once(PATH.DS."cart.php"); 
  require_once(PATH.DS."users.php"); 
+ require_once(PATH.DS."users_online.php"); 
+
 
 
 

@@ -12,7 +12,7 @@
 
                             <?php
 
-                            if($session->user_id !== $_GET['edit']){
+                            if ($session->user_id !== $_GET['edit']) {
                                 redirect("all_users");
                             }
                             if (isset($_GET['edit'])) {
@@ -32,7 +32,7 @@
                                     } else {
                                         unlink("../" . $curuser->img_path());
                                     }
-                                     $user->set_file($_FILES['profile_img']);
+                                    $user->set_file($_FILES['profile_img']);
 
                                     if (strlen($password) >= 6 && strlen($_POST['username']) >= 4 && !empty($_POST['email'])) {
                                         $user->password  = password_hash($_POST['password'], PASSWORD_BCRYPT, array("cost" => 12));
@@ -50,35 +50,37 @@
 
 
                                 $val = $user->find_by_id($_GET['edit']);
-                                 
-                                
+
+
 
                             ?>
                                 <form action="" method="post" enctype="multipart/form-data">
 
                                     <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
-
+                                    <div class="col-2">
+                                            <label for="fileInput" class="form-label"> 
+                                                <img id="card_img" class="card rounded-circle" style="width: 110px; cursor: pointer;" src="<?php echo $user_img; ?>" alt="">
+                                            </label>
+                                            <input hidden type="file" id="fileInput"  name="profile_img" class="form-control">
+                                        </div>
                                         <div class="col-5">
-                                            <label for="username" class="form-label">User Name</label>
+                                            <label for="username" class="form-label p-3">User Name</label>
                                             <input type="text" class="form-control user-input" name="username" value="<?php echo $val->username; ?>" required>
                                             <p class="user_validation"></p>
                                         </div>
-
-
+                                    
+                                        <div class="col-5">
+                                            <label for="email" class="form-label p-3">Email</label>
+                                            <input type="email" class="form-control email-input" name="email" value="<?php echo $val->email; ?>" required>
+                                            <p class="email_validation"></p>
+                                        </div>
+                                        <div class="col-2">
+                                            <a class="show-password" href=""><i class="fa fa-eye-slash display-6 my-4"></i></a>
+                                        </div>
                                         <div class="col-5">
                                             <label for="password" class="form-label">Password</label>
                                             <input type="password" class="form-control password" name="password" value="" required>
                                             <p class="password_validation"></p>
-                                        </div>
-
-                                        <div class="col-1">
-                                            <a class="show-password" href=""><i class="fa fa-eye-slash display-6 my-4 "></i></a>
-                                        </div>
-
-                                        <div class="col-5">
-                                            <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control email-input" name="email" value="<?php echo $val->email; ?>" required>
-                                            <p class="email_validation"></p>
                                         </div>
                                         <div class="col-5">
                                             <label for="role" class="form-label">User Role</label>
@@ -92,30 +94,28 @@
 
                                             </select>
                                         </div>
-                                        <div class="col-8 p-4">
-                                        <label for="profile image" class="form-label">Profile Image (Optional)</label>
-                                            <input id="file-input" name="profile_img" class="form-control" type="file" />
-                                            
+                                      
+                                        
+                                        <div class="col-1">
                                         </div>
-                                        <div class="col-4">
                                             <?php
                                             $user_img = "";
 
-                                            if(!empty($val->user_image)){
+                                            if (!empty($val->user_image)) {
                                                 $user_img = "../" . $val->img_path();
-                                            }else{
+                                            } else {
                                                 $user_img = "../images/empty_img.png";
                                             }
-                                            
+
                                             ?>
-                                           <img class="card" style="width: 90px;" src="<?php echo $user_img; ?>" alt="">
-                                        </div>
+
                                         <div class="col-12">
                                             <div class="d-grid">
                                                 <button name="Update_user" class="btn btn-primary btn-lg" type="submit">Update User</button>
                                             </div>
                                             <br>
                                         </div>
+                                      
                                     </div>
                                 </form>
                             <?php
@@ -133,7 +133,13 @@
 </section>
 <br>
 
-<script>
+<script type="module">
+    import {
+        load_img
+    } from './js/load-img.js';
+    load_img("fileInput", "card_img");
+
+
     // ! <SHOW AND HIDE PASSWORD FOR EDIT_USER.PHP>
     const show_pass = document.querySelector('.show-password');
     const password = document.querySelector('.password');

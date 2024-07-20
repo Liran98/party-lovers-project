@@ -10,15 +10,15 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Party lovers Admin</title>
-
+    <link rel="icon" href="../images/favicon.ico">
     <link href="css/styles.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/> -->
-    <link rel="icon" href="../images/favicon.ico">
 
-    
-   
+
+
+
 
 </head>
 
@@ -35,6 +35,7 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark text-light" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
+
                         <div class="sb-sidenav-menu-heading">Main Page</div>
                         <a class="nav-link <?php echo ($page == 'index') ? 'active' : ''; ?>" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

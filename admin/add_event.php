@@ -18,13 +18,13 @@
                                 $event->package_id = $_POST['package_id'];
 
                                 $event->set_file($_FILES['event_image']);
+                              
 
                                 $event->create();
 
                                 echo "<p class='bg-success text-center'>event added successfully</p>";
 
                                 redirect("all_events");
-
                             }
 
 
@@ -34,15 +34,18 @@
                             <form action="" method="post" enctype="multipart/form-data">
                                 <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
 
-                                    <div class="col-6">
-                                        <label for="title" class="form-label">Title </label>
+                                    <div class="col-5">
+                                        <label for="title" class="form-label p-3">Title </label>
                                         <input type="text" class="form-control" id="title" name="title" value="" required>
                                     </div>
-                                    <div class="col-6">
-                                        <label for="image" class="form-label">Event Image (Optional)</label>
-                                        <input class="form-control" type="file" name="event_image">
+                                    <div class="col-5">
+                                        <label for="image" class="form-label p-3">Event Image (Optional)</label>
+                                        <input id="file-input" class="form-control" type="file" name="event_image">
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-2">
+                                        <img id="card_img" style="width: 150px;" src="" alt="">
+                                    </div>
+                                    <div class="col-5">
                                         <label for="Themetype" class="form-label">Theme type </label>
                                         <select class="form-select" name="Themetype" id="">
                                             <option selected>Theme Type Selection</option>
@@ -58,7 +61,7 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-5">
                                         <label for="PackageId" class="form-label">Package Id</label>
                                         <select class="form-select" name="package_id" id="">
                                             <!-- add for each here php ids -->
@@ -81,7 +84,7 @@
 
                                     </div>
 
-                                    <div class="col-12">
+                                    <div class="col-10">
                                         <label for="Description" class="form-label">Description</label>
                                         <textarea class="form-control" name="description" rows="10" cols="10"></textarea>
                                     </div>
@@ -105,6 +108,11 @@
 </section>
 <br>
 
-
+<script type="module">
+    import {
+        load_img
+    } from './js/load-img.js';
+    load_img("file-input", "card_img");
+</script>
 
 <?php include("includes/footer.php"); ?>

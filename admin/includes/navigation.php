@@ -3,25 +3,26 @@
     <?php
     $curuser = $user->find_by_id($session->user_id);
 
-    if(!empty( $curuser->user_image)){
+    if (!empty($curuser->user_image)) {
         $user_img = "../" .  $curuser->img_path();
-    }else{
+    } else {
         $user_img = "../images/empty_img.png";
     }
     ?>
     <a class="navbar-brand home-link ps-3" href="index.php">Party Lovers Admins</a>
     <a class="navbar-brand home-link ps-3 " href="../index.php">Home🏠</a>
 
-         
-      
+ 
     <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+
     <!-- Navbar Search-->
+
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" method="post" action="">
         <div class="input-group">
-            <input class="form-control" name="search" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+            <input class="form-control" name="search" type="text" placeholder="Events,Event,Package,Packages,Users" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
             <button class="btn btn-primary" name="search-btn" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
         </div>
+
     </form>
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -41,6 +42,9 @@
                             <div class="col-9">
                                 <p class='text-success p-3'> <?php echo $curuser->username; ?> </p>
                             </div>
+                            <div class="col-9">
+                                <a href="edit_user.php?edit=<?php echo $curuser->id; ?>" class='p-3'> Settings</a>
+                            </div>
                         </div>
                     </div>
 
@@ -48,14 +52,16 @@
                 <hr>
                 <form action="" method="post">
                     <li>
-                        <button name='logout-btn' class=" btn btn-danger">
-                            <i class="fas fa-sign-out"></i> Logout from <?php echo $curuser->username; ?>
+                        <button name='logout-btn' class=" btn btn-danger m-2">
+                            <i class="fas fa-sign-out"></i> Logout
                         </button>
 
                     </li>
                 </form>
+
             </ul>
         </li>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     </ul>
 </nav>
 
@@ -67,22 +73,22 @@ if (isset($_POST['logout-btn'])) {
 
 
 if (isset($_POST['search-btn'])) {
-    $search = $_POST['search'];
+    $search = trim(strtolower($_POST['search']));
 
     switch ($search) {
-        case 'all events':
+        case 'events':
             redirect("all_events");
             break;
         case 'event':
             redirect("add_event");
             break;
-        case 'all packages':
+        case 'packages':
             redirect("all_packages");
             break;
         case 'package':
             redirect("add_package");
             break;
-        case 'all users':
+        case 'users':
             redirect("all_users");
             break;
 
@@ -91,5 +97,6 @@ if (isset($_POST['search-btn'])) {
             break;
     }
 }
+
 
 ?>
