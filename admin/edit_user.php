@@ -32,9 +32,12 @@
                                     } else {
                                         unlink("../" . $curuser->img_path());
                                     }
+
                                     $user->set_file($_FILES['profile_img']);
 
+
                                     if (strlen($password) >= 6 && strlen($_POST['username']) >= 4 && !empty($_POST['email'])) {
+
                                         $user->password  = password_hash($_POST['password'], PASSWORD_BCRYPT, array("cost" => 12));
 
                                         $user->user_role = $_POST['user_role'];
@@ -52,23 +55,22 @@
                                 $val = $user->find_by_id($_GET['edit']);
 
 
-
                             ?>
                                 <form action="" method="post" enctype="multipart/form-data">
 
                                     <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
-                                    <div class="col-2">
-                                            <label for="fileInput" class="form-label"> 
+                                        <div class="col-2">
+                                            <label for="fileInput" class="form-label">
                                                 <img id="card_img" class="card rounded-circle" style="width: 110px; cursor: pointer;" src="<?php echo $user_img; ?>" alt="">
                                             </label>
-                                            <input hidden type="file" id="fileInput"  name="profile_img" class="form-control">
+                                            <input hidden type="file" id="fileInput" name="profile_img" class="form-control">
                                         </div>
                                         <div class="col-5">
                                             <label for="username" class="form-label p-3">User Name</label>
                                             <input type="text" class="form-control user-input" name="username" value="<?php echo $val->username; ?>" required>
                                             <p class="user_validation"></p>
                                         </div>
-                                    
+
                                         <div class="col-5">
                                             <label for="email" class="form-label p-3">Email</label>
                                             <input type="email" class="form-control email-input" name="email" value="<?php echo $val->email; ?>" required>
@@ -94,20 +96,20 @@
 
                                             </select>
                                         </div>
-                                      
-                                        
+
+
                                         <div class="col-1">
                                         </div>
-                                            <?php
-                                            $user_img = "";
+                                        <?php
+                                        $user_img = "";
 
-                                            if (!empty($val->user_image)) {
-                                                $user_img = "../" . $val->img_path();
-                                            } else {
-                                                $user_img = "../images/empty_img.png";
-                                            }
+                                        if (!empty($val->user_image)) {
+                                            $user_img = "../" . $val->img_path();
+                                        } else {
+                                            $user_img = "../images/empty_img.png";
+                                        }
 
-                                            ?>
+                                        ?>
 
                                         <div class="col-12">
                                             <div class="d-grid">
@@ -115,7 +117,7 @@
                                             </div>
                                             <br>
                                         </div>
-                                      
+
                                     </div>
                                 </form>
                             <?php

@@ -16,6 +16,17 @@ if (sidebarToggle) {
 
 
 
+export const check_validation = function(input, validator) {
+    validator.innerHTML = "";
+    input.addEventListener('change', function(e) {
+  
+       if(input.value.length !== 0 ){
+        validator.innerHTML = "✅";
+       }else{
+        validator.innerHTML = "*";
+       }
+    });
+}
 
 
 

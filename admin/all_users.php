@@ -59,19 +59,7 @@
                                         <td>
                                             <?php echo $users->user_role; ?>
                                         </td>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <td>*******</td>
-                                        <td>*******</td>
-                                    <?php
-                                    }
-                                    ?>
-
-                                    <?php
-
-                                    if ($session->user_id == $users->id) {
-                                    ?>
+                                   
                                         <td>
                                             <a data-user="<?php echo $users->id; ?>" href="all_users.php?del=<?php echo $users->id; ?>" class="del-btn"> <i class="fas fa-trash p-2 text-danger"></i> </a>
                                         </td>
@@ -81,8 +69,10 @@
                                     <?php
                                     } else {
                                     ?>
+                                        <td>**********</td>
                                         <td>******</td>
-                                        <td>******</td>
+                                        <td>*</td>
+                                        <td>*</td>
                                     <?php
                                     }
                                     ?>
