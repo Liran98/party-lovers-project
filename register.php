@@ -55,7 +55,7 @@ if (isset($_POST['register'])) {
 
                                         <p class="email-text-err text-center"></p>
                                         <p class="text-danger text-center"><?php echo  $msg_err; ?></p>
-                                        <div class="col-8">
+                                        <div class="col-8 mb-3">
                                             <label for="email" class="form-label">Email <span class="text-danger email_validator">*</span></label>
                                             <input type="email" class="form-control email" id="email" name="email" value="" required>
                                         </div>

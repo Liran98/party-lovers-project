@@ -11,7 +11,7 @@
             our creativity, professionalism, and unwavering commitment to client satisfaction.
         </p>
 
-        <article class="postcard dark ">
+        <article class="postcard text-light ">
             <a class="postcard__img_link" href="#">
                 <img class="postcard__img index_img" src=""   alt="Image Title" />
             </a>
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </article>
-        <article class="postcard dark ">
+        <article class="postcard text-light ">
             <a class="postcard__img_link" href="#">
                 <img class="postcard__img index_img" src=""  alt="Image Title" />
             </a>
@@ -45,7 +45,7 @@
                    </div>
             </div>
         </article>
-        <article class="postcard dark ">
+        <article class="postcard text-light ">
             <a class="postcard__img_link" href="#">
                 <img class="postcard__img index_img" src=""  alt="Image Title" />
             </a>
@@ -64,7 +64,7 @@
                 </div>
             </div>
         </article>
-        <article class="postcard dark ">
+        <article class="postcard text-light ">
             <a class="postcard__img_link" href="#">
                 <img class="postcard__img index_img" src=""  alt="Image Title" />
             </a>

@@ -15,13 +15,13 @@
 
 
         <?php
-        $total_pics = 12;
+        $total_pics = 40;
 
         for ($i = 0; $i < $total_pics; $i++) {
         ?>
-            <div class="col gallery_img">
+            <div class="col-md-3 col-lg-4 col-md-4 gallery_img">
                 <div>
-                    <img src="./gallery_images/gallery<?php echo $i; ?>.jpg" alt="Image 6" class="w-100">
+                    <img style="height: 350px; width:450px;" class="img-fluid" src="./gallery_images/gallery<?php echo $i; ?>.jpg" alt="Image 6" >
                
                 </div>
             </div>

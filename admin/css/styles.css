@@ -1532,13 +1532,12 @@ p {
   background-image: linear-gradient(rgb(24, 104, 118), rgb(0, 174, 255));
 }
 
-body,
-html {
-  width: 100%;
-  height: 100%;
-  background-image: url("../../images/b-g.jpg");
-background-size: cover;
+body {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000 100%), url("../../images/galaxy-main.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 /*---------------------------------------------------------------------------------        */
