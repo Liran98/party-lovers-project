@@ -135,8 +135,6 @@
     } from './js/scripts.js';
     load_img("file-input", "card_img");
 
-
-
     const theme_type = document.querySelector('.theme_type');
     const package_id = document.querySelector('.package_id');
     const title = document.querySelector('.title');
@@ -146,7 +144,6 @@
     const event_type_validation = document.querySelector('.event_type_validation');
     const event_id_validation = document.querySelector('.event_id_validation');
     const event_description_validation = document.querySelector('.event_description_validation');
-
 
     check_validation(theme_type, event_type_validation);
     check_validation(title, event_title_validation);
